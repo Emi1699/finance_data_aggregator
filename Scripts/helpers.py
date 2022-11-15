@@ -30,3 +30,4 @@ def add_news_to_excel(news):
         page.append(new)
 
     wb.save(filename = workbook_name)
+

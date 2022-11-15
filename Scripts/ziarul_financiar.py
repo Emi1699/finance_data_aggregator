@@ -15,18 +15,18 @@ def get_latest_news_ziarul_financiar():
             newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
             newsText = list_el.find("a").text
 
-            if not helpers.news_already_read("./News/ziarul_financiar.txt", newsText):
-                news[newsID] = (newsTime, newsText, newsLink)
+            # if not helpers.news_already_read("./News/ziarul_financiar.txt", newsText):
+            news[newsID] = (newsTime, newsText, newsLink)
 
             newsID += 1
 
-    with open('./News/ziarul_financiar.txt', 'a', encoding='utf-8') as f:
+    with open('./News/ziarul_financiar.txt', 'w', encoding='utf-8') as f:
         for article in news.values():
             f.write(str(article)+ "\n\n")
 
     f.close()
 
-    helpers.add_news_to_excel(news)
+    # helpers.add_news_to_excel(news)
 
     print("SUCCESS! CHECK THE 'ziarul_financiar.txt' FILE!")
 
