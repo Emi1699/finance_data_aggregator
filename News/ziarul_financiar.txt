@@ -1,5 +1,7 @@
 ('2022-11-15 @ 15:16', 'Ministrul Muncii despre majorarea salariului minim la 3.000 de lei: Noi ne dorim să intre în vigoare de la 1 ianuarie', 'https://www.zf.ro//eveniment/ministrul-muncii-despre-majorarea-salariului-minim-la-3-000-de-lei-21324260')
 
+('2022-11-15 @ 15:14', 'Acord între Parlamentul European şi Consiliul UE cu privire la bugetul UE pentru 2023: angajamente de 187 mld. euro şi plăţi în valoare de 168,7 mld. euro', 'https://www.zf.ro//eveniment/acord-intre-parlamentul-european-si-consiliul-ue-cu-privire-la-21324258')
+
 ('2022-11-15 @ 15:11', 'VIDEO. După un deceniu, Andrei Pitiş şi Răzvan Rughiniş fac un pas în spate şi promovează alţi oameni din interior pentru a conduce zi de zi programul de preaccelerare pentru start-up-uri tech Innovation Labs', 'https://www.zf.ro//business-hi-tech/video-dupa-deceniu-andrei-pitis-razvan-rughinis-fac-pas-spate-21324201')
 
 ('2022-11-15 @ 15:05', 'Alexandrion Group, principalul producător de băuturi spirtoase din ţară, promovează doi directori locali în poziţii de country manager pentru Cipru şi Turcia şi aduce în companie patru oameni noi pentru a coordona strategia globală a grupului ȋn zone de business cheie', 'https://www.zf.ro//companii/retail-agrobusiness/alexandrion-group-principalul-producator-bauturi-spirtoase-tara-21324198')
@@ -55,6 +57,4 @@
 ('2022-11-15 @ 11:00', 'Mesaj din Abu Dhabi, de la investitori care au 1.600 de miliarde de dolari pe mână: Suntem pregătiţi să investim în România! Ne-au atras atenţia creşterea PIB-ului, ratingurile Fitch, focusul pe IT&C şi digitalizare, dar şi energia şi logistica. Vrem să fim aici pe termen lung', 'https://www.zf.ro//burse-fonduri-mutuale/mesaj-abu-dhabi-investitori-au-1-600-miliarde-dolari-mana-pregatiti-21311766')
 
 ('2022-11-15 @ 10:37', 'Arctic Stream, integrator de infrastructură şi securitate IT listat la BVB, a încheiat primele nouă luni din 2022 cu un profit de 4,28 milioane de lei, faţă de 1,8 milioane lei în perioada similară din 2021', 'https://www.zf.ro//business-hi-tech/arctic-stream-integrator-infrastructura-securitate-it-listat-bvb-21323244')
-
-('2022-11-15 @ 10:30', 'ACAROM: În primele zece luni din 2022, producţia de autoturisme a crescut cu 27,7% faaţă de anul trecut', 'https://www.zf.ro//auto/acarom-in-primele-zece-luni-din-2022-productia-de-autoturisme-a-21323241')
 

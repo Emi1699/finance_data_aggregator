@@ -16,18 +16,18 @@ def get_latest_news_ziarul_financiar():
             newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
             newsText = list_el.find("a").text
 
-            if not news_already_read("news.txt", newsText):
+            if not news_already_read("./News/ziarul_financiar.txt", newsText):
                 news[newsID] = (newsTime, newsText, newsLink)
 
             newsID += 1
 
-    with open('news.txt', 'a', encoding='utf-8') as f:
+    with open('./News/ziarul_financiar.txt', 'a', encoding='utf-8') as f:
         for article in news.values():
             f.write(str(article)+ "\n\n")
 
     f.close()
 
-    print("SUCCESS! CHECK THE 'news.txt' FILE!")
+    print("SUCCESS! CHECK THE 'ziarul_financiar.txt' FILE!")
 
 def get_source(url):
     html = requests.get(url).content
