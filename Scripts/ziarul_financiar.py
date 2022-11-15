@@ -1,6 +1,7 @@
 from datetime import date
 import helpers
 import os
+from news import News
 
 def get_latest_news():
     source = helpers.get_source("https://www.zf.ro/")
@@ -20,7 +21,7 @@ def get_latest_news():
             newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
             newsText = list_el.find("a").text
 
-            news[newsID] = (newsTime, newsText, newsLink)
+            news[newsID] = News(newsTime, newsText, newsLink)
 
             newsID += 1
 
