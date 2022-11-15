@@ -1,0 +1,60 @@
+('2022-11-15 @ 15:16', 'Ministrul Muncii despre majorarea salariului minim la 3.000 de lei: Noi ne dorim să intre în vigoare de la 1 ianuarie', 'https://www.zf.ro//eveniment/ministrul-muncii-despre-majorarea-salariului-minim-la-3-000-de-lei-21324260')
+
+('2022-11-15 @ 15:11', 'VIDEO. După un deceniu, Andrei Pitiş şi Răzvan Rughiniş fac un pas în spate şi promovează alţi oameni din interior pentru a conduce zi de zi programul de preaccelerare pentru start-up-uri tech Innovation Labs', 'https://www.zf.ro//business-hi-tech/video-dupa-deceniu-andrei-pitis-razvan-rughinis-fac-pas-spate-21324201')
+
+('2022-11-15 @ 15:05', 'Alexandrion Group, principalul producător de băuturi spirtoase din ţară, promovează doi directori locali în poziţii de country manager pentru Cipru şi Turcia şi aduce în companie patru oameni noi pentru a coordona strategia globală a grupului ȋn zone de business cheie', 'https://www.zf.ro//companii/retail-agrobusiness/alexandrion-group-principalul-producator-bauturi-spirtoase-tara-21324198')
+
+('2022-11-15 @ 14:22', 'Liberty, acţionarul Liberty Galaţi, anunţă un nou acord de restructurare a datoriilor cu toţi creditorii', 'https://www.zf.ro//business-international/liberty-actionarul-liberty-galati-anunta-un-nou-acord-de-21324040')
+
+('2022-11-15 @ 14:12', 'Microsoft avertizează: Hackerii cu legături cu armata rusă s-au aflat în spatele atacurilor ransomware asupra organizaţiilor de transport şi logistică din Ucraina şi Polonia', 'https://www.zf.ro//eveniment/microsoft-avertizeaza-hackerii-cu-legaturi-cu-armata-rusa-s-au-aflat-21324005')
+
+('2022-11-15 @ 14:05', 'VIDEO. Preşedintele ANCOM Vlad Stoica anunţă rezultatele licitaţiei 5G. "Ar trebui să fim mândri că avem un rezultat ca acesta"', 'https://www.zf.ro//business-hi-tech/video-presedintele-ancom-vlad-stoica-anunta-rezultatele-licitatiei-21323994')
+
+('2022-11-15 @ 13:39', 'Comerţul dintre Marea Britanie şi România a crescut puternic în acest an, trimestrul al doilea având o creştere de 53% faţă de a doua jumătate a lui 2020 şi prima jumătate din 2021: Vehiculele, băuturile şi autoturismele conduc în topul importurilor din Marea Britanie', 'https://www.zf.ro//companii/comertul-dintre-marea-britanie-romania-crescut-puternic-acest-an-21323858')
+
+('2022-11-15 @ 13:39', 'Cum arată planul în 10 puncte al lui Volodimir Zelenski pentru pace prezentat la Summitul G20', 'https://www.zf.ro//business-international/cum-arata-planul-in-10-puncte-al-lui-volodimir-zelenski-pentru-pace-21323938')
+
+('2022-11-15 @ 13:33', 'Putin are nevoie de carne de tun: Liderul de la Kremlin a semnat un decret prin care ruşii cu dublă cetăţenie pot fi înrolaţi în armată', 'https://www.zf.ro//business-international/putin-are-nevoie-de-carne-de-tun-liderul-de-la-kremlin-a-semnat-un-21323866')
+
+('2022-11-15 @ 13:09', 'Se adună norii de furtună: Economia Japoniei se contractă în mod neaşteptat după scăderea yenului', 'https://www.zf.ro//eveniment/se-aduna-norii-de-furtuna-economia-japoniei-se-contracta-in-mod-21323802')
+
+('2022-11-15 @ 12:49', 'BestJobs: Doar 44% dintre angajaţii care şi-au luat joburi extra le mai păstrează după revenirea la birou', 'https://www.zf.ro//profesii/bestjobs-doar-44-dintre-angajatii-care-si-au-luat-joburi-extra-le-21323738')
+
+('2022-11-15 @ 12:46', 'Producătorul de cabluri Romcab Târgu Mureş a trecut pe pierdere de 85 mil. lei în primele nouă luni, după un profit de 19,4 mil. lei anul trecut. Rezultatul, pus în spatele dobânzilor şi diferenţelor nefavorabile de curs valutar', 'https://www.zf.ro//burse-fonduri-mutuale/producatorul-cabluri-romcab-targu-mures-trecut-pierdere-85-mil-lei-21323728')
+
+('2022-11-15 @ 12:46', 'Iubitorii de băuturi fine îşi deschid larg portofelele: Moet Hennessy rămâne fără şampanie în urma unei creşteri masive a cererii', 'https://www.zf.ro//zf-24/iubitorii-de-bauturi-fine-isi-deschid-larg-portofelele-moet-hennessy-21323730')
+
+('2022-11-15 @ 12:27', 'O veste bună: Vânzarea online în trafic intern a biletelor este posibilă la toate trenurile CFR Călători', 'https://www.zf.ro//eveniment/o-veste-buna-vanzarea-online-in-trafic-intern-a-biletelor-este-21323698')
+
+('2022-11-15 @ 12:16', 'Nicolae Ciucă anunţă victoria după publicarea cifrelor INS: Guvernul a reuşit să asigure consolidarea economică', 'https://www.zf.ro//eveniment/nicolae-ciuca-anunta-victoria-dupa-publicarea-cifrelor-ins-guvernul-21323688')
+
+('2022-11-15 @ 12:14', 'Cum comentează Nicolae Ciucă problema termiei în Captitală: Este o problemă a autorităţii locale. O putea rezolva', 'https://www.zf.ro//eveniment/cum-comenteaza-nicolae-ciuca-problema-termiei-in-captitala-este-o-21323687')
+
+('2022-11-15 @ 12:00', 'Premierul Ciucă dă asigurări: România nu este în pericol să intre în recesiune economică', 'https://www.zf.ro//eveniment/premierul-ciuca-da-asigurari-romania-nu-este-in-pericol-sa-intre-in-21323617')
+
+('2022-11-15 @ 12:00', 'Cegeka România se apropie de pragul de 900 de angajaţi: Avem 830 angajaţi în prezent şi continuăm să recrutăm. Acum facem pregătirile pentru Academia Cegeka 2023, din care recrutăm anual studenţi', 'https://www.zf.ro//business-hi-tech/cegeka-romania-se-apropie-de-pragul-de-900-de-angajati-avem-830-21321671')
+
+('2022-11-15 @ 11:58', 'Compania de distribuţie şi logistică Aquila a înregistrat un profit de 64 mil. lei la nouă luni, un avans de 47% de la an la an. Venituri de 1,5 mld. lei', 'https://www.zf.ro//burse-fonduri-mutuale/compania-de-distributie-si-logistica-aquila-a-inregistrat-un-profit-21323535')
+
+('2022-11-15 @ 11:57', 'TBI Bank colaborează cu agenţia de turism Christian Tour pentru soluţia de plată „cumpără acum, plăteşte mai târziu“', 'https://www.zf.ro//banci-si-asigurari/tbi-bank-colaboreaza-cu-agentia-de-turism-christian-tour-pentru-21323937')
+
+('2022-11-15 @ 11:44', 'PwC: România, pe locul 39 din 61 de ţări într-un top al atractivităţii în investiţii verzi. “Capitalul privat continuă să fie interesat în mare măsură de ţările cu venituri ridicate, susţinute de apartenenţa la organizaţii internaţionale preocupate de climă”', 'https://www.zf.ro//companii/energie/pwc-romania-locul-39-61-tari-intr-top-atractivitatii-investitii-21323532')
+
+('2022-11-15 @ 11:39', 'Bookster, platforma care administrează un serviciu de livrare de cărţi împrumutate, semnează cu dezvoltatorul Genesis Property pentru un spaţiu în YUNITY Park, proiect care urmează să fie finalizat în prima parte a anului viitor', 'https://www.zf.ro//constructii-imobiliare/bookster-platforma-administreaza-serviciu-livrare-carti-imprumutate-21323526')
+
+('2022-11-15 @ 11:31', 'Grupul Medical Provita a deschis prima clinică din afara Bucureştiului, la Suceava, ȋn urma unei investiţii de 2,5 milioane de euro ', 'https://www.zf.ro//companii/grupul-medical-provita-a-deschis-prima-clinica-din-afara-21323455')
+
+('2022-11-15 @ 11:21', 'Digi a raportat venituri de 1,1 mld. euro în intervalul ianuarie-septembrie, în creştere cu 20%. Profit din operaţiuni continue de 52 mil. euro, minus 28%', 'https://www.zf.ro//burse-fonduri-mutuale/digi-a-raportat-venituri-de-1-1-mld-euro-in-intervalul-ianuarie-21323449')
+
+('2022-11-15 @ 11:17', 'De azi, lumea are 8 miliarde de locuitori. ONU estimează că populaţia va continua să crească până la 8,5 miliarde în 2030, 9,7 miliarde în 2050 şi va atinge un vârf de circa 10,4 miliarde de oameni în 2080', 'https://www.zf.ro//business-international/azi-lumea-8-miliarde-locuitori-onu-estimeaza-populatia-continua-21323444')
+
+('2022-11-15 @ 11:14', 'Rezultate oficiale ANCOM: Orange, Vodafone şi RCS&RDS Digi vor plăti 432 mil. euro pentru licenţele 5G. Vlad Stoica, preşedintele ANCOM: "Este un rezultat bun în actualul context economic şi politic"', 'https://www.zf.ro//business-hi-tech/rezultate-oficiale-ancom-orange-vodafone-si-rcs-rds-digi-vor-plati-21323414')
+
+('2022-11-15 @ 11:02', 'Veşti bune pentru românii cu credite: Indicele ROBOR la trei luni scade sub 8% după opt zile de tranzacţionare în care a continuat să scadă', 'https://www.zf.ro//banci-si-asigurari/vesti-bune-pentru-romanii-cu-credite-indicele-robor-la-trei-luni-21323305')
+
+('2022-11-15 @ 11:00', 'Mesaj din Abu Dhabi, de la investitori care au 1.600 de miliarde de dolari pe mână: Suntem pregătiţi să investim în România! Ne-au atras atenţia creşterea PIB-ului, ratingurile Fitch, focusul pe IT&C şi digitalizare, dar şi energia şi logistica. Vrem să fim aici pe termen lung', 'https://www.zf.ro//burse-fonduri-mutuale/mesaj-abu-dhabi-investitori-au-1-600-miliarde-dolari-mana-pregatiti-21311766')
+
+('2022-11-15 @ 10:37', 'Arctic Stream, integrator de infrastructură şi securitate IT listat la BVB, a încheiat primele nouă luni din 2022 cu un profit de 4,28 milioane de lei, faţă de 1,8 milioane lei în perioada similară din 2021', 'https://www.zf.ro//business-hi-tech/arctic-stream-integrator-infrastructura-securitate-it-listat-bvb-21323244')
+
+('2022-11-15 @ 10:30', 'ACAROM: În primele zece luni din 2022, producţia de autoturisme a crescut cu 27,7% faaţă de anul trecut', 'https://www.zf.ro//auto/acarom-in-primele-zece-luni-din-2022-productia-de-autoturisme-a-21323241')
+

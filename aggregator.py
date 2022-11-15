@@ -1,45 +1,48 @@
 from bs4 import BeautifulSoup as bs
 import requests
+from datetime import date
 
-keywords = ['BVB', 'SNP']    
+def get_latest_news_ziarul_financiar():
+    source = get_source("https://www.zf.ro/")
+    news = {}
+    newsID = 1
 
-def lovely_soup(url):
-    r = requests.get(url)
-    return bs(r.content, 'lxml')
+    latestNews_wrapper = source.select(".clear.latest-wrapper")
 
+    for wrapper in latestNews_wrapper:
+        for list_el in wrapper.find_all("li"):
 
-articles = {} # dict that holds article titles and links to them
-i = 1 # used to populate the above dict
+            newsTime = str(date.today()) + " @ " + list_el.find("small").text
+            newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
+            newsText = list_el.find("a").text
 
-website = 'https://www.zf.ro/companii/'
-categories = ['']
+            if not news_already_read("news.txt", newsText):
+                news[newsID] = (newsTime, newsText, newsLink)
 
+            newsID += 1
 
-for page in range(1, 6):
-    if page == 1:
-        pass
-    else:
-        website += "page/" + str(page)
+    with open('news.txt', 'a', encoding='utf-8') as f:
+        for article in news.values():
+            f.write(str(article)+ "\n\n")
 
-    soup = lovely_soup(website)
-    news = soup.findAll('div', {'class': 'flux news clear'})
+    f.close()
 
-    for title in news:
-        clearDivs = title.findAll('div', {'class': 'clear'})
+    print("SUCCESS! CHECK THE 'news.txt' FILE!")
 
-        for clDiv in clearDivs:
-            h2Tags = clDiv.findAll('h2')
+def get_source(url):
+    html = requests.get(url).content
 
-            for h2Tag in h2Tags:
-                aTags = h2Tag.findAll('a', {'class': 'articleTitle h3'})
+    return bs(html, 'html5lib')
 
-                for aTag in aTags:
-                    articles[i] = (aTag['title'], "SURSA: https://www.zf.ro" + aTag['href'] + " ")
-                    i += 1
+def print_utf8(s):
+    print(s.encode("utf-8"))
 
-with open('articles.txt', 'a', encoding='utf-8') as f:
-    for article in articles.values():
-        # if article not in articles.values():
-        f.write(str(article)+ "\n\n")
+def news_already_read(file_name, news):
+    """ Check if any line in the file contains given string """
+    with open(file_name, 'r', encoding='utf-8') as read_obj:
+        for line in read_obj:
+            if news in line:
+                return True
+    return False
 
-f.close()
+get_latest_news_ziarul_financiar() #entry point
