@@ -1,10 +1,15 @@
 from datetime import date
 import helpers
+import os
 
-def get_latest_news_ziarul_financiar():
+def get_latest_news():
     source = helpers.get_source("https://www.zf.ro/")
     news = {}
     newsID = 1
+
+    absolute_path = os.path.dirname(__file__)
+    relative_path = "../News/ziarul_financiar.txt"
+    output_file = os.path.join(absolute_path, relative_path) 
 
     latestNews_wrapper = source.select(".clear.latest-wrapper")
 
@@ -15,12 +20,11 @@ def get_latest_news_ziarul_financiar():
             newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
             newsText = list_el.find("a").text
 
-            # if not helpers.news_already_read("./News/ziarul_financiar.txt", newsText):
             news[newsID] = (newsTime, newsText, newsLink)
 
             newsID += 1
 
-    with open('./News/ziarul_financiar.txt', 'w', encoding='utf-8') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         for article in news.values():
             f.write(str(article)+ "\n\n")
 
@@ -30,4 +34,4 @@ def get_latest_news_ziarul_financiar():
 
     print("SUCCESS! CHECK THE 'ziarul_financiar.txt' FILE!")
 
-get_latest_news_ziarul_financiar() #entry point
+# get_latest_news_ziarul_financiar() #entry point
