@@ -1,9 +1,7 @@
-from bs4 import BeautifulSoup as bs
-import requests
-from datetime import date
 import helpers
+from datetime import date
 
-def get_latest_news_profit_ro():
+def get_latest_news():
     pass
 
     
