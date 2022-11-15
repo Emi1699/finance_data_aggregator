@@ -26,6 +26,8 @@ def get_latest_news_ziarul_financiar():
 
     f.close()
 
+    helpers.add_news_to_excel(news)
+
     print("SUCCESS! CHECK THE 'ziarul_financiar.txt' FILE!")
 
 get_latest_news_ziarul_financiar() #entry point

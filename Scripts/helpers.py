@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup as bs
 import requests
+from openpyxl.workbook import Workbook
 
 def get_source(url):
     html = requests.get(url).content
@@ -16,3 +17,16 @@ def news_already_read(file_name, news):
             if news in line:
                 return True
     return False
+
+def add_news_to_excel(news):
+    headers = ['Date', 'Text', 'Link']
+    workbook_name = './News/ziarul_financiar.xlsx'
+    wb = Workbook()
+    page = wb.active
+    page.title = 'Ziarul Financiar Today'
+    page.append(headers)
+
+    for new in news.values():
+        page.append(new)
+
+    wb.save(filename = workbook_name)
