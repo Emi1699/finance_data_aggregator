@@ -3,7 +3,6 @@ from datetime import date
 import helpers
 from news import News
 
-
 def pause():
     programPause = input("\nPress the <ENTER> key to continue...\n")
 
@@ -14,9 +13,14 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
 
     # find path to output file
     absolute_path = os.path.dirname(__file__)
-    relative_path = "../News/profit_ro.txt"
+    relative_path = f"../News/{__name__}.txt"
     output_file = os.path.join(absolute_path, relative_path) 
 
+    # get featured piece of news
+    getFeatured(source, news)
+    id += 1
+
+    # get news from the list below
     latestNews_wrapper = source.select("ul.articles")
 
     for wrapper in latestNews_wrapper:
@@ -39,7 +43,16 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
 
     # helpers.add_news_to_excel(news)
 
-    print("SUCCESS! CHECK THE 'profit_ro.txt' FILE!")
+    print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
 
-    
+def getFeatured(source, news):
+    feat = source.select("div.col-xs-12.col-md-6 h2")[0]
 
+    newsDate = source.select("div.col-xs-12.col-md-6 div")[0].text
+    newsText = feat.select("a")[0].text
+    newsLink = "https://www.profit.ro" + feat.select("a")[0]['href']
+
+    newsPiece = News(newsDate, newsText, newsLink, id)
+    news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
+
+    print(len(feat))

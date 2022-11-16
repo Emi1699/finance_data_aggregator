@@ -9,7 +9,7 @@ def get_latest_news(sourceLink = "https://www.zf.ro/"):
     id = 1
 
     absolute_path = os.path.dirname(__file__)
-    relative_path = "../News/ziarul_financiar.txt"
+    relative_path = f"../News/{__name__}.txt"
     output_file = os.path.join(absolute_path, relative_path) 
 
     latestNews_wrapper = source.select(".clear.latest-wrapper")
@@ -34,5 +34,5 @@ def get_latest_news(sourceLink = "https://www.zf.ro/"):
 
     # helpers.add_news_to_excel(news)
 
-    print("SUCCESS! CHECK THE 'ziarul_financiar.txt' FILE!")
+    print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
 
