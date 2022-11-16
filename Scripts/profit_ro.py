@@ -7,7 +7,6 @@ def pause():
     programPause = input("\nPress the <ENTER> key to continue...\n")
 
 def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
-    source = helpers.get_source(sourceLink)
     news = {}
     id = 1
 
@@ -16,25 +15,32 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
     relative_path = f"../News/{__name__}.txt"
     output_file = os.path.join(absolute_path, relative_path) 
 
-    # get featured piece of news
-    getFeatured(source, news)
-    id += 1
+    for page in range(1, 4):
 
-    # get news from the list below
-    latestNews_wrapper = source.select("ul.articles")
+        if page == 1:
+            source = helpers.get_source(sourceLink)
+        else:
+            source = helpers.get_source(f"{sourceLink}?p={page}")
 
-    for wrapper in latestNews_wrapper:
-        for list_el in wrapper.find_all("li"):
-            if not list_el.has_attr("id"):
+        # get featured piece of news
+        getFeatured(source, news, id)
+        id += 1
 
-                newsDate = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("div")[0].text
-                newsText = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0].text
-                newsLink = "https://www.profit.ro" + list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0]['href']
+        # get news from the list below
+        latestNews_wrapper = source.select("ul.articles")
 
-                newsPiece = News(newsDate, newsText, newsLink, id)
-                news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
+        for wrapper in latestNews_wrapper:
+            for list_el in wrapper.find_all("li"):
+                if not list_el.has_attr("id"):
 
-                id += 1
+                    newsDate = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("div")[0].text
+                    newsText = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0].text
+                    newsLink = "https://www.profit.ro" + list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0]['href']
+
+                    newsPiece = News(newsDate, newsText, newsLink, id)
+                    news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
+
+                    id += 1
 
     with open(output_file, 'w', encoding='utf-8') as f:
         for article in news.values():
@@ -45,7 +51,7 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
 
     print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
 
-def getFeatured(source, news):
+def getFeatured(source, news, id):
     feat = source.select("div.col-xs-12.col-md-6 h2")[0]
 
     newsDate = source.select("div.col-xs-12.col-md-6 div")[0].text
