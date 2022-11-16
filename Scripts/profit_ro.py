@@ -7,6 +7,8 @@ def pause():
     programPause = input("\nPress the <ENTER> key to continue...\n")
 
 def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
+    print(f"\nRetrieving news from profit.ro ...")
+
     news = {}
     id = 1
 
@@ -44,8 +46,8 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
         for article in news.values():
             f.write(str(article)+ "\n")
     f.close()
-    
-    print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
+
+    print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!\n")
 
 def getFeatured(source, news, id):
     feat = source.select("div.col-xs-12.col-md-6 h2")[0]

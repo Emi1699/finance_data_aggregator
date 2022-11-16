@@ -3,6 +3,8 @@ import helpers
 from news import News
 
 def get_latest_news(sourceLink = "https://www.zf.ro/"):
+    print(f"\nRetrieving news from ziarul-financiar.ro ...")
+
     source = helpers.get_source(sourceLink)
     news = {}
     id = 1
@@ -30,5 +32,5 @@ def get_latest_news(sourceLink = "https://www.zf.ro/"):
 
     f.close()
 
-    print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
+    print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!\n")
 
