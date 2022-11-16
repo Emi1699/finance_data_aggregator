@@ -44,9 +44,7 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
         for article in news.values():
             f.write(str(article)+ "\n")
     f.close()
-
-    # helpers.add_news_to_excel(news)
-
+    
     print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
 
 def getFeatured(source, news, id):

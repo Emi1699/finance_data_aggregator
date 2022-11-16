@@ -30,7 +30,5 @@ def get_latest_news(sourceLink = "https://www.zf.ro/"):
 
     f.close()
 
-    # helpers.add_news_to_excel(news)
-
     print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!")
 
