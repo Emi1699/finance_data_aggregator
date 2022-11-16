@@ -3,6 +3,7 @@ from datetime import date
 import helpers
 from news import News
 
+
 def pause():
     programPause = input("\nPress the <ENTER> key to continue...\n")
 
@@ -60,5 +61,3 @@ def getFeatured(source, news, id):
 
     newsPiece = News(newsDate, newsText, newsLink, id)
     news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
-
-    print(len(feat))
