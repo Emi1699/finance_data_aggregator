@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 from openpyxl.workbook import Workbook
+import os
 
 def get_source(url):
     html = requests.get(url).content
@@ -30,4 +31,11 @@ def add_news_to_excel(news):
         page.append(new)
 
     wb.save(filename = workbook_name)
+
+def get_path_to_output(name, file):
+    absolute_path = os.path.dirname(file)
+    relative_path = f"../News/{name}.txt"
+    output_file = os.path.join(absolute_path, relative_path)
+
+    return output_file
 

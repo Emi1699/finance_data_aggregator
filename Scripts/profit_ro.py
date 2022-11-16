@@ -1,4 +1,3 @@
-import os
 from datetime import date
 import helpers
 from news import News
@@ -11,10 +10,8 @@ def get_latest_news(sourceLink = "https://www.profit.ro/toate"):
     news = {}
     id = 1
 
-    # find path to output file
-    absolute_path = os.path.dirname(__file__)
-    relative_path = f"../News/{__name__}.txt"
-    output_file = os.path.join(absolute_path, relative_path) 
+    # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
+    output_file = helpers.get_path_to_output(__name__, __file__)
 
     for page in range(1, 4):
 
