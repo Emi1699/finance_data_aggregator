@@ -3,10 +3,10 @@ import helpers
 import os
 from news import News
 
-def get_latest_news():
-    source = helpers.get_source("https://www.zf.ro/")
+def get_latest_news(sourceLink = "https://www.zf.ro/"):
+    source = helpers.get_source(sourceLink)
     news = {}
-    newsID = 1
+    id = 1
 
     absolute_path = os.path.dirname(__file__)
     relative_path = "../News/ziarul_financiar.txt"
@@ -17,18 +17,18 @@ def get_latest_news():
     for wrapper in latestNews_wrapper:
         for list_el in wrapper.find_all("li"):
 
-            newsTime = str(date.today()) + " @ " + list_el.find("small").text
-            newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
+            newsDate = str(date.today()) + " @ " + list_el.find("small").text
+            newsLink = sourceLink+ list_el.find("a")['href']
             newsText = list_el.find("a").text
 
-            newsPiece = News(newsTime, newsText, newsLink)
-            news[newsID] = (newsPiece.getDate(), newsPiece.getText(), newsPiece.getLink())
+            newsPiece = News(newsDate, newsText, newsLink, id)
+            news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-            newsID += 1
+            id += 1
 
     with open(output_file, 'w', encoding='utf-8') as f:
         for article in news.values():
-            f.write(str(article)+ "\n\n")
+            f.write(str(article)+ "\n")
 
     f.close()
 
@@ -36,4 +36,3 @@ def get_latest_news():
 
     print("SUCCESS! CHECK THE 'ziarul_financiar.txt' FILE!")
 
-# get_latest_news_ziarul_financiar() #entry point
