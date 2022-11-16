@@ -6,4 +6,11 @@ class News:
         self.text = text
         self.link = link
     
+    def getDate(self):
+        return self.date
+
+    def getText(self):
+        return self.text
     
+    def getLink(self):
+        return self.link

@@ -21,7 +21,8 @@ def get_latest_news():
             newsLink = "https://www.zf.ro/" + list_el.find("a")['href']
             newsText = list_el.find("a").text
 
-            news[newsID] = News(newsTime, newsText, newsLink)
+            newsPiece = News(newsTime, newsText, newsLink)
+            news[newsID] = (newsPiece.getDate(), newsPiece.getText(), newsPiece.getLink())
 
             newsID += 1
 
