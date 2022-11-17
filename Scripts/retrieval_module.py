@@ -37,7 +37,7 @@ class RetrievalModule():
         news = {}
         id = 1
 
-        for page in range(1, 3): #loop through the pages of news on the website
+        for page in range(1, 2): #loop through the pages of news on the website
 
             if page > 1:
                 source = helpers.get_source(f"https://www.wall-street.ro/articol/Ultima-Ora/pagina-{page}.html")
