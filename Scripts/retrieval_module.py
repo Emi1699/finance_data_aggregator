@@ -12,9 +12,6 @@ class RetrievalModule():
         news = {}
         id = 1
 
-        # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
-        output_file = helpers.get_path_to_output("ziarul_financiar", __file__)
-
         latestNews_wrapper = source.select(".clear.latest-wrapper")
 
         for wrapper in latestNews_wrapper:
@@ -29,13 +26,8 @@ class RetrievalModule():
 
                 id += 1
 
-        with open(output_file, 'w', encoding='utf-8') as f:
-            for article in news.values():
-                f.write(str(article)+ "\n")
+        helpers.write_news_to_file("ziarul_financiar", news)
 
-        f.close()
-
-        print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!\n")
 
     # get latest new from wall-street.ro
     def get_latest_news_wall_street_ro(self, sourceLink = "https://www.wall-street.ro/ultima-ora/index.html"):
@@ -45,10 +37,7 @@ class RetrievalModule():
         news = {}
         id = 1
 
-        # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
-        output_file = helpers.get_path_to_output("wall_street", __file__)
-
-        for page in range(1, 4): #loop through the pages of news on the website
+        for page in range(1, 3): #loop through the pages of news on the website
 
             if page > 1:
                 source = helpers.get_source(f"https://www.wall-street.ro/articol/Ultima-Ora/pagina-{page}.html")
@@ -69,20 +58,11 @@ class RetrievalModule():
                     newsDate = articleDateSource.select("a")[0].text
 
                 newsPiece = News(newsDate, newsText, newsLink, id)
+                news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-                if (newsPiece.date, newsPiece.text, newsPiece.link) not in news.values():
-                    news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
-                    id += 1
-                else:
-                    continue
+                id += 1
 
-        with open(output_file, 'w', encoding='utf-8') as f:
-            for article in news.values():
-                f.write(str(article)+ "\n")
-
-        f.close()
-
-        print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!\n")
+        helpers.write_news_to_file("wall_street", news)
 
     # get latest news from profit.ro
     def get_latest_news_profit_ro(self, sourceLink = "https://www.profit.ro/toate"):
@@ -91,10 +71,7 @@ class RetrievalModule():
         news = {}
         id = 1
 
-        # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
-        output_file = helpers.get_path_to_output("profit_ro", __file__)
-
-        for page in range(1, 4):
+        for page in range(1, 3):
 
             if page == 1:
                 source = helpers.get_source(sourceLink)
@@ -121,12 +98,7 @@ class RetrievalModule():
 
                         id += 1
 
-        with open(output_file, 'w', encoding='utf-8') as f:
-            for article in news.values():
-                f.write(str(article)+ "\n")
-        f.close()
-
-        print(f"SUCCESS! CHECK THE '{__name__}.txt' FILE!\n")
+        helpers.write_news_to_file("profit_ro", news)
 
     def getFeatured(self, source, news, id):
         feat = source.select("div.col-xs-12.col-md-6 h2")[0]

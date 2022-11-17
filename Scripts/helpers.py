@@ -15,7 +15,7 @@ def news_already_read(file_name, news):
     """ Check if any line in the file contains given string """
     with open(file_name, 'r', encoding='utf-8') as read_obj:
         for line in read_obj:
-            if news in line:
+            if str(news) in line:
                 return True
     return False
 
@@ -39,3 +39,35 @@ def get_path_to_output(name, file):
 
     return output_file
 
+# append new pieces of news at the top of the file (so that the most recent news are at the top)
+def write_news_to_file(name, news):
+    # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
+    output_file = get_path_to_output(name, __file__)
+    saved = ""
+
+    print(output_file)
+    # check if file exists
+    # if it does, read its content and saved it in a temporary variable
+    if os.path.isfile(output_file):
+        with open(output_file, 'r', encoding='utf-8') as f:
+                saved = f.read()
+
+    # overwrite the file with the new piece of news (essentially, putting it at the top)
+    with open(output_file, 'w', encoding="utf-8") as f:
+        for article in news.values():
+            # if not news_already_read(output_file, article):
+            if str(article) not in saved:
+                f.write(str(article)+ "\n")
+
+    # append the content that we temporarily saved earlier
+    with open(output_file, 'a', encoding="utf-8") as f:
+        f.write(saved)
+
+    print(f"SUCCESS! NEWS HAS BEEN WRITTEN TO FILE!")
+
+    f.close()
+
+
+
+# print(news_already_read(get_path_to_output("ziarul_financiar", __file__), ('2022-11-17 @ 13:04', 'Omniasig a încheiat primele nouă luni din 2022 cu subscrieri de 1,5 mld. lei, consemnând un avans de 35% faţă de aceeaşi perioadă a anului trecut. Subscrierile pe zona auto, RCA şi Casco, cumulat reprezintă circa 73% din total, respectiv 1,1 mld. lei', 'https://www.zf.ro//banci-si-asigurari/omniasig-incheiat-primele-luni-2022-subscrieri-1-5-mld-lei-21330197')
+# ))
