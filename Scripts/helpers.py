@@ -45,7 +45,6 @@ def write_news_to_file(name, news):
     output_file = get_path_to_output(name, __file__)
     saved = ""
 
-    print(output_file)
     # check if file exists
     # if it does, read its content and saved it in a temporary variable
     if os.path.isfile(output_file):
@@ -63,7 +62,7 @@ def write_news_to_file(name, news):
     with open(output_file, 'a', encoding="utf-8") as f:
         f.write(saved)
 
-    print(f"SUCCESS! NEWS HAS BEEN WRITTEN TO FILE!")
+    print(f"\t|\n\t|__SUCCESS! THE LATEST NEWS HAVE BEEN SAVED ON YOUR SYSTEM!")
 
     f.close()
 

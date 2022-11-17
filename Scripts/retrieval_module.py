@@ -6,7 +6,7 @@ class RetrievalModule():
 
     # get latest news from ziarul-financiar
     def get_latest_news_ziarul_financiar(self, sourceLink = "https://www.zf.ro/"):
-        print(f"\nRetrieving news from ziarul-financiar.ro ...")
+        print(f"\n\nRetrieving news from ziarul-financiar.ro ...")
 
         source = helpers.get_source(sourceLink)
         news = {}
@@ -31,7 +31,7 @@ class RetrievalModule():
 
     # get latest new from wall-street.ro
     def get_latest_news_wall_street_ro(self, sourceLink = "https://www.wall-street.ro/ultima-ora/index.html"):
-        print(f"\nRetrieving news from wall-street.ro ...")
+        print(f"\n\nRetrieving news from wall-street.ro ...")
 
         source = helpers.get_source(sourceLink)
         news = {}
@@ -66,7 +66,7 @@ class RetrievalModule():
 
     # get latest news from profit.ro
     def get_latest_news_profit_ro(self, sourceLink = "https://www.profit.ro/toate"):
-        print(f"\nRetrieving news from profit.ro ...")
+        print(f"\n\nRetrieving news from profit.ro ...")
 
         news = {}
         id = 1
