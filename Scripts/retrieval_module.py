@@ -26,7 +26,7 @@ class RetrievalModule():
 
                 id += 1
 
-        helpers.write_news_to_file("ziarul_financiar", news)
+        helpers.write_news_to_file("ziarul_financiar", news, "nbs")
 
 
     # get latest new from wall-street.ro
@@ -57,7 +57,7 @@ class RetrievalModule():
 
             id += 1
 
-        helpers.write_news_to_file("wall_street", news)
+        helpers.write_news_to_file("wall_street", news, "nbs")
 
     # get latest news from profit.ro
     def get_latest_news_profit_ro(self, sourceLink = "https://www.profit.ro/toate"):
@@ -93,7 +93,7 @@ class RetrievalModule():
 
                         id += 1
 
-        helpers.write_news_to_file("profit_ro", news)
+        helpers.write_news_to_file("profit_ro", news, "nbs")
 
     def getFeatured(self, source, news, id):
         feat = source.select("div.col-xs-12.col-md-6 h2")[0]
