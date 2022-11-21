@@ -1,10 +1,11 @@
 import time
+from alive_progress import alive_bar
 from bs4 import BeautifulSoup as bs
 import requests
 from openpyxl.workbook import Workbook
 import os
 import re
-from progress.bar import Bar
+# from progress.bar import Bar
 
 
 def get_source(url):
@@ -83,8 +84,14 @@ def get_link_from_string(str):
 
 def pause(len_pause):
     print()
-    bar = Bar(f"SLEEPING FOR {len_pause} SECONDS ({len_pause/60} MINUTES)...", max=len_pause)
-    for i in range(len_pause):
-        time.sleep(1)
-        bar.next()
-    bar.finish()
+    with alive_bar(len_pause, title='Waiting...', length=50, bar="smooth") as bar:
+        for _ in range(len_pause):
+            time.sleep(1)
+            bar()
+
+    # print()
+    # bar = Bar(f"SLEEPING FOR {len_pause} SECONDS ({len_pause/60} MINUTES)...", max=len_pause)
+    # for i in range(len_pause):
+    #     time.sleep(1)
+    #     bar.next()
+    # bar.finish()

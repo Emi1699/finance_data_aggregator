@@ -1,6 +1,5 @@
 import retrieval_module as rm
 import time
-# from alive_progress import showtime
 import requests
 import helpers
 
