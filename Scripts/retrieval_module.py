@@ -37,30 +37,25 @@ class RetrievalModule():
         news = {}
         id = 1
 
-        for page in range(1, 2): #loop through the pages of news on the website
+        latestNews_wrapper = source.select(".list-unstyled.clearfix.top")
 
-            if page > 1:
-                source = helpers.get_source(f"https://www.wall-street.ro/articol/Ultima-Ora/pagina-{page}.html")
+        for li_element in latestNews_wrapper[0].select("li>a"):
 
-            latestNews_wrapper = source.select(".list-unstyled.clearfix.top")
+            newsLink = li_element['href']
+            newsText = li_element.text[2:-1]
 
-            for li_element in latestNews_wrapper[0].select("li>a"):
+            # this time it is trickier to get the date; we have to access each article by itself and get the date from the article's page
+            articleDateSource = helpers.get_source(newsLink).select("div.article-infos>span.data")[0]
 
-                newsLink = li_element['href']
-                newsText = li_element.text[2:-1]
+            if len(articleDateSource.select("span")) > 0: # updated
+                newsDate = articleDateSource.select("span")[0].text
+            else:
+                newsDate = articleDateSource.select("a")[0].text
 
-                # this time it is trickier to get the date; we have to access each article by itself and get the date from the article's page
-                articleDateSource = helpers.get_source(newsLink).select("div.article-infos>span.data")[0]
+            newsPiece = News(newsDate, newsText, newsLink, id)
+            news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-                if len(articleDateSource.select("span")) > 0: # updated
-                    newsDate = articleDateSource.select("span")[0].text
-                else:
-                    newsDate = articleDateSource.select("a")[0].text
-
-                newsPiece = News(newsDate, newsText, newsLink, id)
-                news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
-
-                id += 1
+            id += 1
 
         helpers.write_news_to_file("wall_street", news)
 

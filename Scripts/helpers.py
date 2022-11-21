@@ -1,7 +1,11 @@
+import time
 from bs4 import BeautifulSoup as bs
 import requests
 from openpyxl.workbook import Workbook
 import os
+import re
+from progress.bar import Bar
+
 
 def get_source(url):
     html = requests.get(url).content
@@ -32,7 +36,7 @@ def add_news_to_excel(news):
 
     wb.save(filename = workbook_name)
 
-def get_path_to_output(name, file):
+def get_path_to_file(name, file):
     absolute_path = os.path.dirname(file)
     relative_path = f"../News/{name}.txt"
     output_file = os.path.join(absolute_path, relative_path)
@@ -42,7 +46,7 @@ def get_path_to_output(name, file):
 # append new pieces of news at the top of the file (so that the most recent news are at the top)
 def write_news_to_file(name, news):
     # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
-    output_file = get_path_to_output(name, __file__)
+    output_file = get_path_to_file(name, __file__)
     saved = ""
 
     # check if file exists
@@ -66,7 +70,21 @@ def write_news_to_file(name, news):
 
     f.close()
 
+def write_to_file(txt, fl):
+    output_file = get_path_to_file(fl, __file__)
 
+    with open(output_file, 'w', encoding="utf-8") as f:
+        f.write(txt)
 
-# print(news_already_read(get_path_to_output("ziarul_financiar", __file__), ('2022-11-17 @ 13:04', 'Omniasig a încheiat primele nouă luni din 2022 cu subscrieri de 1,5 mld. lei, consemnând un avans de 35% faţă de aceeaşi perioadă a anului trecut. Subscrierile pe zona auto, RCA şi Casco, cumulat reprezintă circa 73% din total, respectiv 1,1 mld. lei', 'https://www.zf.ro//banci-si-asigurari/omniasig-incheiat-primele-luni-2022-subscrieri-1-5-mld-lei-21330197')
-# ))
+    print(f"Content has been written to file.")
+
+def get_link_from_string(str):
+    return re.search("(?P<url>https?://[^\s]+)", str).group("url")
+
+def pause(len_pause):
+    print()
+    bar = Bar(f"SLEEPING FOR {len_pause} SECONDS ({len_pause/60} MINUTES)...", max=len_pause)
+    for i in range(len_pause):
+        time.sleep(1)
+        bar.next()
+    bar.finish()

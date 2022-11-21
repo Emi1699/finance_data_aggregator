@@ -1,10 +1,13 @@
 import retrieval_module as rm
 import time
-from progress.bar import Bar
+# from alive_progress import showtime
+import requests
+import helpers
+
 
 def main():
     retrieval_module = rm.RetrievalModule()
-    pause = 300
+    pause_len = 300
 
     while True:
 
@@ -12,12 +15,7 @@ def main():
         retrieval_module.get_latest_news_wall_street_ro()
         retrieval_module.get_latest_news_profit_ro()
 
-        print()
-        bar = Bar(f"SLEEPING FOR {pause} SECONDS ({pause/60} MINUTES)...", max=pause)
-        for i in range(pause):
-            time.sleep(1)
-            bar.next()
-        bar.finish()
+        helpers.pause(pause_len)
 
 if __name__ == "__main__":
     main()
