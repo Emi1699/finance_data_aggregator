@@ -26,7 +26,7 @@ def news_already_read(file_name, news):
 
 def add_news_to_excel(news):
     headers = ['Date', 'Text', 'Link']
-    workbook_name = './News/ziarul_financiar.xlsx'
+    workbook_name = './News by Source/ziarul_financiar.xlsx'
     wb = Workbook()
     page = wb.active
     page.title = 'Ziarul Financiar Today'
@@ -39,14 +39,14 @@ def add_news_to_excel(news):
 
 def get_path_to_file(name, file):
     absolute_path = os.path.dirname(file)
-    relative_path = f"../News/{name}.txt"
+    relative_path = f"../News by Source/{name}.txt"
     output_file = os.path.join(absolute_path, relative_path)
 
     return output_file
 
 # append new pieces of news at the top of the file (so that the most recent news are at the top)
 def write_news_to_file(name, news):
-    # get relative path to output file (determined by this file's name; output file is in the 'News' directory)
+    # get relative path to output file (determined by this file's name; output file is in the 'News by Source' directory)
     output_file = get_path_to_file(name, __file__)
     saved = ""
 
