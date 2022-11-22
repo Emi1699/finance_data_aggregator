@@ -62,8 +62,11 @@ def get_path_to_file(name, file, dir_type):
 
     return output_file
 
-def write_to_file(fl, txt, dir_type):
-    output_file = get_path_to_file(fl, __file__, dir_type)
+def write_to_file(fl, txt):
+    if fl == "ziarul_financiar" or fl == "wall_street" or fl == "profit_ro":
+        output_file = get_path_to_file(fl, __file__, "nbs")
+    else:
+        output_file = get_path_to_file(fl, __file__, "nbt")
 
     with open(output_file, 'a', encoding="utf-8") as f:
         f.write(txt + "\n")
