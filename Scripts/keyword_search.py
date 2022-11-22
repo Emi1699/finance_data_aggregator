@@ -3,10 +3,24 @@ import requests
 import re
 import file_system
 
+running = False
+testing = not running
+
+def test():
+    link_to_source = "https://www.wall-street.ro/articol/Economie/291740/iohannis-a-cerut-omv-sa-inceapa-cat-mai-rapid-exploatarea-in-perimetrul-neptun-deep-din-marea-neagra.html"
+    source_txt = requests.get(link_to_source).text # get page's content (including the text of the news)
+    source_txt = source_txt[0:(int)(-len(source_txt) * 0.358)] # ONLY SEARCH IN THE TOP 5% OF THE DOCUMENT
+
+    print(len(source_txt))
+    file_system.write_to_file("test", source_txt)
+    print(ticker_in_news('omv', source_txt))
+
+
+
 def sort_all_news_by_tickers():
-    sort_news_by_tickers_from("ziarul_financiar")
+    # sort_news_by_tickers_from("ziarul_financiar")
     sort_news_by_tickers_from("wall_street")
-    sort_news_by_tickers_from("profit_ro")
+    # sort_news_by_tickers_from("profit_ro")
 
 def sort_news_by_tickers_from(source):
     print(f"\nSorting news from {source} by ticker...\n")
@@ -38,7 +52,7 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["fondul proprietatea"], source_txt):
         file_system.write_to_file("FP_FONDUL PROPRIETATEA", link_to_source)
 
-    if tickers_in_news([" om v", "petrom ", "snp", " petrom"], source_txt):
+    if tickers_in_news(["omv", "petrom ", "snp", " petrom"], source_txt):
         file_system.write_to_file("SNP_OMV PETROM", link_to_source)
 
     if tickers_in_news(["banca transilvania", "tlv"], source_txt):
@@ -62,7 +76,7 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news([" ever ", "evergent investments"], source_txt):
         file_system.write_to_file("EVER_EVERGENT INVESTMENTS", link_to_source)
 
-    if tickers_in_news(["ebs", "erste group bank"], source_txt):
+    if tickers_in_news(["erste group bank", "erste group", "erste"], source_txt):
         file_system.write_to_file("EBS_ERSTE GROUP BANK AG", link_to_source)
 
     if tickers_in_news(["purcari wineries", "purcari"], source_txt):
@@ -77,10 +91,10 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["sfg", "sphera franchise group"], source_txt):
         file_system.write_to_file("SFG_SPHERA FRANCHISE GROUP", link_to_source)
     
-    if tickers_in_news(["roce", "romcarbon"], source_txt):
+    if tickers_in_news([" roce ", "romcarbon"], source_txt):
         file_system.write_to_file("ROCE_ROMCARBON", link_to_source)
 
-    if tickers_in_news(["aq", "aquila"], source_txt):
+    if tickers_in_news(["aquila"], source_txt):
         file_system.write_to_file("AQ_AQUILA PART PROD", link_to_source)
 
     if tickers_in_news(["trp", "teraplast"], source_txt):
@@ -107,4 +121,8 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["milk", "agroserv"], source_txt):
         file_system.write_to_file("MILK_AGROSERV MARIUTA", link_to_source)
 
-sort_all_news_by_tickers()
+if running:
+    sort_all_news_by_tickers()
+
+if testing:
+    test()
