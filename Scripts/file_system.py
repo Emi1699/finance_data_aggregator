@@ -62,13 +62,13 @@ def get_path_to_file(name, file, dir_type):
 
     return output_file
 
-def write_to_file(fl, txt):
+def write_to_file(fl, txt, finish_text = "Content has been written to file."):
     if fl == "ziarul_financiar" or fl == "wall_street" or fl == "profit_ro":
         output_file = get_path_to_file(fl, __file__, "nbs")
     else:
         output_file = get_path_to_file(fl, __file__, "nbt")
 
-    with open(output_file, 'a', encoding="utf-8") as f:
+    with open(output_file, 'w', encoding="utf-8") as f:
         f.write(txt + "\n")
 
-    print(f"Content has been written to file.")
+    print(f"{finish_text}")
