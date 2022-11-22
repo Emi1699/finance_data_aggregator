@@ -3,8 +3,15 @@ import requests
 import re
 import file_system
 
-def sort_news_by_tickers():
-    with open(file_system.get_path_to_file("ziarul_financiar", __file__, "nbs"), 'r', encoding="utf-8") as file:
+def sort_all_news_by_tickers():
+    sort_news_by_tickers_from("ziarul_financiar")
+    sort_news_by_tickers_from("wall_street")
+    sort_news_by_tickers_from("profit_ro")
+
+def sort_news_by_tickers_from(source):
+    print(f"\nSorting news from {source} by ticker...\n")
+
+    with open(file_system.get_path_to_file(source, __file__, "nbs"), 'r', encoding="utf-8") as file:
         for line in file:
             link_to_source = helpers.get_link_from_string(line)[0:-2]
             source_txt = requests.get(link_to_source).text # get page's content (including the text of the news)
@@ -31,13 +38,13 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["fondul proprietatea"], source_txt):
         file_system.write_to_file("FP_FONDUL PROPRIETATEA", link_to_source)
 
-    if tickers_in_news(["omv", "petrom ", "snp", " petrom"], source_txt):
+    if tickers_in_news([" om v", "petrom ", "snp", " petrom"], source_txt):
         file_system.write_to_file("SNP_OMV PETROM", link_to_source)
 
     if tickers_in_news(["banca transilvania", "tlv"], source_txt):
         file_system.write_to_file("TLV_BANCA TRANSILVANIA", link_to_source)
 
-    if tickers_in_news(["tts", "transport trade services"], source_txt):
+    if tickers_in_news([" tts ", "transport trade services"], source_txt):
         file_system.write_to_file("TTS_TRANSPORT TRADE SERVICES", link_to_source)
 
     if tickers_in_news([" tel ", "transelectrica"], source_txt):
@@ -58,10 +65,10 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["ebs", "erste group bank"], source_txt):
         file_system.write_to_file("EBS_ERSTE GROUP BANK AG", link_to_source)
 
-    if tickers_in_news([" wine", "wine " "purcari wineries"], source_txt):
+    if tickers_in_news(["purcari wineries", "purcari"], source_txt):
         file_system.write_to_file("WINE_PURCARI WINERIES PUBLIC COMPANY LIMITED", link_to_source)
 
-    if tickers_in_news([" m ", "medlife"], source_txt):
+    if tickers_in_news(["medlife"], source_txt):
         file_system.write_to_file("M_MEDLIFE", link_to_source)
 
     if tickers_in_news(["snn", "nuclearelectrica"], source_txt):
@@ -79,7 +86,7 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["trp", "teraplast"], source_txt):
         file_system.write_to_file("TRP_TERAPLAST", link_to_source)
 
-    if tickers_in_news([" cote ", "conpet"], source_txt):
+    if tickers_in_news(["conpet"], source_txt):
         file_system.write_to_file("COTE_CONPET", link_to_source)
 
     if tickers_in_news([" transi ", "transilvania investments"], source_txt):
@@ -100,4 +107,4 @@ def check_all_tickers(source_txt, link_to_source):
     if tickers_in_news(["milk", "agroserv"], source_txt):
         file_system.write_to_file("MILK_AGROSERV MARIUTA", link_to_source)
 
-sort_news_by_tickers()
+sort_all_news_by_tickers()
