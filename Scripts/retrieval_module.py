@@ -40,23 +40,25 @@ class RetrievalModule():
 
         latestNews_wrapper = source.select(".list-unstyled.clearfix.top")
 
-        for li_element in latestNews_wrapper[0].select("li>a"):
+        for news_article in latestNews_wrapper[0].select("li>a"):
+            try:
+                newsLink = news_article['href']
+                newsText = news_article.text[2:-1]
 
-            newsLink = li_element['href']
-            newsText = li_element.text[2:-1]
+                # this time it is trickier to get the date; we have to access each article by itself and get the date from the article's page
+                articleDateSource = helpers.get_source(newsLink).select("div.article-infos>span.data")[0]
 
-            # this time it is trickier to get the date; we have to access each article by itself and get the date from the article's page
-            articleDateSource = helpers.get_source(newsLink).select("div.article-infos>span.data")[0]
+                if len(articleDateSource.select("span")) > 0: # updated
+                    newsDate = articleDateSource.select("span")[0].text
+                else:
+                    newsDate = articleDateSource.select("a")[0].text
 
-            if len(articleDateSource.select("span")) > 0: # updated
-                newsDate = articleDateSource.select("span")[0].text
-            else:
-                newsDate = articleDateSource.select("a")[0].text
+                newsPiece = News(newsDate, newsText, newsLink, id)
+                news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-            newsPiece = News(newsDate, newsText, newsLink, id)
-            news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
-
-            id += 1
+                id += 1
+            except:
+                print("> couldnt read article, moving on...")
 
         file_system.write_news_dict_to_file("wall_street", news, "nbs")
 
