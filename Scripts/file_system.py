@@ -7,11 +7,11 @@ This module holds all file related methods and operations (e.g. read, write, etc
 import os
 from openpyxl import Workbook
 
-def news_already_read(file_name, news):
+def line_already_in_file(file_name, ln):
     """ Check if any line in the file contains given string """
     with open(file_name, 'r', encoding='utf-8') as read_obj:
         for line in read_obj:
-            if str(news) in line:
+            if str(ln) in line:
                 return True
     return False
 
@@ -43,7 +43,7 @@ def write_news_dict_to_file(name, news, dir_type):
     # overwrite the file with the new piece of news (essentially, putting it at the top)
     with open(output_file, 'w', encoding="utf-8") as f:
         for article in news.values():
-            # if not news_already_read(output_file, article):
+            
             if str(article) not in saved:
                 f.write(str(article)+ "\n")
 
@@ -70,5 +70,17 @@ def write_to_file(fl, txt, finish_text = "Content has been written to file."):
 
     with open(output_file, 'a', encoding="utf-8") as f:
         f.write(txt + "\n")
+
+    print(f"{finish_text}")
+
+def write_ticker_to_file(fl, txt, finish_text = "Content has been written to file."):
+    if fl == "ziarul_financiar" or fl == "wall_street" or fl == "profit_ro":
+        output_file = get_path_to_file(fl, __file__, "nbs")
+    else:
+        output_file = get_path_to_file(fl, __file__, "nbt")
+
+    with open(output_file, 'a', encoding="utf-8") as f:
+        if not line_already_in_file(output_file, txt):
+            f.write(txt + "\n")
 
     print(f"{finish_text}")
