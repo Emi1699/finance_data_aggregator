@@ -49,13 +49,11 @@ def sort_news_by_tickers_from(source):
             link = 1
 
             for line in file:
-                found = False
+                try:
+                    found = False
 
-                link_to_source = helpers.get_link_from_string(line)[0:-2]
-                website = helpers.get_source(link_to_source)
-                
-                # ignore martech and special pages
-                if not "martech" in link_to_source and not "https://www.wall-street.ro/special" in link_to_source:
+                    link_to_source = helpers.get_link_from_string(line)[0:-2]
+                    website = helpers.get_source(link_to_source)
 
                     # get news divs and paragraphs
                     news_text = website.select("div#intertext_intertext1")
@@ -73,9 +71,11 @@ def sort_news_by_tickers_from(source):
                             # if we found the ticker, we don't need to check any further
                             if found:
                                 break
-                
-                if not found:
-                    print(f"> found NO ticker in article {link}")
+                    
+                    if not found:
+                        print(f"> found NO ticker in article {link}")
+                except:
+                    print(f"> couldn't read tickers from page {link}")
 
                 link += 1
             
