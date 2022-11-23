@@ -18,9 +18,9 @@ def test():
     print(ticker_in_news('fondul proprietatea', source_txt))
 
 def sort_all_news_by_tickers():
-    # sort_news_by_tickers_from("ziarul_financiar")
+    sort_news_by_tickers_from("ziarul_financiar")
     sort_news_by_tickers_from("wall_street")
-    # sort_news_by_tickers_from("profit_ro")
+    sort_news_by_tickers_from("profit_ro")
 
 def sort_news_by_tickers_from(source):
     print(f"\nSorting news from {source} by ticker...\n")
