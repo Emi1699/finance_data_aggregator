@@ -17,15 +17,17 @@ class RetrievalModule():
 
         for wrapper in latestNews_wrapper:
             for list_el in wrapper.find_all("li"):
+                try:
+                    newsDate = str(date.today()) + " @ " + list_el.find("small").text
+                    newsLink = sourceLink+ list_el.find("a")['href']
+                    newsText = list_el.find("a").text
 
-                newsDate = str(date.today()) + " @ " + list_el.find("small").text
-                newsLink = sourceLink+ list_el.find("a")['href']
-                newsText = list_el.find("a").text
+                    newsPiece = News(newsDate, newsText, newsLink, id)
+                    news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-                newsPiece = News(newsDate, newsText, newsLink, id)
-                news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
-
-                id += 1
+                    id += 1
+                except:
+                    print(f"> couldn't read news from link {newsLink}")
 
         file_system.write_news_dict_to_file("ziarul_financiar", news, "nbs")
 
@@ -58,7 +60,7 @@ class RetrievalModule():
 
                 id += 1
             except:
-                print("> couldnt read article, moving on...")
+                print("> couldnt read article, moving on...\n")
 
         file_system.write_news_dict_to_file("wall_street", news, "nbs")
 
@@ -85,16 +87,19 @@ class RetrievalModule():
 
             for wrapper in latestNews_wrapper:
                 for list_el in wrapper.find_all("li"):
-                    if not list_el.has_attr("id"):
+                    try:
+                        if not list_el.has_attr("id"):
 
-                        newsDate = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("div")[0].text
-                        newsText = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0].text
-                        newsLink = "https://www.profit.ro" + list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0]['href']
+                            newsDate = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("div")[0].text
+                            newsText = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0].text
+                            newsLink = "https://www.profit.ro" + list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0]['href']
 
-                        newsPiece = News(newsDate, newsText, newsLink, id)
-                        news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
+                            newsPiece = News(newsDate, newsText, newsLink, id)
+                            news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-                        id += 1
+                            id += 1
+                    except:
+                        print(f"> couldnt read news from link {newsLink}")
 
         file_system.write_news_dict_to_file("profit_ro", news, "nbs")
 
