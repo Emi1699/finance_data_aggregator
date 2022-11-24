@@ -91,6 +91,7 @@ class RetrievalModule():
                         if not list_el.has_attr("id"):
 
                             newsDate = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("div")[0].text
+                            newsDate = helpers.transform_date_to_ddmmyyyy(newsDate)
                             newsText = list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0].text
                             newsLink = "https://www.profit.ro" + list_el.select("div.col-xs-12.col-sm-8.col-md-9")[0].select("a")[0]['href']
 
