@@ -63,6 +63,8 @@ def get_path_to_file(name, file, dir_type):
         relative_path = f"../News by Source/{name}.txt"
     elif dir_type == "nbt":
         relative_path = f"../News by Ticker/{name}.txt"
+    elif dir_type == "bvb":
+        relative_path = f"../BVB Data/{name}.txt"
     else:
         relative_path = f"../Test Files/{name}"
         
@@ -80,6 +82,17 @@ def write_to_file(fl, txt, dir_type, finish_text = "Content has been written to 
     print(f"{finish_text}")
 
 # append if not already in file
+def append_to_file(fl, txt, dir_type, finish_text = "Content has been written to file."):
+    output_file = get_path_to_file(fl, __file__, dir_type)
+
+    with open(output_file, 'a', encoding="utf-8") as f:
+        if not line_already_in_file(output_file, txt):
+            f.write(txt + "\n")
+
+    print(f"{finish_text}")
+
+# exact same implementation as the one above; the reason I have it is because
+# it makes the code more readable in the module where this is used
 def write_ticker_to_file(fl, txt, dir_type, finish_text = "Content has been written to file."):
     output_file = get_path_to_file(fl, __file__, dir_type)
 

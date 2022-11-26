@@ -6,6 +6,7 @@ class BvbRetrievalModule:
     
     def get_financials_data(self):
         financials_data = None
+        financials = {}
 
         cookies = {
             'cookiesession1': '678B2878UVWXYZABCDEFGIJKLMNOA93E',
@@ -61,11 +62,22 @@ class BvbRetrievalModule:
             financials_data = BeautifulSoup(financials_file, 'html.parser')
 
         table_data = financials_data.select("table.table.table-hover.dataTable.no-footer.generic-table.compact.w100 tbody tr td")
-        
+        data_row = ""
+        i = 0
+
+        while i < len(table_data)/4:
+            data_row += table_data[i]
+            data_row += table_data[i + 1]
+            data_row += table_data[i + 2]
+            data_row += table_data[i + 3]
+
+            i += 4
+
         for i in range(0, len(table_data)):
             if (i % 4 == 0):
+                file_system.append_to_file("financials", )               
                 print("\n >>>>>---<<<< \n")
-            
+
             print(table_data[i])
         
         # print(financials_data)
