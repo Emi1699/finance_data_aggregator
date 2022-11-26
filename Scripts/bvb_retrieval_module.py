@@ -1,59 +1,74 @@
+from bs4 import BeautifulSoup
 import requests
 import file_system
 
-with open("C:\\example.html") as fp:
-    soup = BeautifulSoup(fp, 'html.parser')
+class BvbRetrievalModule:
+    
+    def get_financials_data(self):
+        financials_data = None
 
-class 
+        cookies = {
+            'cookiesession1': '678B2878UVWXYZABCDEFGIJKLMNOA93E',
+            '_ga': 'GA1.2.1355707676.1668264785',
+            'BVBCulturePref': 'en-US',
+            'ASP.NET_SessionId': '',
+            '_gid': 'GA1.2.184486518.1669474268',
+            '_gat': '1',
+        }
 
-def get_financials_date
-cookies = {
-    'cookiesession1': '678B2878UVWXYZABCDEFGIJKLMNOA93E',
-    '_ga': 'GA1.2.1355707676.1668264785',
-    'BVBCulturePref': 'en-US',
-    'ASP.NET_SessionId': '5ioyibt2wcpnvkn5xftctpl5',
-    '_gid': 'GA1.2.184486518.1669474268',
-    '_gat': '1',
-}
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:107.0) Gecko/20100101 Firefox/107.0',
+            'Accept': '*/*',
+            'Accept-Language': 'en-US,en;q=0.5',
+            # 'Accept-Encoding': 'gzip, deflate, br',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-MicrosoftAjax': 'Delta=true',
+            'Cache-Control': 'no-cache',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+            'Origin': 'https://www.bvb.ro',
+            'Connection': 'keep-alive',
+            'Referer': 'https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=SNP',
+            # Requests sorts cookies= alphabetically
+            # 'Cookie': 'cookiesession1=678B2878UVWXYZABCDEFGIJKLMNOA93E; _ga=GA1.2.1355707676.1668264785; BVBCulturePref=en-US; ASP.NET_SessionId=; _gid=GA1.2.184486518.1669474268; _gat=1',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Site': 'same-origin',
+        }
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:107.0) Gecko/20100101 Firefox/107.0',
-    'Accept': '*/*',
-    'Accept-Language': 'en-US,en;q=0.5',
-    # 'Accept-Encoding': 'gzip, deflate, br',
-    'X-Requested-With': 'XMLHttpRequest',
-    'X-MicrosoftAjax': 'Delta=true',
-    'Cache-Control': 'no-cache',
-    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-    'Origin': 'https://www.bvb.ro',
-    'Connection': 'keep-alive',
-    'Referer': 'https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=TRANSI',
-    # Requests sorts cookies= alphabetically
-    # 'Cookie': 'cookiesession1=678B2878UVWXYZABCDEFGIJKLMNOA93E; _ga=GA1.2.1355707676.1668264785; BVBCulturePref=en-US; ASP.NET_SessionId=5ioyibt2wcpnvkn5xftctpl5; _gid=GA1.2.184486518.1669474268; _gat=1',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-}
+        params = {
+            's': 'SNP',
+        }
 
-params = {
-    's': 'TRANSI',
-}
+        data = {
+            'ctl00$MasterScriptManager': 'ctl00$body$updIfttc|ctl00$body$IFTC$1fd0ac19-eab2-4bd8-9189-e8e0f6f7d6fb',
+            '__EVENTTARGET': '',
+            '__EVENTARGUMENT': '',
+            '__LASTFOCUS': '',
+            '__VIEWSTATE': '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',
+            '__VIEWSTATEGENERATOR': 'A396FC17',
+            '__VIEWSTATEENCRYPTED': '',
+            '__EVENTVALIDATION': 'fof5C0ddN5nCe6EKHtDd80D7soQrHScg22Y4DZUYIFDJ+ob/3MB1K2A03rvGy1ukfbolRNAJgRbbhyXJU5SzkceW1GPWRcpdR6AmTryMSIFN+29cyuIUV5LUzjUrvvEZZxHR1O7A/hAf22XdcQWGtvcXZtXNxBbXXKcUccxBKD1Rekc2JoFkHK+eHuulUGSvrNfpdJYudtJSFymPOtIS4JU43xzaCgGGn+FktB7jU63ztL+Z+6huaK7lSKWHp2WhkOcjdDwTsuZy2JjlQgz2qQ==',
+            'ctl00$body$ctl02$NewsBySymbolControl$chOutVolatility': 'on',
+            'ctl00$body$ctl02$NewsBySymbolControl$chOutInsiders': 'on',
+            '__ASYNCPOST': 'true',
+            'ctl00$body$IFTC$1fd0ac19-eab2-4bd8-9189-e8e0f6f7d6fb': 'Financials',
+        }
 
-data = {
-    'ctl00$MasterScriptManager': 'ctl00$body$updIfttc|ctl00$body$IFTC$182ecbd5-53ed-45a8-abdc-c4c9b66cda85',
-    '__EVENTTARGET': '',
-    '__EVENTARGUMENT': '',
-    '__LASTFOCUS': '',
-    '__VIEWSTATE': '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',
-    '__VIEWSTATEGENERATOR': 'A396FC17',
-    '__VIEWSTATEENCRYPTED': '',
-    '__EVENTVALIDATION': 'cpO4A6BefJkzlebzvu5Mcx+er6OulrVRAIt3vhrbrH5Xh7OkgSqKdUbd21vl5+7zT/F0celejAKhvZouKFa6vlvp5o89+Sczuej/MMtmshf+Wd4lnDSDhY8H6ytDfqhLeAvOZOLpi9WThS1siRD+uI29zkT4ykpIORRdnXCgLiewNSmHHspscbJ87cne1siI1L3fGASqP3UNV/it++k58+z3K+k0p5j82pYmNUkyF8eLtYAuwqB912x/2daZ08DGBq1wPUzbxwiFAt4MLpEfNA==',
-    'ctl00$body$ctl02$NewsBySymbolControl$chOutVolatility': 'on',
-    'ctl00$body$ctl02$NewsBySymbolControl$chOutInsiders': 'on',
-    '__ASYNCPOST': 'true',
-    'ctl00$body$IFTC$182ecbd5-53ed-45a8-abdc-c4c9b66cda85': 'Financials',
-}
+        response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
+        file_system.write_to_file("financials.html", response.text, "test")
 
-response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, headers=headers, data=data)
+        with open(file_system.get_path_to_file("financials.html", __file__, "test")) as financials_file:
+            financials_data = BeautifulSoup(financials_file, 'html.parser')
 
-file_system.write_to_file("test_curl.html", response.text, "test")
+        table_data = financials_data.select("table.table.table-hover.dataTable.no-footer.generic-table.compact.w100 tbody tr td")
+        
+        for i in range(0, len(table_data)):
+            if (i % 4 == 0):
+                print("\n >>>>>---<<<< \n")
+            
+            print(table_data[i])
+        
+        # print(financials_data)
+
+bvb = BvbRetrievalModule()
+bvb.get_financials_data()
