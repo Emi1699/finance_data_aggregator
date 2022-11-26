@@ -3,7 +3,7 @@ import helpers
 from news import News
 import file_system
 
-class RetrievalModule():
+class NewsRetrievalModule():
 
     # get latest news from ziarul-financiar
     def get_latest_news_ziarul_financiar(self, sourceLink = "https://www.zf.ro/"):
