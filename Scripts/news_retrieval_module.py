@@ -100,7 +100,7 @@ class NewsRetrievalModule():
 
                             id += 1
                     except:
-                        print(f"> couldnt read news from link {newsLink}")
+                        print(f"> couldnt read news from profit_ro, trying next link...")
 
         file_system.write_news_dict_to_file("profit_ro", news, "nbs")
 
