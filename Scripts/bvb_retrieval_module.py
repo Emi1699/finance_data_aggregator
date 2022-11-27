@@ -62,25 +62,32 @@ class BvbRetrievalModule:
             financials_data = BeautifulSoup(financials_file, 'html.parser')
 
         table_data = financials_data.select("table.table.table-hover.dataTable.no-footer.generic-table.compact.w100 tbody tr td")
-        data_row = ""
         i = 0
 
-        while i < len(table_data)/4:
-            data_row += table_data[i]
-            data_row += table_data[i + 1]
-            data_row += table_data[i + 2]
-            data_row += table_data[i + 3]
+        while i < len(table_data):
+            data_row = ""
+
+            # transform data to 'str' type
+            table_data[i] = table_data[i].text
+            table_data[i + 1] = table_data[i + 1].text
+            table_data[i + 2] = table_data[i + 2].text
+            table_data[i + 3] = table_data[i + 3].text
+
+            # populate table with 'None' for rows with no values
+            if len(table_data[i + 1]) == 1: table_data[i + 1] = "None"
+            if len(table_data[i + 2]) == 1: table_data[i + 2] = "None"
+            if len(table_data[i + 3]) == 1: table_data[i + 3] = "None"
+            
+            # format data in file to look readable
+            right_padding = 65 - len(table_data[i])
+            data_row = "{:>0} {:>{right_padding}} {:>30} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], table_data[i + 3], right_padding = right_padding)
+
+            file_system.append_to_file("output.txt", data_row, "test")
 
             i += 4
-
-        for i in range(0, len(table_data)):
-            if (i % 4 == 0):
-                file_system.append_to_file("financials", )               
-                print("\n >>>>>---<<<< \n")
-
-            print(table_data[i])
         
         # print(financials_data)
 
 bvb = BvbRetrievalModule()
 bvb.get_financials_data()
+
