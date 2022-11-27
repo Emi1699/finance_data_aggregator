@@ -4,7 +4,7 @@ import file_system
 
 class BvbRetrievalModule:
     
-    def get_financials_data(self):
+    def get_financials_data(self, company):
         financials_data = None
         financials = {}
 
@@ -89,5 +89,5 @@ class BvbRetrievalModule:
         # print(financials_data)
 
 bvb = BvbRetrievalModule()
-bvb.get_financials_data()
+bvb.get_financials_data("OMV")
 
