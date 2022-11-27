@@ -6,7 +6,7 @@ import helpers
 
 def main():
     news_retrieval_module = rm.NewsRetrievalModule()
-    pause_len = 300
+    pause_len = 600
 
     while True:
 
