@@ -190,7 +190,7 @@ def check_all_tickers(source_txt, link_to_source, finish_message):
         file_system.write_ticker_to_file("AROBS_AROBS TRANSILVANIA SOFTWARE", link_to_source, "nbt", finish_message)
         found = True
 
-    if tickers_in_news(["milk", "agroserv"], source_txt):
+    if tickers_in_news(["agroserv"], source_txt):
         file_system.write_ticker_to_file("MILK_AGROSERV MARIUTA", link_to_source, "nbt", finish_message)
         found = True
 
