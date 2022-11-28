@@ -5,9 +5,6 @@ import file_system
 class BvbRetrievalModule:
     
     def get_financials_data(self, company):
-        financials_data = None
-        financials = {}
-
         cookies = {
             'cookiesession1': '678B2878UVWXYZABCDEFGIJKLMNOA93E',
             '_ga': 'GA1.2.1355707676.1668264785',
@@ -55,15 +52,21 @@ class BvbRetrievalModule:
             'ctl00$body$IFTC$1fd0ac19-eab2-4bd8-9189-e8e0f6f7d6fb': 'Financials',
         }
 
-        response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
-        file_system.write_to_file("financials.html", response.text, "test")
+        self.process_financials_data(company, cookies, headers, params, data)
+    
+    def process_financials_data(self, company, cookies, headers, params, data):
+        financials_data = None
 
-        with open(file_system.get_path_to_file("financials.html", __file__, "test")) as financials_file:
+        response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
+        file_system.write_to_file("financials_temp.html", response.text, "financials_temp")
+
+        with open(file_system.get_path_to_file("financials_temp.html", __file__, "financials_temp")) as financials_file:
             financials_data = BeautifulSoup(financials_file, 'html.parser')
 
         table_data = financials_data.select("table.table.table-hover.dataTable.no-footer.generic-table.compact.w100 tbody tr td")
         i = 0
 
+        # loop through each row of the table and write content to file
         while i < len(table_data):
             data_row = ""
 
@@ -82,12 +85,12 @@ class BvbRetrievalModule:
             right_padding = 65 - len(table_data[i])
             data_row = "{:>0} {:>{right_padding}} {:>30} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], table_data[i + 3], right_padding = right_padding)
 
-            file_system.append_to_file("output.txt", data_row, "test")
+            file_system.append_to_file(company, data_row, "financials")
 
+            # each row in the file contains information about a specific financial indicator and its value for the last 3 years
+            # thus, for every iteration through this while loop, we bundle information 4 rows at the time
             i += 4
-        
-        # print(financials_data)
 
 bvb = BvbRetrievalModule()
-bvb.get_financials_data("OMV")
+bvb.get_financials_data("OMV_PETROM")
 
