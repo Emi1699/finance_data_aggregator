@@ -56,5 +56,4 @@ class BvbRetrievalModule:
 
 bvb = BvbRetrievalModule()
 bvb.get_financials_data_of_company(Company.SOCIETATEA_ENERGETICA_ELECTRICA)
-bvb.get_financials_data_of_company(Company.FONDUL_PROPRIETATEA)
 
