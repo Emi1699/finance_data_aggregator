@@ -81,7 +81,7 @@ def write_to_file(fl, txt, dir_type, finish_text = "Content has been written to 
     with open(output_file, 'w', encoding="utf-8") as f:
         f.write(txt + "\n")
 
-    print(f"{finish_text}")
+    # print(f"{finish_text}")
 
 # append if not already in file
 def append_to_file(fl, txt, dir_type, finish_text = "Content has been written to file."):
@@ -91,7 +91,7 @@ def append_to_file(fl, txt, dir_type, finish_text = "Content has been written to
         if not line_already_in_file(output_file, txt):
             f.write(txt + "\n")
 
-    print(f"{finish_text}")
+    # print(f"{finish_text}")
 
 # exact same implementation as the one above; the reason I have it is because
 # it makes the code more readable in the module where this is used
