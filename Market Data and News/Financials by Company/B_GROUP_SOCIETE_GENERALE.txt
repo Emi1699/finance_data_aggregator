@@ -1,0 +1,19 @@
+Financial assets available for sale                      None                           None                           None
+Share capital                                   2,515,622,000                  2,515,622,000                  2,515,622,000
+Interest expense                                  132,419,000                    148,899,000                    161,000,000
+Operating expenses                              1,514,608,000                  1,481,372,000                  1,580,382,000
+Deposits from customers                        52,917,886,000                 50,152,126,000                 46,039,649,000
+Deposits from banks                               156,810,000                    199,011,000                    421,112,000
+Property and equipment                          1,051,254,000                  1,052,585,000                  1,175,272,000
+Debt securities issued                          2,230,572,000                      6,765,000                     10,367,000
+Loans and advances to customers                32,183,856,000                 28,873,021,000                 29,466,780,000
+Cash and cash equivalents                       6,206,323,000                  7,113,385,000                  6,842,613,000
+Profit before tax                               1,595,064,000                  1,132,260,000                  1,813,617,000
+Profit for the year                             1,279,256,000                    951,565,000                  1,528,523,000
+Total assets                                   67,015,263,000                 61,634,585,000                 55,853,239,000
+Total equity                                    9,539,338,000                  9,472,143,000                  7,895,288,000
+Total liabilities                              57,475,925,000                 52,162,442,000                 47,957,951,000
+Interest income                                 2,085,527,000                  2,105,552,000                  2,184,513,000
+Net fee and commission income                     726,595,000                    674,289,000                    767,205,000
+Net interest income                             1,953,108,000                  1,956,653,000                  2,023,513,000
+Operating income                                2,950,439,000                  2,926,532,000                  3,170,138,000

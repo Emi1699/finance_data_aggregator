@@ -1,0 +1,36 @@
+Total Non-current Assets                                   520,175,999                    509,959,179                    470,786,461
+Total Capital Assets                                       509,787,879                    502,060,158                    463,635,967
+Minority Interest                                                 None                           None                           None
+Total Current Assets                                       250,623,001                    249,385,150                    294,417,973
+Inventories                                                  5,312,087                      5,912,006                      8,169,862
+Total Receivables                                           53,559,643                     45,215,811                     47,671,160
+Cash                                                       191,751,271                    198,257,333                    238,576,951
+Shortterm Financial Investments                                   None                           None                           None
+Prepaid Expenses                                               623,444                        602,808                      1,862,719
+Total Current Liabilities                                   67,087,919                     60,087,434                     69,093,992
+Shortterm Financial Liabilities                                   None                           None                           None
+Trade Payables                                              32,147,560                     23,583,540                     27,179,134
+Net Current Assets / Net Current Liabilities               184,026,370                    189,732,817                    226,943,597
+Total Assets Less Current Liabilities                      704,246,070                    699,757,415                    697,861,551
+Total Longterm Liabilities                                   3,975,791                      2,609,459                      3,582,351
+Longterm Financial Liabilities                                    None                           None                           None
+Deferred Income                                                859,308                        963,552                      1,074,092
+Subscribed Capital                                          28,569,842                     28,569,842                     28,569,842
+Total Shareholders' Equity                                 667,909,066                    657,010,568                    653,810,355
+Total Liabilities                                                 None                           None                           None
+Sales                                                      412,786,582                    406,928,337                    407,822,340
+Operating Income                                           459,626,388                    448,391,969                    443,086,812
+Amortization                                                53,620,688                     50,007,953                     48,302,710
+Operating Expenses                                         401,889,613                    383,375,852                    380,938,622
+Operating Result                                            57,736,775                     65,016,117                     62,148,190
+Income From Associated Entities                                   None                           None                           None
+Interest Income                                              3,402,658                      6,096,612                      7,853,469
+Total Financial Income                                       3,428,282                      6,122,271                      7,873,876
+Interest Expenses                                                 None                           None                        243,444
+Total Financial Expenses                                       329,824                        685,788                        318,237
+Financial Results                                            3,098,458                      5,436,483                      7,555,639
+Total Revenues                                             463,054,670                    454,514,240                    450,960,688
+Total Expenses                                             402,219,437                    384,061,640                    381,256,859
+Income before Tax                                           60,835,233                     70,452,600                     69,703,829
+Net Income                                                  51,928,770                     60,846,759                     58,876,719
+Employees                                                        1,511                          1,540                          1,587

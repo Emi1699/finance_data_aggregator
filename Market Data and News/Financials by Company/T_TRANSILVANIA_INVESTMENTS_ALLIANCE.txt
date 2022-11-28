@@ -1,0 +1,27 @@
+Minority Interest                                                                            70,712,717                     60,042,948                     51,114,337
+Total Receivables                                                                               558,759                        946,059                        593,329
+Shortterm Financial Investments                                                                    None                           None                           None
+Cash                                                                                         47,862,487                     70,509,230                     57,716,709
+Total Current Assets                                                                         48,426,718                     71,462,640                     58,374,331
+Prepaid Expenses                                                                                339,410                        321,749                        162,461
+Shortterm Financial Liabilities                                                                    None                     39,951,153                           None
+Debtors - due within one year                                                                56,332,788                     86,307,479                     30,652,398
+Total Liabilities                                                                           107,573,840                    129,969,503                     83,581,669
+Net Current Assets / Net Current Liabilities                                                 -7,566,660                    -14,523,090                     27,884,394
+Total Assets Less Current Liabilities                                                     1,435,596,804                  1,213,970,226                  1,308,475,971
+Longterm Financial Liabilities                                                                     None                           None                           None
+Debtors - due after more than one year                                                       51,241,052                     43,662,024                     52,929,271
+Subscribed paid up capital                                                                  216,244,380                    216,244,380                    218,428,666
+Total Shareholders' Equity                                                                1,380,162,653                  1,170,221,247                  1,255,546,700
+Total Revenues                                                                              193,225,144                    260,585,587                    306,782,172
+Income from financial assets and short-term financial investments                            32,915,652                     39,997,694                     71,052,898
+Income from operations with securities and other financial instruments                      152,346,382                    207,317,404                    209,400,122
+Income from ceded financial investments                                                            None                           None                           None
+Interest Income                                                                                 648,723                        676,397                      1,872,944
+Total Expenses                                                                               97,731,421                    228,039,922                    120,393,242
+Expenses regarding ceded financial investments                                                     None                           None                           None
+Expenses regarding operations with securities and other financial instruments                64,795,419                    207,698,817                     90,756,619
+Interest Expenses                                                                               903,973                        266,137                           None
+Gross result                                                                                 95,493,723                     32,545,665                    186,388,930
+Net result                                                                                   96,611,495                     34,541,912                    181,797,277
+Employees                                                                                            36                             40                             43
