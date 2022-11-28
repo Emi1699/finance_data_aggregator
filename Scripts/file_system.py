@@ -62,9 +62,11 @@ def get_path_to_file(name, file, dir_type):
     if dir_type == "nbs":
         relative_path = f"../Market Data and News/News by Source/{name}.txt"
     elif dir_type == "nbt":
-        relative_path = f"../Market Data and News/News by Ticker/{name}.txt"
+        relative_path = f"./.Market Data and News/News by Ticker/{name}.txt"
     elif dir_type == "financials":
         relative_path = f"../Market Data and News/Financials by Company/{name}.txt"
+    elif dir_type == "financials_temp":
+        relative_path = f"../Market Data and News/Financials by Company/{name}"
     else:
         relative_path = f"../Test Files/{name}"
         
