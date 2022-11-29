@@ -2,15 +2,22 @@ from bs4 import BeautifulSoup
 import requests
 import file_system
 from companies import Company
-import curl_headers
+import bvb_curl_headers_financials
+import helpers
 
 class BVBRetrievalModule:
 
-    class FinancialsRetrievalModule:
-    
+    class Financials:
+
+        def get_financials_for_all_companies(self):
+            for company in Company:
+                self.get_financials_data_of_company(company)
+
+        # get 'financials' data for one single company
         def get_financials_data_of_company(self, company):
-            self.process_financials_data(company, *curl_headers.get_curl_params(company))
+            self.process_financials_data(company, *bvb_curl_headers_financials.get_curl_params(company))
         
+        # process 'financials' data (clean and write to file) for one single company, using the params passed as arguments
         def process_financials_data(self, company, cookies, headers, params, data):
             print(f"> processing financial data from {company.name} ...")
 
@@ -56,8 +63,7 @@ class BVBRetrievalModule:
                 elif years_back == 1:
                     data_row = "{:>0} {:>{right_padding}}".format("Indicator", years[0] + "\n", right_padding = right_padding)
 
-                file_system.append_to_file(company.value[0] + "_" + company.name, data_row, "financials")
-                # file_system.append_to_file(company.value[0] + "_" + company.name, "\n", "financials")
+                file_system.append_to_file(company.value[0] + "_" + company.name, data_row, "financials") # write first row to file (the name of the columns below)
 
             if len(table_data) > 0: # for some comapanies, there is no data
                 i = 0 # used to iterate over the values in the table
@@ -97,8 +103,24 @@ class BVBRetrievalModule:
                 file_system.append_to_file(company.value[0] + "_" + company.name, "!!! NO DATA FOUND !!!", "financials")
                 print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
 
-bvb_financials = BVBRetrievalModule().FinancialsRetrievalModule()
-# bvb.get_financials_data_of_company(Company.OMV_PETROM)
+    class Trading():
 
-for company in Company:
-    bvb_financials.get_financials_data_of_company(company)
+        class Performance():
+            
+            def get_performace_data(self):
+                data_table = helpers.get_source("https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=TLV")
+
+                file_system.write_to_file("performance_table.html", str(data_table), "test")
+                
+
+
+
+        
+        class History():
+            pass
+
+
+
+bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
+bvb_trading_performance.get_performace_data()
+
