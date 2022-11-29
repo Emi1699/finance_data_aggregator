@@ -1,3 +1,5 @@
+Indicator                                                         2021                           2020                          2019
+
 Total Non-current Assets                                 4,801,184,496                  4,711,128,179                  3,776,392,085
 Total Capital Assets                                       454,058,620                    449,717,871                    476,405,816
 Minority Interest                                                 None                           None                           None

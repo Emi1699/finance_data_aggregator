@@ -1,0 +1,33 @@
+Indicator                                                                          2021
+
+Fixed assets - Total                                                          93,833,305
+Current assets - Total                                                        56,328,939
+Debtors - due within one year                                                 62,709,674
+Current assets/Net current liabilities                                        -6,974,274
+Total assets less current liabilities                                         86,859,031
+Debtors - due after more than one year                                        41,713,517
+Revenues in advance                                                            7,282,877
+Subscribed paid up capital                                                     1,038,612
+Shareholders equity - Total                                                   38,316,917
+Total receivables                                                             13,352,677
+Net turnover                                                                  68,353,251
+Operating income - Total                                                     104,316,723
+Operating expenses - Total                                                    97,712,028
+Operating result                                                               6,604,695
+Financial income - Total                                                       1,163,324
+Financial expenses - Total                                                     6,030,660
+Financial result                                                              -4,867,336
+Current result                                                                 1,737,359
+Extraordinary income                                                                None
+Extraordinary expenses                                                              None
+Extraordinary result                                                                None
+Total revenues                                                               105,480,047
+Total expenses                                                               103,742,688
+Gross result                                                                   1,737,359
+Net result                                                                     1,737,359
+Result per share                                                                    None
+Back payments - Total                                                               None
+Back payments for suppliers - Total                                                 None
+Back payments of liabilities to the social insurance budget                         None
+Taxes which are not paid to the State budget upon payment date                      None
+Average number of employees (only full time employees)                               213

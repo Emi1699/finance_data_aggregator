@@ -1,3 +1,5 @@
+Indicator                                                2021                           2020                          2019
+
 Financial assets available for sale                      None                           None                           None
 Share capital                                   2,515,622,000                  2,515,622,000                  2,515,622,000
 Interest expense                                  132,419,000                    148,899,000                    161,000,000

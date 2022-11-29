@@ -1,3 +1,5 @@
+Indicator                                                                           2021                           2020                          2019
+
 Fixed assets - Total                                                           9,733,712                      1,729,772                        908,434
 Current assets - Total                                                        53,324,374                     31,962,592                     19,864,539
 Debtors - due within one year                                                 18,613,989                      8,939,441                     10,475,029
