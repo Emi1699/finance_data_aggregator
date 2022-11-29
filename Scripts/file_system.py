@@ -103,3 +103,8 @@ def write_ticker_to_file(fl, txt, dir_type, finish_text = "Content has been writ
             f.write(txt + "\n")
 
     print(f"{finish_text}")
+
+def clear_file(fl, dir_type):
+    output_file = get_path_to_file(fl, __file__, dir_type)
+
+    open(output_file, 'w').close()
