@@ -1,4 +1,4 @@
-import news_retrieval_module as rm
+import news_retrieval as rm
 import time
 import requests
 import helpers
