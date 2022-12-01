@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from File_System import file_system
+from File_System.dir_path import DirPath as dir_path
 from companies import Company
 import Curl_Headers.bvb_curl_headers_financials as bvb_curl_headers_financials
 import Curl_Headers.bvb_curl_headers_trading as bvb_curl_headers_trading
@@ -24,14 +25,14 @@ class BVBRetrievalModule:
             print(f"> processing financial data from {company.name} ...")
 
             # clear file before writing to it
-            file_system.clear_file(company.value[0] + "_" + company.name, "financials")
+            file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_FINANCIALS)
 
             financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
 
             response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
             file_system.write_to_file("_financials_temp.html", response.text, "financials_temp")
 
-            with open(file_system.get_path_to_file("_financials_temp.html", __file__, "financials_temp")) as financials_file:
+            with open(file_system.get_path_to_file("_financials_temp.html", __file__, dir_path.BVB_FINANCIALS)) as financials_file:
                 financials_data = BeautifulSoup(financials_file, 'html.parser')
 
             # contains the table with information about 
@@ -65,7 +66,7 @@ class BVBRetrievalModule:
                 elif years_back == 1:
                     data_row = "{:>0} {:>{right_padding}}".format("Indicator", years[0] + "\n", right_padding = right_padding)
 
-                file_system.append_to_file(company.value[0] + "_" + company.name, data_row, "financials") # write first row to file (the name of the columns below)
+                file_system.append_to_file(company.value[0] + "_" + company.name, data_row, dir_path.BVB_FINANCIALS) # write first row to file (the name of the columns below)
 
             if len(table_data) > 0: # for some comapanies, there is no data
                 i = 0 # used to iterate over the values in the table
@@ -94,7 +95,7 @@ class BVBRetrievalModule:
                         data_row = "{:>0} {:>{right_padding}}".format(table_data[i], table_data[i + 1], right_padding = right_padding)
 
                     # append to file (only if not already in file)
-                    file_system.append_to_file(company.value[0] + "_" + company.name, data_row, "financials")
+                    file_system.append_to_file(company.value[0] + "_" + company.name, data_row, dir_path.BVB_FINANCIALS)
 
                     # each row in the file contains information about a specific financial indicator and its value for the last <years_back> years
                     # thus, for every iteration through this while loop, we bundle information (<years_back> + 1) rows at the time
@@ -102,7 +103,7 @@ class BVBRetrievalModule:
 
                 print(f"\t|\n\t|__SUCCESS!\n")
             else:
-                file_system.append_to_file(company.value[0] + "_" + company.name, "!!! NO DATA FOUND !!!", "financials")
+                file_system.append_to_file(company.value[0] + "_" + company.name, "!!! NO DATA FOUND !!!", dir_path.BVB_FINANCIALS)
                 print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
 
     class Trading():
@@ -117,12 +118,12 @@ class BVBRetrievalModule:
                 print(f"> processing financial data from {company.name} ...")
 
                 # clear file before writing to it
-                file_system.clear_file(company.value[0] + "_" + company.name, "trading_performace")
+                file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_TRADING_PERFORMANCE)
 
                 financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
 
                 response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
-                file_system.write_to_file("_trading_performance_temp.html", response.text, "trading_performance")
+                file_system.write_to_file("_trading_performance_temp.html", response.text, dir_path.BVB_TRADING_PERFORMANCE)
 
                 
         
