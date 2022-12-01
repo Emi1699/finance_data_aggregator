@@ -1,0 +1,610 @@
+1|#||4|1261|updatePanel|ctl00_body_updIfttc|
+                
+
+<div class="btn-toolbar tooltip-tabs" role="toolbar">
+    <div id="ctl00_body_IFTC_btnlist" class="btn-group" role="group"><input type="submit" name="ctl00$body$IFTC$68d0c1c6-f8a9-4417-a4ea-f1104d792c7c" value="Overview" id="68d0c1c6-f8a9-4417-a4ea-f1104d792c7c" class="btn btnd" /><input type="submit" name="ctl00$body$IFTC$3e15e9b5-87d7-4a5a-be83-3c24a87642f9" value="Trading" id="3e15e9b5-87d7-4a5a-be83-3c24a87642f9" disabled="disabled" class="btn btnd noOpacity btnActive" /><input type="submit" name="ctl00$body$IFTC$54e0d3e8-eb85-446e-ac0a-e968b1e0e805" value="Charts" id="54e0d3e8-eb85-446e-ac0a-e968b1e0e805" class="btn btnd" /><input type="submit" name="ctl00$body$IFTC$1d99178a-44b0-4f0a-9703-332fe720482b" value="News" id="1d99178a-44b0-4f0a-9703-332fe720482b" class="btn btnd" /><input type="submit" name="ctl00$body$IFTC$28fc7ad5-6a88-4ab3-aae6-4f8fef2e595c" value="Financials" id="28fc7ad5-6a88-4ab3-aae6-4f8fef2e595c" class="btn btnd" /><input type="submit" name="ctl00$body$IFTC$b4fb6eec-e763-4275-89fd-55fa4b5399f5" value="Issuer profile" id="b4fb6eec-e763-4275-89fd-55fa4b5399f5" class="btn btnd" /></div>
+</div>
+<style>
+    .btn-group > .btnd {
+        min-width: 70px;
+    }
+</style>
+
+                        |64889|updatePanel|updMaster|
+                    
+
+<div class="col-lg-12 col-xs-12 ">
+    
+<div class="col-xs-12 boxed-panel">
+    <div id="ctl00_body_ctl02_TradingHeaderInfo_divInfo" class="col-xs-8">
+        <div>
+	<table cellspacing="1" cellpadding="0" border="0" id="ctl00_body_ctl02_TradingHeaderInfo_dvInfo" style="font-size:12px;width:100%;">
+		<tr>
+			<td style="font-weight:bold;white-space:nowrap;">Symbol</td><td class="pLeft10" align="left">SNP</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Main Market</td><td class="pLeft10" align="left">REGS</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Symbol-market status</td><td class="pLeft10" align="left">Closed</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Bloomberg <a href='http://bsym.bloomberg.com/sym/' target='_blank'>BBGID</a></td><td class="pLeft10" align="left">BBG000DTQ869</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Part of indices</td><td class="pLeft10" align="left"><a href='../Indices/IndicesProfiles.aspx'>BET-NG</a> | <a href='../Indices/IndicesProfiles.aspx'>ROTX</a> | <a href='../Indices/IndicesProfiles.aspx'>BET-TR</a> | <a href='../Indices/IndicesProfiles.aspx'>BET-XT-TR</a> | <a href='../Indices/IndicesProfiles.aspx'>BET-TRN</a> | <a href='../Indices/IndicesProfiles.aspx'>BET-XT-TRN</a> | <a href='../Indices/IndicesProfiles.aspx'>BET</a> | <a href='../Indices/IndicesProfiles.aspx'>BET-XT</a> | <a href='../Indices/IndicesProfiles.aspx'>BETPlus</a> | <a href='../Indices/IndicesProfiles.aspx'>BET-BK</a></td>
+		</tr><tr>
+			<td style="font-weight:bold;">Market makers</td><td class="pLeft10" align="left"><ul style="list-style:none;"><li>WOOD &amp; COMPANY FINANCIAL SERVICES, a.s.  PRAGA </li><li> Raiffeisen Bank International</li></ul></td>
+		</tr><tr>
+			<td style="font-weight:bold;">Related symbols</td><td class="pLeft10" align="left"><p>-</p></td>
+		</tr><tr>
+			<td style="font-weight:bold;">Trading venue (MIC)</td><td class="pLeft10" align="left">XBSE</td>
+		</tr><tr>
+			<td style="font-weight:bold;">CFI Code</td><td class="pLeft10" align="left">ESVUFR</td>
+		</tr>
+	</table>
+</div>
+    </div>
+
+    
+
+    <div class="col-xs-4">
+        <h3>Instrument standard parameters</h3>
+        <div class="separator-horizontal_small"></div>
+        <div class="clearfix"></div>
+        <div>
+	<table cellspacing="1" cellpadding="0" border="0" id="ctl00_body_ctl02_TradingHeaderInfo_dvParam" style="font-size:12px;width:100%;">
+		<tr>
+			<td style="font-weight:bold;white-space:nowrap;">Block size</td><td align="left">1</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Priceup limit</td><td align="left">Ref. price + 25.00%</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Pricedown limit</td><td align="left">Ref. price - 25.00%</td>
+		</tr><tr>
+			<td style="font-weight:bold;">Price tick value</td><td align="left">0.0005 ( <a href='TickSizeTable.ashx' >shareM3</a>)</td>
+		</tr>
+	</table>
+</div>
+    </div>
+</div>
+
+</div>
+<div class="col-lg-12 col-xs-12">
+    <div class="col-lg-6 col-xs-6 p-0 mBot10 pRight20">
+        
+<div>
+    <h2 class="styled">Trading performance</h2>
+    <div class="col-lg-12 p-0 wrapped-table smaller-table">
+        <div>
+	<table class="table table-hover dataTable no-footer generic-table compact" cellspacing="0" border="0" id="gvPerfT" style="width:100%;border-collapse:collapse;">
+		<thead>
+			<tr>
+				<th scope="col">&nbsp;</th><th class="text-right" scope="col">Price Var. (%)</th><th class="text-right" scope="col">Volume</th><th class="text-right" scope="col">Value</th><th class="text-right" scope="col">Trades</th>
+			</tr>
+		</thead><tbody>
+			<tr>
+				<td class="no-wrap" style="font-weight:bold;">Today</td><td class="numericspvar" align="right">3.35</td><td align="right">40,797,874</td><td align="right">18,509,447.81</td><td align="right">595</td>
+			</tr><tr>
+				<td class="no-wrap" style="font-weight:bold;">1 week</td><td class="numericspvar" align="right">4.04</td><td align="right">104,288,649</td><td align="right">47,203,953.07</td><td align="right">2,547</td>
+			</tr><tr>
+				<td class="no-wrap" style="font-weight:bold;"> 1 month</td><td class="numericspvar" align="right">2.43</td><td align="right">258,612,447</td><td align="right">116,905,564.77</td><td align="right">13,476</td>
+			</tr><tr>
+				<td class="no-wrap" style="font-weight:bold;">6 months</td><td class="numericspvar" align="right">10.58</td><td align="right">1,543,737,332</td><td align="right">713,391,078.30</td><td align="right">79,625</td>
+			</tr><tr>
+				<td class="no-wrap" style="font-weight:bold;">1 year</td><td class="numericspvar" align="right">11.94</td><td align="right">5,242,877,915</td><td align="right">2,351,707,410.92</td><td align="right">138,775</td>
+			</tr><tr>
+				<td class="no-wrap" style="font-weight:bold;">YTD</td><td class="numericspvar" align="right">0.26</td><td align="right">5,129,294,225</td><td align="right">2,298,982,801.40</td><td align="right">133,754</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+    </div>
+    <div id="ctl00_body_ctl02_TradingPerformanceControl_info" class="caption p-0">Based on adjusted prices</div>
+</div>
+
+    </div>
+    <div class="col-lg-6 col-xs-6 pRight0">
+        <div class="col-lg-12 col-xs-12 p-0 mBot10">
+            
+
+
+<style>
+    .progressParent{
+        width:18% !important;
+    }
+.progressFL {
+    height: 20px;
+    margin-bottom: 0px;
+    float:right;
+    overflow: unset;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    cursor: auto;
+    width:100%;
+}
+.progressFR {
+    height: 20px;
+    margin-bottom: 0px;
+    overflow: unset;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    cursor: auto;
+    width:100%;
+}
+.progress-barFL {
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: black;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+}
+.progress-barFR {
+    float: right;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: black;
+    text-align: right;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+}    
+</style>
+
+<div class="col-lg-12 col-xs-12 p-0">
+    <h2 class="styled">Main Market Order Book (top 5)</h2>
+</div>
+<div class="col-lg-12 col-xs-12 p-0 wrapped-table smaller-table">
+    <div>
+	<table class="table table-hover dataTable no-footer generic-table compact" cellspacing="0" border="0" id="gvMMOrderBook" style="width:100%;border-collapse:collapse;">
+		<thead>
+			<tr>
+				<th class="progressParent text-center" scope="col">&nbsp;</th><th class="text-right" scope="col">Bid Vol</th><th class="text-right" scope="col">Bid</th><th class="text-right" scope="col">Ask</th><th class="text-right" scope="col">Ask Vol</th><th class="progressParent text-center" scope="col">&nbsp;</th>
+			</tr>
+		</thead><tbody>
+			<tr>
+				<td>
+                    <div class="progressFR ">
+                        <div class="progress-barFR progress-bar-success" role="progressbar" aria-valuenow="0.00"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+                            <span style="color: black; margin-left: -40px; margin-right: 2px;" class="sr-only">0.00</span>
+                        </div>
+                    </div>
+                </td><td align="right">77</td><td align="right">0.4595</td><td align="right">0.4630</td><td align="right">8,123,276</td><td>
+                    <div class="progressFL">
+                        <div class="progress-barFL progress-bar-danger" role="progressbar" aria-valuenow="100.00"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 100.00%">
+                            <span style="color: black; margin-left: 2px;" class="sr-only">100</span>
+                        </div>
+                    </div>
+                </td>
+			</tr><tr>
+				<td>
+                    <div class="progressFR ">
+                        <div class="progress-barFR progress-bar-success" role="progressbar" aria-valuenow="0.00"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+                            <span style="color: black; margin-left: -40px; margin-right: 2px;" class="sr-only">0.00</span>
+                        </div>
+                    </div>
+                </td><td align="right">53</td><td align="right">0.4580</td><td align="right">0.4635</td><td align="right">13,777</td><td>
+                    <div class="progressFL">
+                        <div class="progress-barFL progress-bar-danger" role="progressbar" aria-valuenow="0.17"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.17%">
+                            <span style="color: black; margin-left: 2px;" class="sr-only">0.17</span>
+                        </div>
+                    </div>
+                </td>
+			</tr><tr>
+				<td>
+                    <div class="progressFR ">
+                        <div class="progress-barFR progress-bar-success" role="progressbar" aria-valuenow="1.81"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 1.81%">
+                            <span style="color: black; margin-left: -40px; margin-right: 2px;" class="sr-only">1.81</span>
+                        </div>
+                    </div>
+                </td><td align="right">146,831</td><td align="right">0.4575</td><td align="right">0.4640</td><td align="right">105,000</td><td>
+                    <div class="progressFL">
+                        <div class="progress-barFL progress-bar-danger" role="progressbar" aria-valuenow="1.29"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 1.29%">
+                            <span style="color: black; margin-left: 2px;" class="sr-only">1.29</span>
+                        </div>
+                    </div>
+                </td>
+			</tr><tr>
+				<td>
+                    <div class="progressFR ">
+                        <div class="progress-barFR progress-bar-success" role="progressbar" aria-valuenow="0.04"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.04%">
+                            <span style="color: black; margin-left: -40px; margin-right: 2px;" class="sr-only">0.04</span>
+                        </div>
+                    </div>
+                </td><td align="right">3,000</td><td align="right">0.4570</td><td align="right">0.4645</td><td align="right">5,690</td><td>
+                    <div class="progressFL">
+                        <div class="progress-barFL progress-bar-danger" role="progressbar" aria-valuenow="0.07"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.07%">
+                            <span style="color: black; margin-left: 2px;" class="sr-only">0.07</span>
+                        </div>
+                    </div>
+                </td>
+			</tr><tr>
+				<td>
+                    <div class="progressFR ">
+                        <div class="progress-barFR progress-bar-success" role="progressbar" aria-valuenow="0.20"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.20%">
+                            <span style="color: black; margin-left: -40px; margin-right: 2px;" class="sr-only">0.20</span>
+                        </div>
+                    </div>
+                </td><td align="right">15,995</td><td align="right">0.4565</td><td align="right">0.4650</td><td align="right">25,000</td><td>
+                    <div class="progressFL">
+                        <div class="progress-barFL progress-bar-danger" role="progressbar" aria-valuenow="0.31"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 0.31%">
+                            <span style="color: black; margin-left: 2px;" class="sr-only">0.31</span>
+                        </div>
+                    </div>
+                </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+    <div class="caption">Last update: 11/29/2022 6:00:00 PM</div>
+</div>
+
+        </div>
+        <div class="col-lg-12 col-xs-12 p-0 mBot10">
+            
+
+<div class="col-lg-12 col-xs-12 p-0">
+    <div class="col-lg-12 col-xs-12 p-0 d-grid-2cols d-grid-gap10">
+        <h2 class="styled text-left">Today's last trades</h2>
+        <div id="ctl00_body_ctl02_LastXTradesControl_btnTodayTrades" class="text-right pTop5">
+            <i id='imgInform' class='fa fa-download' aria-hidden='true' data-toggle='popover' data-container='body' data-html='true' data-placement='auto top' data-target='#infodownload'></i>
+            <a href='TabsControlsDetails/TradingDetails/TodayTradesBySymbolListForDownload.ashx?filetype=csv' style="font-size: 13px">&nbsp;Quick download&nbsp;</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 col-xs-12 p-0 wrapped-table smaller-table">
+    <div>
+	<table class="table table-hover dataTable no-footer generic-table compact" cellspacing="0" border="0" id="gvLast" style="width:100%;border-collapse:collapse;">
+		<thead>
+			<tr>
+				<th scope="col">Symbol</th><th scope="col">Market</th><th class="text-right" scope="col">Price</th><th class="text-right" scope="col">Volume</th><th class="text-right" scope="col">Value</th><th class="text-right" scope="col">Date/time</th>
+			</tr>
+		</thead><tbody>
+			<tr>
+				<td>SNP</td><td>REGS</td><td align="right">0.4630</td><td align="right">10,000</td><td align="right">4,630.00</td><td align="right">11/29/2022 5:58 PM</td>
+			</tr><tr>
+				<td>SNP</td><td>REGS</td><td align="right">0.4630</td><td align="right">15,000</td><td align="right">6,945.00</td><td align="right">11/29/2022 5:54 PM</td>
+			</tr><tr>
+				<td>SNP</td><td>REGS</td><td align="right">0.4630</td><td align="right">500</td><td align="right">231.50</td><td align="right">11/29/2022 5:52 PM</td>
+			</tr><tr>
+				<td>SNP</td><td>REGS</td><td align="right">0.4630</td><td align="right">3,558,699</td><td align="right">1,647,677.64</td><td align="right">11/29/2022 5:50 PM</td>
+			</tr><tr>
+				<td>SNP</td><td>REGS</td><td align="right">0.4630</td><td align="right">100,000</td><td align="right">46,300.00</td><td align="right">11/29/2022 5:50 PM</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 col-xs-12 mTop10 mBot20">
+    
+
+<div class="d-grid-2cols">
+    <h2 class="styled">Trading history&nbsp;</h2>
+    <div class="text-right pTop5">
+        
+    </div>
+</div>
+<div class="col-lg-12 p-0 mBot20">
+    <div class="wrapped-table smaller-table">
+    <div>
+	<table class="table table-hover dataTable no-footer generic-table compact" cellspacing="0" border="0" id="gvSummar" style="width:100%;border-collapse:collapse;">
+		<thead>
+			<tr>
+				<th class="datesp" scope="col">Date</th><th scope="col">Market</th><th class="text-right numericsp" scope="col">Trades</th><th class="text-right numericsp" scope="col">Volume</th><th class="text-right numericsp" scope="col">Value</th><th class="text-right numericsp" scope="col">Open price</th><th class="text-right numericsp" scope="col">Low price</th><th class="text-right numericsp" scope="col">High price</th><th class="text-right numericsp" scope="col">Avg. price</th><th class="text-right numericsp" scope="col">Last price</th><th class="text-right" scope="col">Var. (%)</th>
+			</tr>
+		</thead><tbody>
+			<tr>
+				<td align="left">11/29/2022</td><td align="left">REGS</td><td align="right">595</td><td align="right">40,797,874</td><td align="right">18,509,447.81</td><td align="right">0.4490</td><td align="right">0.4480</td><td align="right">0.4630</td><td align="right">0.4535</td><td align="right">0.4630</td><td class="numericspvar" align="right">3.3500</td>
+			</tr><tr>
+				<td align="left">11/28/2022</td><td align="left">REGS</td><td align="right">357</td><td align="right">5,595,343</td><td align="right">2,509,869.33</td><td align="right">0.4505</td><td align="right">0.4475</td><td align="right">0.4510</td><td align="right">0.4485</td><td align="right">0.4480</td><td class="numericspvar" align="right">-0.9900</td>
+			</tr><tr>
+				<td align="left">11/25/2022</td><td align="left">REGS</td><td align="right">360</td><td align="right">7,749,546</td><td align="right">3,491,544.34</td><td align="right">0.4510</td><td align="right">0.4475</td><td align="right">0.4540</td><td align="right">0.4505</td><td align="right">0.4525</td><td class="numericspvar" align="right">0.4400</td>
+			</tr><tr>
+				<td align="left">11/24/2022</td><td align="left">REGS</td><td align="right">346</td><td align="right">6,381,099</td><td align="right">2,859,749.05</td><td align="right">0.4460</td><td align="right">0.4450</td><td align="right">0.4520</td><td align="right">0.4480</td><td align="right">0.4505</td><td class="numericspvar" align="right">1.1200</td>
+			</tr><tr>
+				<td align="left">11/23/2022</td><td align="left">REGS</td><td align="right">294</td><td align="right">2,966,913</td><td align="right">1,323,894.72</td><td align="right">0.4470</td><td align="right">0.4450</td><td align="right">0.4480</td><td align="right">0.4460</td><td align="right">0.4455</td><td class="numericspvar" align="right">0.1100</td>
+			</tr><tr>
+				<td align="left">11/22/2022</td><td align="left">REGS</td><td align="right">420</td><td align="right">3,138,409</td><td align="right">1,397,593.64</td><td align="right">0.4445</td><td align="right">0.4440</td><td align="right">0.4470</td><td align="right">0.4455</td><td align="right">0.4450</td><td class="numericspvar" align="right">0.2300</td>
+			</tr><tr>
+				<td align="left">11/21/2022</td><td align="left">REGS</td><td align="right">459</td><td align="right">3,148,922</td><td align="right">1,402,340.70</td><td align="right">0.4470</td><td align="right">0.4440</td><td align="right">0.4485</td><td align="right">0.4455</td><td align="right">0.4440</td><td class="numericspvar" align="right">-0.4500</td>
+			</tr><tr>
+				<td align="left">11/18/2022</td><td align="left">REGS</td><td align="right">462</td><td align="right">3,117,884</td><td align="right">1,395,219.81</td><td align="right">0.4500</td><td align="right">0.4455</td><td align="right">0.4510</td><td align="right">0.4475</td><td align="right">0.4460</td><td class="numericspvar" align="right">-0.8900</td>
+			</tr><tr>
+				<td align="left">11/17/2022</td><td align="left">REGS</td><td align="right">431</td><td align="right">7,862,238</td><td align="right">3,524,925.45</td><td align="right">0.4480</td><td align="right">0.4460</td><td align="right">0.4500</td><td align="right">0.4485</td><td align="right">0.4500</td><td class="numericspvar" align="right">0.4500</td>
+			</tr><tr>
+				<td align="left">11/16/2022</td><td align="left">REGS</td><td align="right">1,250</td><td align="right">12,341,754</td><td align="right">5,528,817.23</td><td align="right">0.4535</td><td align="right">0.4415</td><td align="right">0.4545</td><td align="right">0.4480</td><td align="right">0.4480</td><td class="numericspvar" align="right">-1.1000</td>
+			</tr><tr>
+				<td align="left">11/15/2022</td><td align="left">REGS</td><td align="right">505</td><td align="right">5,723,894</td><td align="right">2,595,324.75</td><td align="right">0.4540</td><td align="right">0.4520</td><td align="right">0.4555</td><td align="right">0.4535</td><td align="right">0.4530</td><td class="numericspvar" align="right">-0.2200</td>
+			</tr><tr>
+				<td align="left">11/14/2022</td><td align="left">REGS</td><td align="right">528</td><td align="right">9,813,286</td><td align="right">4,450,690.53</td><td align="right">0.4520</td><td align="right">0.4515</td><td align="right">0.4550</td><td align="right">0.4535</td><td align="right">0.4540</td><td class="numericspvar" align="right">0.6700</td>
+			</tr><tr>
+				<td align="left">11/11/2022</td><td align="left">REGS</td><td align="right">584</td><td align="right">5,127,725</td><td align="right">2,319,425.41</td><td align="right">0.4515</td><td align="right">0.4510</td><td align="right">0.4550</td><td align="right">0.4525</td><td align="right">0.4510</td><td class="numericspvar" align="right">0.4500</td>
+			</tr><tr>
+				<td align="left">11/10/2022</td><td align="left">REGS</td><td align="right">609</td><td align="right">9,996,724</td><td align="right">4,497,378.73</td><td align="right">0.4520</td><td align="right">0.4480</td><td align="right">0.4520</td><td align="right">0.4500</td><td align="right">0.4490</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">11/10/2022</td><td align="left">DEALS</td><td align="right">2</td><td align="right">3,126,154</td><td align="right">1,272,344.68</td><td align="right">0.4070</td><td align="right">0.4070</td><td align="right">0.4070</td><td align="right">0.4070</td><td align="right">0.4070</td><td class="numericspvar" align="right">-9.3500</td>
+			</tr><tr>
+				<td align="left">11/9/2022</td><td align="left">REGS</td><td align="right">598</td><td align="right">6,428,148</td><td align="right">2,891,814.83</td><td align="right">0.4530</td><td align="right">0.4470</td><td align="right">0.4535</td><td align="right">0.4500</td><td align="right">0.4490</td><td class="numericspvar" align="right">-0.7700</td>
+			</tr><tr>
+				<td align="left">11/8/2022</td><td align="left">REGS</td><td align="right">890</td><td align="right">10,441,868</td><td align="right">4,705,735.03</td><td align="right">0.4545</td><td align="right">0.4460</td><td align="right">0.4565</td><td align="right">0.4505</td><td align="right">0.4525</td><td class="numericspvar" align="right">0.4400</td>
+			</tr><tr>
+				<td align="left">11/7/2022</td><td align="left">REGS</td><td align="right">692</td><td align="right">5,785,920</td><td align="right">2,632,294.57</td><td align="right">0.4540</td><td align="right">0.4505</td><td align="right">0.4590</td><td align="right">0.4550</td><td align="right">0.4505</td><td class="numericspvar" align="right">-0.3300</td>
+			</tr><tr>
+				<td align="left">11/4/2022</td><td align="left">REGS</td><td align="right">619</td><td align="right">7,977,178</td><td align="right">3,612,624.17</td><td align="right">0.4510</td><td align="right">0.4505</td><td align="right">0.4565</td><td align="right">0.4530</td><td align="right">0.4520</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">11/3/2022</td><td align="left">REGS</td><td align="right">899</td><td align="right">21,190,483</td><td align="right">9,547,371.90</td><td align="right">0.4490</td><td align="right">0.4420</td><td align="right">0.4535</td><td align="right">0.4505</td><td align="right">0.4520</td><td class="numericspvar" align="right">-0.4400</td>
+			</tr><tr>
+				<td align="left">11/2/2022</td><td align="left">REGS</td><td align="right">653</td><td align="right">5,724,192</td><td align="right">2,592,061.64</td><td align="right">0.4580</td><td align="right">0.4495</td><td align="right">0.4590</td><td align="right">0.4530</td><td align="right">0.4540</td><td class="numericspvar" align="right">-0.5500</td>
+			</tr><tr>
+				<td align="left">11/1/2022</td><td align="left">REGS</td><td align="right">417</td><td align="right">3,479,221</td><td align="right">1,595,408.13</td><td align="right">0.4595</td><td align="right">0.4555</td><td align="right">0.4595</td><td align="right">0.4585</td><td align="right">0.4565</td><td class="numericspvar" align="right">1.0000</td>
+			</tr><tr>
+				<td align="left">10/31/2022</td><td align="left">REGS</td><td align="right">911</td><td align="right">29,899,798</td><td align="right">13,740,240.50</td><td align="right">0.4590</td><td align="right">0.4520</td><td align="right">0.4620</td><td align="right">0.4595</td><td align="right">0.4520</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">10/28/2022</td><td align="left">REGS</td><td align="right">980</td><td align="right">13,224,181</td><td align="right">6,043,616.29</td><td align="right">0.4600</td><td align="right">0.4520</td><td align="right">0.4635</td><td align="right">0.4570</td><td align="right">0.4520</td><td class="numericspvar" align="right">0.5600</td>
+			</tr><tr>
+				<td align="left">10/27/2022</td><td align="left">REGS</td><td align="right">291</td><td align="right">7,241,793</td><td align="right">3,251,206.52</td><td align="right">0.4475</td><td align="right">0.4475</td><td align="right">0.4505</td><td align="right">0.4490</td><td align="right">0.4495</td><td class="numericspvar" align="right">0.7800</td>
+			</tr><tr>
+				<td align="left">10/26/2022</td><td align="left">REGS</td><td align="right">363</td><td align="right">5,889,756</td><td align="right">2,626,386.54</td><td align="right">0.4430</td><td align="right">0.4425</td><td align="right">0.4480</td><td align="right">0.4460</td><td align="right">0.4460</td><td class="numericspvar" align="right">0.7900</td>
+			</tr><tr>
+				<td align="left">10/25/2022</td><td align="left">REGS</td><td align="right">306</td><td align="right">2,525,913</td><td align="right">1,107,860.66</td><td align="right">0.4340</td><td align="right">0.4320</td><td align="right">0.4425</td><td align="right">0.4385</td><td align="right">0.4425</td><td class="numericspvar" align="right">2.1900</td>
+			</tr><tr>
+				<td align="left">10/24/2022</td><td align="left">REGS</td><td align="right">280</td><td align="right">3,253,785</td><td align="right">1,403,859.63</td><td align="right">0.4300</td><td align="right">0.4285</td><td align="right">0.4345</td><td align="right">0.4315</td><td align="right">0.4330</td><td class="numericspvar" align="right">0.7000</td>
+			</tr><tr>
+				<td align="left">10/21/2022</td><td align="left">REGS</td><td align="right">178</td><td align="right">2,109,031</td><td align="right">902,691.00</td><td align="right">0.4295</td><td align="right">0.4270</td><td align="right">0.4310</td><td align="right">0.4280</td><td align="right">0.4300</td><td class="numericspvar" align="right">0.8200</td>
+			</tr><tr>
+				<td align="left">10/20/2022</td><td align="left">REGS</td><td align="right">232</td><td align="right">3,799,187</td><td align="right">1,627,833.95</td><td align="right">0.4270</td><td align="right">0.4250</td><td align="right">0.4315</td><td align="right">0.4285</td><td align="right">0.4265</td><td class="numericspvar" align="right">-0.1200</td>
+			</tr><tr>
+				<td align="left">10/19/2022</td><td align="left">REGS</td><td align="right">242</td><td align="right">3,798,877</td><td align="right">1,620,618.45</td><td align="right">0.4270</td><td align="right">0.4240</td><td align="right">0.4300</td><td align="right">0.4265</td><td align="right">0.4270</td><td class="numericspvar" align="right">0.1200</td>
+			</tr><tr>
+				<td align="left">10/18/2022</td><td align="left">REGS</td><td align="right">341</td><td align="right">10,229,538</td><td align="right">4,346,300.02</td><td align="right">0.4225</td><td align="right">0.4220</td><td align="right">0.4270</td><td align="right">0.4250</td><td align="right">0.4265</td><td class="numericspvar" align="right">1.5500</td>
+			</tr><tr>
+				<td align="left">10/17/2022</td><td align="left">REGS</td><td align="right">303</td><td align="right">1,749,404</td><td align="right">737,307.51</td><td align="right">0.4200</td><td align="right">0.4180</td><td align="right">0.4240</td><td align="right">0.4215</td><td align="right">0.4200</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">10/14/2022</td><td align="left">REGS</td><td align="right">361</td><td align="right">5,281,997</td><td align="right">2,221,379.04</td><td align="right">0.4250</td><td align="right">0.4170</td><td align="right">0.4295</td><td align="right">0.4205</td><td align="right">0.4200</td><td class="numericspvar" align="right">0.1200</td>
+			</tr><tr>
+				<td align="left">10/13/2022</td><td align="left">REGS</td><td align="right">431</td><td align="right">6,864,775</td><td align="right">2,858,151.00</td><td align="right">0.4195</td><td align="right">0.4140</td><td align="right">0.4230</td><td align="right">0.4165</td><td align="right">0.4195</td><td class="numericspvar" align="right">0.3600</td>
+			</tr><tr>
+				<td align="left">10/12/2022</td><td align="left">REGS</td><td align="right">489</td><td align="right">7,646,972</td><td align="right">3,209,157.18</td><td align="right">0.4260</td><td align="right">0.4175</td><td align="right">0.4310</td><td align="right">0.4195</td><td align="right">0.4180</td><td class="numericspvar" align="right">-1.6500</td>
+			</tr><tr>
+				<td align="left">10/11/2022</td><td align="left">REGS</td><td align="right">362</td><td align="right">2,179,220</td><td align="right">925,854.15</td><td align="right">0.4325</td><td align="right">0.4220</td><td align="right">0.4325</td><td align="right">0.4250</td><td align="right">0.4250</td><td class="numericspvar" align="right">-1.1600</td>
+			</tr><tr>
+				<td align="left">10/10/2022</td><td align="left">REGS</td><td align="right">572</td><td align="right">5,697,733</td><td align="right">2,448,534.36</td><td align="right">0.4315</td><td align="right">0.4230</td><td align="right">0.4390</td><td align="right">0.4295</td><td align="right">0.4300</td><td class="numericspvar" align="right">-0.2300</td>
+			</tr><tr>
+				<td align="left">10/7/2022</td><td align="left">REGS</td><td align="right">298</td><td align="right">5,891,396</td><td align="right">2,559,202.69</td><td align="right">0.4350</td><td align="right">0.4310</td><td align="right">0.4390</td><td align="right">0.4345</td><td align="right">0.4310</td><td class="numericspvar" align="right">-0.8100</td>
+			</tr><tr>
+				<td align="left">10/6/2022</td><td align="left">REGS</td><td align="right">252</td><td align="right">3,055,110</td><td align="right">1,328,624.45</td><td align="right">0.4345</td><td align="right">0.4315</td><td align="right">0.4410</td><td align="right">0.4350</td><td align="right">0.4345</td><td class="numericspvar" align="right">0.7000</td>
+			</tr><tr>
+				<td align="left">10/5/2022</td><td align="left">REGS</td><td align="right">613</td><td align="right">11,924,420</td><td align="right">5,208,455.27</td><td align="right">0.4410</td><td align="right">0.4310</td><td align="right">0.4440</td><td align="right">0.4370</td><td align="right">0.4315</td><td class="numericspvar" align="right">-1.9300</td>
+			</tr><tr>
+				<td align="left">10/4/2022</td><td align="left">REGS</td><td align="right">518</td><td align="right">9,496,599</td><td align="right">4,178,621.05</td><td align="right">0.4380</td><td align="right">0.4290</td><td align="right">0.4450</td><td align="right">0.4400</td><td align="right">0.4400</td><td class="numericspvar" align="right">1.1500</td>
+			</tr><tr>
+				<td align="left">10/3/2022</td><td align="left">REGS</td><td align="right">659</td><td align="right">8,973,128</td><td align="right">3,865,814.77</td><td align="right">0.4175</td><td align="right">0.4120</td><td align="right">0.4360</td><td align="right">0.4310</td><td align="right">0.4350</td><td class="numericspvar" align="right">4.0700</td>
+			</tr><tr>
+				<td align="left">9/30/2022</td><td align="left">REGS</td><td align="right">734</td><td align="right">11,039,259</td><td align="right">4,514,689.41</td><td align="right">0.4000</td><td align="right">0.4000</td><td align="right">0.4195</td><td align="right">0.4090</td><td align="right">0.4180</td><td class="numericspvar" align="right">4.8900</td>
+			</tr><tr>
+				<td align="left">9/29/2022</td><td align="left">REGS</td><td align="right">651</td><td align="right">11,121,774</td><td align="right">4,447,455.02</td><td align="right">0.3990</td><td align="right">0.3970</td><td align="right">0.4045</td><td align="right">0.4000</td><td align="right">0.3985</td><td class="numericspvar" align="right">0.6300</td>
+			</tr><tr>
+				<td align="left">9/28/2022</td><td align="left">REGS</td><td align="right">1,726</td><td align="right">83,042,668</td><td align="right">32,496,601.77</td><td align="right">0.4025</td><td align="right">0.3890</td><td align="right">0.4050</td><td align="right">0.3915</td><td align="right">0.3960</td><td class="numericspvar" align="right">-1.0000</td>
+			</tr><tr>
+				<td align="left">9/27/2022</td><td align="left">REGS</td><td align="right">1,471</td><td align="right">29,894,597</td><td align="right">12,161,309.89</td><td align="right">0.4080</td><td align="right">0.4000</td><td align="right">0.4165</td><td align="right">0.4070</td><td align="right">0.4000</td><td class="numericspvar" align="right">-1.4800</td>
+			</tr><tr>
+				<td align="left">9/26/2022</td><td align="left">REGS</td><td align="right">1,375</td><td align="right">30,684,041</td><td align="right">12,571,732.58</td><td align="right">0.4160</td><td align="right">0.4030</td><td align="right">0.4170</td><td align="right">0.4095</td><td align="right">0.4060</td><td class="numericspvar" align="right">-2.4000</td>
+			</tr><tr>
+				<td align="left">9/23/2022</td><td align="left">REGS</td><td align="right">993</td><td align="right">7,253,678</td><td align="right">3,026,736.64</td><td align="right">0.4235</td><td align="right">0.4130</td><td align="right">0.4240</td><td align="right">0.4175</td><td align="right">0.4160</td><td class="numericspvar" align="right">-1.6500</td>
+			</tr><tr>
+				<td align="left">9/22/2022</td><td align="left">REGS</td><td align="right">662</td><td align="right">8,767,630</td><td align="right">3,723,719.97</td><td align="right">0.4285</td><td align="right">0.4210</td><td align="right">0.4290</td><td align="right">0.4245</td><td align="right">0.4230</td><td class="numericspvar" align="right">-0.4700</td>
+			</tr><tr>
+				<td align="left">9/21/2022</td><td align="left">REGS</td><td align="right">1,336</td><td align="right">16,817,966</td><td align="right">7,188,001.94</td><td align="right">0.4375</td><td align="right">0.4230</td><td align="right">0.4410</td><td align="right">0.4275</td><td align="right">0.4250</td><td class="numericspvar" align="right">-2.8600</td>
+			</tr><tr>
+				<td align="left">9/20/2022</td><td align="left">REGS</td><td align="right">553</td><td align="right">3,492,261</td><td align="right">1,542,362.89</td><td align="right">0.4395</td><td align="right">0.4375</td><td align="right">0.4455</td><td align="right">0.4415</td><td align="right">0.4375</td><td class="numericspvar" align="right">0.5700</td>
+			</tr><tr>
+				<td align="left">9/19/2022</td><td align="left">REGS</td><td align="right">1,388</td><td align="right">13,910,987</td><td align="right">6,139,718.43</td><td align="right">0.4550</td><td align="right">0.4335</td><td align="right">0.4550</td><td align="right">0.4415</td><td align="right">0.4350</td><td class="numericspvar" align="right">-4.4000</td>
+			</tr><tr>
+				<td align="left">9/16/2022</td><td align="left">REGS</td><td align="right">682</td><td align="right">16,752,765</td><td align="right">7,603,056.88</td><td align="right">0.4575</td><td align="right">0.4480</td><td align="right">0.4590</td><td align="right">0.4540</td><td align="right">0.4550</td><td class="numericspvar" align="right">-0.2200</td>
+			</tr><tr>
+				<td align="left">9/15/2022</td><td align="left">REGS</td><td align="right">307</td><td align="right">24,222,057</td><td align="right">11,073,475.69</td><td align="right">0.4560</td><td align="right">0.4555</td><td align="right">0.4590</td><td align="right">0.4570</td><td align="right">0.4560</td><td class="numericspvar" align="right">-0.3300</td>
+			</tr><tr>
+				<td align="left">9/14/2022</td><td align="left">REGS</td><td align="right">466</td><td align="right">23,896,840</td><td align="right">10,882,823.89</td><td align="right">0.4565</td><td align="right">0.4505</td><td align="right">0.4575</td><td align="right">0.4555</td><td align="right">0.4575</td><td class="numericspvar" align="right">0.1100</td>
+			</tr><tr>
+				<td align="left">9/13/2022</td><td align="left">REGS</td><td align="right">477</td><td align="right">24,323,085</td><td align="right">11,095,016.49</td><td align="right">0.4570</td><td align="right">0.4520</td><td align="right">0.4590</td><td align="right">0.4560</td><td align="right">0.4570</td><td class="numericspvar" align="right">0.2200</td>
+			</tr><tr>
+				<td align="left">9/12/2022</td><td align="left">REGS</td><td align="right">861</td><td align="right">21,354,747</td><td align="right">9,657,059.08</td><td align="right">0.4565</td><td align="right">0.4475</td><td align="right">0.4565</td><td align="right">0.4520</td><td align="right">0.4560</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">9/9/2022</td><td align="left">REGS</td><td align="right">660</td><td align="right">7,796,212</td><td align="right">3,550,077.86</td><td align="right">0.4590</td><td align="right">0.4505</td><td align="right">0.4620</td><td align="right">0.4555</td><td align="right">0.4560</td><td class="numericspvar" align="right">-0.6500</td>
+			</tr><tr>
+				<td align="left">9/8/2022</td><td align="left">REGS</td><td align="right">592</td><td align="right">13,868,764</td><td align="right">6,383,520.41</td><td align="right">0.4660</td><td align="right">0.4575</td><td align="right">0.4660</td><td align="right">0.4605</td><td align="right">0.4590</td><td class="numericspvar" align="right">-1.1800</td>
+			</tr><tr>
+				<td align="left">9/7/2022</td><td align="left">REGS</td><td align="right">341</td><td align="right">6,183,613</td><td align="right">2,869,546.85</td><td align="right">0.4660</td><td align="right">0.4620</td><td align="right">0.4660</td><td align="right">0.4640</td><td align="right">0.4645</td><td class="numericspvar" align="right">-0.3200</td>
+			</tr><tr>
+				<td align="left">9/6/2022</td><td align="left">REGS</td><td align="right">605</td><td align="right">7,511,900</td><td align="right">3,508,730.10</td><td align="right">0.4635</td><td align="right">0.4620</td><td align="right">0.4710</td><td align="right">0.4670</td><td align="right">0.4660</td><td class="numericspvar" align="right">0.9800</td>
+			</tr><tr>
+				<td align="left">9/5/2022</td><td align="left">REGS</td><td align="right">639</td><td align="right">1,878,014</td><td align="right">860,499.43</td><td align="right">0.4550</td><td align="right">0.4545</td><td align="right">0.4615</td><td align="right">0.4580</td><td align="right">0.4615</td><td class="numericspvar" align="right">1.4300</td>
+			</tr><tr>
+				<td align="left">9/2/2022</td><td align="left">REGS</td><td align="right">2,017</td><td align="right">15,354,667</td><td align="right">6,973,172.49</td><td align="right">0.4600</td><td align="right">0.4500</td><td align="right">0.4625</td><td align="right">0.4540</td><td align="right">0.4550</td><td class="numericspvar" align="right">-1.0900</td>
+			</tr><tr>
+				<td align="left">9/1/2022</td><td align="left">REGS</td><td align="right">1,116</td><td align="right">12,417,761</td><td align="right">5,721,873.57</td><td align="right">0.4680</td><td align="right">0.4560</td><td align="right">0.4700</td><td align="right">0.4610</td><td align="right">0.4600</td><td class="numericspvar" align="right">-2.9500</td>
+			</tr><tr>
+				<td align="left">8/31/2022</td><td align="left">REGS</td><td align="right">648</td><td align="right">14,844,131</td><td align="right">7,014,817.47</td><td align="right">0.4765</td><td align="right">0.4690</td><td align="right">0.4765</td><td align="right">0.4725</td><td align="right">0.4740</td><td class="numericspvar" align="right">-0.6300</td>
+			</tr><tr>
+				<td align="left">8/30/2022</td><td align="left">REGS</td><td align="right">291</td><td align="right">7,580,011</td><td align="right">3,598,864.72</td><td align="right">0.4755</td><td align="right">0.4720</td><td align="right">0.4790</td><td align="right">0.4750</td><td align="right">0.4770</td><td class="numericspvar" align="right">0.3200</td>
+			</tr><tr>
+				<td align="left">8/29/2022</td><td align="left">REGS</td><td align="right">304</td><td align="right">2,182,558</td><td align="right">1,033,765.51</td><td align="right">0.4730</td><td align="right">0.4720</td><td align="right">0.4765</td><td align="right">0.4735</td><td align="right">0.4755</td><td class="numericspvar" align="right">-0.5200</td>
+			</tr><tr>
+				<td align="left">8/26/2022</td><td align="left">REGS</td><td align="right">189</td><td align="right">3,314,600</td><td align="right">1,580,366.63</td><td align="right">0.4745</td><td align="right">0.4740</td><td align="right">0.4795</td><td align="right">0.4770</td><td align="right">0.4780</td><td class="numericspvar" align="right">0.4200</td>
+			</tr><tr>
+				<td align="left">8/25/2022</td><td align="left">REGS</td><td align="right">282</td><td align="right">4,396,688</td><td align="right">2,084,029.66</td><td align="right">0.4745</td><td align="right">0.4725</td><td align="right">0.4760</td><td align="right">0.4740</td><td align="right">0.4760</td><td class="numericspvar" align="right">0.3200</td>
+			</tr><tr>
+				<td align="left">8/24/2022</td><td align="left">REGS</td><td align="right">242</td><td align="right">2,866,933</td><td align="right">1,359,379.84</td><td align="right">0.4735</td><td align="right">0.4725</td><td align="right">0.4780</td><td align="right">0.4740</td><td align="right">0.4745</td><td class="numericspvar" align="right">0.2100</td>
+			</tr><tr>
+				<td align="left">8/23/2022</td><td align="left">REGS</td><td align="right">781</td><td align="right">10,716,955</td><td align="right">5,093,150.33</td><td align="right">0.4845</td><td align="right">0.4720</td><td align="right">0.4850</td><td align="right">0.4750</td><td align="right">0.4735</td><td class="numericspvar" align="right">-1.9700</td>
+			</tr><tr>
+				<td align="left">8/22/2022</td><td align="left">REGS</td><td align="right">385</td><td align="right">6,695,716</td><td align="right">3,231,451.46</td><td align="right">0.4865</td><td align="right">0.4810</td><td align="right">0.4865</td><td align="right">0.4825</td><td align="right">0.4830</td><td class="numericspvar" align="right">-0.7200</td>
+			</tr><tr>
+				<td align="left">8/19/2022</td><td align="left">REGS</td><td align="right">246</td><td align="right">977,757</td><td align="right">474,519.93</td><td align="right">0.4855</td><td align="right">0.4840</td><td align="right">0.4880</td><td align="right">0.4855</td><td align="right">0.4865</td><td class="numericspvar" align="right">-0.4100</td>
+			</tr><tr>
+				<td align="left">8/18/2022</td><td align="left">REGS</td><td align="right">274</td><td align="right">1,011,075</td><td align="right">490,873.37</td><td align="right">0.4850</td><td align="right">0.4840</td><td align="right">0.4885</td><td align="right">0.4855</td><td align="right">0.4885</td><td class="numericspvar" align="right">0.8300</td>
+			</tr><tr>
+				<td align="left">8/17/2022</td><td align="left">REGS</td><td align="right">501</td><td align="right">10,243,885</td><td align="right">4,971,627.63</td><td align="right">0.4865</td><td align="right">0.4830</td><td align="right">0.4880</td><td align="right">0.4855</td><td align="right">0.4845</td><td class="numericspvar" align="right">-0.3100</td>
+			</tr><tr>
+				<td align="left">8/16/2022</td><td align="left">REGS</td><td align="right">639</td><td align="right">7,944,159</td><td align="right">3,878,620.58</td><td align="right">0.4905</td><td align="right">0.4860</td><td align="right">0.4915</td><td align="right">0.4880</td><td align="right">0.4860</td><td class="numericspvar" align="right">-1.0200</td>
+			</tr><tr>
+				<td align="left">8/12/2022</td><td align="left">REGS</td><td align="right">423</td><td align="right">5,210,397</td><td align="right">2,560,165.76</td><td align="right">0.4900</td><td align="right">0.4900</td><td align="right">0.4930</td><td align="right">0.4915</td><td align="right">0.4910</td><td class="numericspvar" align="right">0.3100</td>
+			</tr><tr>
+				<td align="left">8/11/2022</td><td align="left">REGS</td><td align="right">750</td><td align="right">10,212,937</td><td align="right">5,001,262.04</td><td align="right">0.4870</td><td align="right">0.4865</td><td align="right">0.4920</td><td align="right">0.4895</td><td align="right">0.4895</td><td class="numericspvar" align="right">0.6200</td>
+			</tr><tr>
+				<td align="left">8/10/2022</td><td align="left">REGS</td><td align="right">1,826</td><td align="right">18,402,456</td><td align="right">8,947,466.73</td><td align="right">0.4885</td><td align="right">0.4800</td><td align="right">0.4890</td><td align="right">0.4860</td><td align="right">0.4865</td><td class="numericspvar" align="right">-8.0300</td>
+			</tr><tr>
+				<td align="left">8/9/2022</td><td align="left">REGS</td><td align="right">920</td><td align="right">21,004,040</td><td align="right">11,079,438.41</td><td align="right">0.5290</td><td align="right">0.5250</td><td align="right">0.5300</td><td align="right">0.5280</td><td align="right">0.5290</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">8/8/2022</td><td align="left">REGS</td><td align="right">1,181</td><td align="right">20,022,702</td><td align="right">10,599,868.63</td><td align="right">0.5300</td><td align="right">0.5270</td><td align="right">0.5320</td><td align="right">0.5290</td><td align="right">0.5290</td><td class="numericspvar" align="right">-0.1900</td>
+			</tr><tr>
+				<td align="left">8/5/2022</td><td align="left">REGS</td><td align="right">504</td><td align="right">7,675,303</td><td align="right">4,068,828.80</td><td align="right">0.5310</td><td align="right">0.5280</td><td align="right">0.5330</td><td align="right">0.5300</td><td align="right">0.5300</td><td class="numericspvar" align="right">0.1900</td>
+			</tr><tr>
+				<td align="left">8/4/2022</td><td align="left">REGS</td><td align="right">482</td><td align="right">10,341,508</td><td align="right">5,477,605.40</td><td align="right">0.5300</td><td align="right">0.5280</td><td align="right">0.5320</td><td align="right">0.5300</td><td align="right">0.5290</td><td class="numericspvar" align="right">0.1900</td>
+			</tr><tr>
+				<td align="left">8/3/2022</td><td align="left">REGS</td><td align="right">556</td><td align="right">9,607,511</td><td align="right">5,076,556.19</td><td align="right">0.5290</td><td align="right">0.5250</td><td align="right">0.5350</td><td align="right">0.5280</td><td align="right">0.5280</td><td class="numericspvar" align="right">0.5700</td>
+			</tr><tr>
+				<td align="left">8/2/2022</td><td align="left">REGS</td><td align="right">632</td><td align="right">8,576,279</td><td align="right">4,502,403.73</td><td align="right">0.5300</td><td align="right">0.5210</td><td align="right">0.5340</td><td align="right">0.5250</td><td align="right">0.5250</td><td class="numericspvar" align="right">-0.7600</td>
+			</tr><tr>
+				<td align="left">8/1/2022</td><td align="left">REGS</td><td align="right">865</td><td align="right">16,568,228</td><td align="right">8,777,220.64</td><td align="right">0.5330</td><td align="right">0.5270</td><td align="right">0.5360</td><td align="right">0.5300</td><td align="right">0.5290</td><td class="numericspvar" align="right">-0.1900</td>
+			</tr><tr>
+				<td align="left">7/29/2022</td><td align="left">REGS</td><td align="right">733</td><td align="right">7,555,671</td><td align="right">4,004,578.11</td><td align="right">0.5360</td><td align="right">0.5260</td><td align="right">0.5380</td><td align="right">0.5300</td><td align="right">0.5300</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">7/28/2022</td><td align="left">REGS</td><td align="right">1,534</td><td align="right">28,950,857</td><td align="right">15,377,704.42</td><td align="right">0.5280</td><td align="right">0.5270</td><td align="right">0.5390</td><td align="right">0.5310</td><td align="right">0.5300</td><td class="numericspvar" align="right">2.7100</td>
+			</tr><tr>
+				<td align="left">7/28/2022</td><td align="left">DEALS</td><td align="right">1</td><td align="right">17,667,828</td><td align="right">8,401,052.21</td><td align="right">0.4755</td><td align="right">0.4755</td><td align="right">0.4755</td><td align="right">0.4755</td><td align="right">0.4755</td><td class="numericspvar" align="right">-7.8500</td>
+			</tr><tr>
+				<td align="left">7/27/2022</td><td align="left">REGS</td><td align="right">1,351</td><td align="right">22,585,539</td><td align="right">11,676,403.09</td><td align="right">0.5060</td><td align="right">0.5060</td><td align="right">0.5230</td><td align="right">0.5170</td><td align="right">0.5160</td><td class="numericspvar" align="right">2.9900</td>
+			</tr><tr>
+				<td align="left">7/27/2022</td><td align="left">DEALS</td><td align="right">1</td><td align="right">12,621,290</td><td align="right">5,862,589.21</td><td align="right">0.4645</td><td align="right">0.4645</td><td align="right">0.4645</td><td align="right">0.4645</td><td align="right">0.4645</td><td class="numericspvar" align="right">-7.2900</td>
+			</tr><tr>
+				<td align="left">7/26/2022</td><td align="left">REGS</td><td align="right">406</td><td align="right">10,432,835</td><td align="right">5,257,505.85</td><td align="right">0.5030</td><td align="right">0.5010</td><td align="right">0.5090</td><td align="right">0.5040</td><td align="right">0.5010</td><td class="numericspvar" align="right">-0.2000</td>
+			</tr><tr>
+				<td align="left">7/25/2022</td><td align="left">REGS</td><td align="right">347</td><td align="right">7,821,606</td><td align="right">3,910,540.74</td><td align="right">0.5000</td><td align="right">0.4980</td><td align="right">0.5020</td><td align="right">0.5000</td><td align="right">0.5020</td><td class="numericspvar" align="right">0.9000</td>
+			</tr><tr>
+				<td align="left">7/22/2022</td><td align="left">REGS</td><td align="right">438</td><td align="right">6,619,491</td><td align="right">3,292,795.58</td><td align="right">0.4935</td><td align="right">0.4925</td><td align="right">0.5000</td><td align="right">0.4975</td><td align="right">0.4975</td><td class="numericspvar" align="right">1.0200</td>
+			</tr><tr>
+				<td align="left">7/21/2022</td><td align="left">REGS</td><td align="right">270</td><td align="right">4,450,432</td><td align="right">2,170,420.35</td><td align="right">0.4855</td><td align="right">0.4840</td><td align="right">0.4925</td><td align="right">0.4875</td><td align="right">0.4925</td><td class="numericspvar" align="right">2.0700</td>
+			</tr><tr>
+				<td align="left">7/20/2022</td><td align="left">REGS</td><td align="right">316</td><td align="right">11,676,046</td><td align="right">5,639,609.46</td><td align="right">0.4880</td><td align="right">0.4800</td><td align="right">0.4885</td><td align="right">0.4830</td><td align="right">0.4825</td><td class="numericspvar" align="right">-1.3300</td>
+			</tr><tr>
+				<td align="left">7/19/2022</td><td align="left">REGS</td><td align="right">396</td><td align="right">8,784,937</td><td align="right">4,241,120.10</td><td align="right">0.4845</td><td align="right">0.4770</td><td align="right">0.4895</td><td align="right">0.4830</td><td align="right">0.4890</td><td class="numericspvar" align="right">1.0300</td>
+			</tr><tr>
+				<td align="left">7/18/2022</td><td align="left">REGS</td><td align="right">390</td><td align="right">8,988,122</td><td align="right">4,328,691.01</td><td align="right">0.4775</td><td align="right">0.4775</td><td align="right">0.4865</td><td align="right">0.4815</td><td align="right">0.4840</td><td class="numericspvar" align="right">1.3600</td>
+			</tr><tr>
+				<td align="left">7/15/2022</td><td align="left">REGS</td><td align="right">399</td><td align="right">22,303,134</td><td align="right">10,596,746.88</td><td align="right">0.4660</td><td align="right">0.4660</td><td align="right">0.4780</td><td align="right">0.4750</td><td align="right">0.4775</td><td class="numericspvar" align="right">2.6900</td>
+			</tr><tr>
+				<td align="left">7/14/2022</td><td align="left">REGS</td><td align="right">295</td><td align="right">6,598,608</td><td align="right">3,055,684.43</td><td align="right">0.4635</td><td align="right">0.4600</td><td align="right">0.4670</td><td align="right">0.4630</td><td align="right">0.4650</td><td class="numericspvar" align="right">1.2000</td>
+			</tr><tr>
+				<td align="left">7/13/2022</td><td align="left">REGS</td><td align="right">734</td><td align="right">7,197,361</td><td align="right">3,332,571.67</td><td align="right">0.4690</td><td align="right">0.4595</td><td align="right">0.4690</td><td align="right">0.4630</td><td align="right">0.4595</td><td class="numericspvar" align="right">-2.0300</td>
+			</tr><tr>
+				<td align="left">7/12/2022</td><td align="left">REGS</td><td align="right">374</td><td align="right">17,170,029</td><td align="right">8,060,197.38</td><td align="right">0.4710</td><td align="right">0.4680</td><td align="right">0.4750</td><td align="right">0.4695</td><td align="right">0.4690</td><td class="numericspvar" align="right">-0.2100</td>
+			</tr><tr>
+				<td align="left">7/12/2022</td><td align="left">DEALS</td><td align="right">1</td><td align="right">3,000,000</td><td align="right">1,407,000.00</td><td align="right">0.4690</td><td align="right">0.4690</td><td align="right">0.4690</td><td align="right">0.4690</td><td align="right">0.4690</td><td class="numericspvar" align="right">-0.2100</td>
+			</tr><tr>
+				<td align="left">7/11/2022</td><td align="left">REGS</td><td align="right">299</td><td align="right">5,908,187</td><td align="right">2,769,509.23</td><td align="right">0.4650</td><td align="right">0.4650</td><td align="right">0.4700</td><td align="right">0.4690</td><td align="right">0.4700</td><td class="numericspvar" align="right">1.0800</td>
+			</tr><tr>
+				<td align="left">7/8/2022</td><td align="left">REGS</td><td align="right">702</td><td align="right">14,183,827</td><td align="right">6,605,528.52</td><td align="right">0.4700</td><td align="right">0.4630</td><td align="right">0.4720</td><td align="right">0.4655</td><td align="right">0.4650</td><td class="numericspvar" align="right">-1.0600</td>
+			</tr><tr>
+				<td align="left">7/7/2022</td><td align="left">REGS</td><td align="right">374</td><td align="right">15,730,219</td><td align="right">7,392,214.44</td><td align="right">0.4725</td><td align="right">0.4685</td><td align="right">0.4740</td><td align="right">0.4700</td><td align="right">0.4700</td><td class="numericspvar" align="right">-0.5300</td>
+			</tr><tr>
+				<td align="left">7/6/2022</td><td align="left">REGS</td><td align="right">390</td><td align="right">14,804,624</td><td align="right">6,990,287.19</td><td align="right">0.4720</td><td align="right">0.4695</td><td align="right">0.4765</td><td align="right">0.4720</td><td align="right">0.4725</td><td class="numericspvar" align="right">0.7500</td>
+			</tr><tr>
+				<td align="left">7/5/2022</td><td align="left">REGS</td><td align="right">1,031</td><td align="right">31,564,705</td><td align="right">14,832,202.93</td><td align="right">0.4730</td><td align="right">0.4650</td><td align="right">0.4730</td><td align="right">0.4700</td><td align="right">0.4690</td><td class="numericspvar" align="right">2.5100</td>
+			</tr><tr>
+				<td align="left">7/4/2022</td><td align="left">REGS</td><td align="right">804</td><td align="right">26,963,467</td><td align="right">13,338,080.63</td><td align="right">0.4900</td><td align="right">0.4900</td><td align="right">0.4955</td><td align="right">0.4945</td><td align="right">0.4945</td><td class="numericspvar" align="right">0.9200</td>
+			</tr><tr>
+				<td align="left">7/1/2022</td><td align="left">REGS</td><td align="right">392</td><td align="right">8,689,297</td><td align="right">4,255,619.07</td><td align="right">0.4890</td><td align="right">0.4880</td><td align="right">0.4905</td><td align="right">0.4900</td><td align="right">0.4900</td><td class="numericspvar" align="right">0.5100</td>
+			</tr><tr>
+				<td align="left">6/30/2022</td><td align="left">REGS</td><td align="right">436</td><td align="right">6,052,638</td><td align="right">2,958,985.45</td><td align="right">0.4895</td><td align="right">0.4870</td><td align="right">0.4910</td><td align="right">0.4890</td><td align="right">0.4875</td><td class="numericspvar" align="right">-0.2000</td>
+			</tr><tr>
+				<td align="left">6/29/2022</td><td align="left">REGS</td><td align="right">363</td><td align="right">6,026,684</td><td align="right">2,945,293.98</td><td align="right">0.4895</td><td align="right">0.4875</td><td align="right">0.4895</td><td align="right">0.4885</td><td align="right">0.4885</td><td class="numericspvar" align="right">0.1000</td>
+			</tr><tr>
+				<td align="left">6/28/2022</td><td align="left">REGS</td><td align="right">765</td><td align="right">19,141,937</td><td align="right">9,301,882.92</td><td align="right">0.4850</td><td align="right">0.4820</td><td align="right">0.4880</td><td align="right">0.4860</td><td align="right">0.4880</td><td class="numericspvar" align="right">0.7200</td>
+			</tr><tr>
+				<td align="left">6/27/2022</td><td align="left">REGS</td><td align="right">753</td><td align="right">9,427,986</td><td align="right">4,559,988.01</td><td align="right">0.4820</td><td align="right">0.4805</td><td align="right">0.4850</td><td align="right">0.4835</td><td align="right">0.4845</td><td class="numericspvar" align="right">0.9400</td>
+			</tr><tr>
+				<td align="left">6/24/2022</td><td align="left">REGS</td><td align="right">674</td><td align="right">14,637,835</td><td align="right">7,028,589.03</td><td align="right">0.4795</td><td align="right">0.4780</td><td align="right">0.4815</td><td align="right">0.4800</td><td align="right">0.4800</td><td class="numericspvar" align="right">0.8400</td>
+			</tr><tr>
+				<td align="left">6/23/2022</td><td align="left">REGS</td><td align="right">582</td><td align="right">6,994,555</td><td align="right">3,331,159.66</td><td align="right">0.4780</td><td align="right">0.4735</td><td align="right">0.4800</td><td align="right">0.4765</td><td align="right">0.4760</td><td class="numericspvar" align="right">-0.4200</td>
+			</tr><tr>
+				<td align="left">6/22/2022</td><td align="left">REGS</td><td align="right">735</td><td align="right">7,707,216</td><td align="right">3,687,609.88</td><td align="right">0.4835</td><td align="right">0.4745</td><td align="right">0.4835</td><td align="right">0.4785</td><td align="right">0.4780</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">6/21/2022</td><td align="left">REGS</td><td align="right">396</td><td align="right">3,247,502</td><td align="right">1,553,572.16</td><td align="right">0.4785</td><td align="right">0.4765</td><td align="right">0.4815</td><td align="right">0.4785</td><td align="right">0.4780</td><td class="numericspvar" align="right">0.7400</td>
+			</tr><tr>
+				<td align="left">6/20/2022</td><td align="left">REGS</td><td align="right">1,050</td><td align="right">16,974,303</td><td align="right">8,141,616.36</td><td align="right">0.4800</td><td align="right">0.4705</td><td align="right">0.4860</td><td align="right">0.4795</td><td align="right">0.4745</td><td class="numericspvar" align="right">-1.1500</td>
+			</tr><tr>
+				<td align="left">6/17/2022</td><td align="left">REGS</td><td align="right">644</td><td align="right">19,293,020</td><td align="right">9,255,789.48</td><td align="right">0.4785</td><td align="right">0.4770</td><td align="right">0.4800</td><td align="right">0.4795</td><td align="right">0.4800</td><td class="numericspvar" align="right">0.3100</td>
+			</tr><tr>
+				<td align="left">6/16/2022</td><td align="left">REGS</td><td align="right">985</td><td align="right">7,070,554</td><td align="right">3,391,516.55</td><td align="right">0.4800</td><td align="right">0.4775</td><td align="right">0.4845</td><td align="right">0.4795</td><td align="right">0.4785</td><td class="numericspvar" align="right">0.1000</td>
+			</tr><tr>
+				<td align="left">6/15/2022</td><td align="left">REGS</td><td align="right">2,021</td><td align="right">42,564,395</td><td align="right">20,393,706.01</td><td align="right">0.4810</td><td align="right">0.4700</td><td align="right">0.4865</td><td align="right">0.4790</td><td align="right">0.4780</td><td class="numericspvar" align="right">3.9100</td>
+			</tr><tr>
+				<td align="left">6/14/2022</td><td align="left">REGS</td><td align="right">659</td><td align="right">7,686,627</td><td align="right">3,485,757.55</td><td align="right">0.4565</td><td align="right">0.4495</td><td align="right">0.4605</td><td align="right">0.4535</td><td align="right">0.4600</td><td class="numericspvar" align="right">0.4400</td>
+			</tr><tr>
+				<td align="left">6/10/2022</td><td align="left">REGS</td><td align="right">320</td><td align="right">7,059,625</td><td align="right">3,245,518.57</td><td align="right">0.4610</td><td align="right">0.4575</td><td align="right">0.4615</td><td align="right">0.4595</td><td align="right">0.4580</td><td class="numericspvar" align="right">-0.4300</td>
+			</tr><tr>
+				<td align="left">6/9/2022</td><td align="left">REGS</td><td align="right">276</td><td align="right">9,545,882</td><td align="right">4,390,354.06</td><td align="right">0.4600</td><td align="right">0.4590</td><td align="right">0.4620</td><td align="right">0.4600</td><td align="right">0.4600</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">6/8/2022</td><td align="left">REGS</td><td align="right">311</td><td align="right">4,034,501</td><td align="right">1,857,453.74</td><td align="right">0.4620</td><td align="right">0.4595</td><td align="right">0.4620</td><td align="right">0.4605</td><td align="right">0.4600</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">6/7/2022</td><td align="left">REGS</td><td align="right">536</td><td align="right">24,192,649</td><td align="right">11,131,164.92</td><td align="right">0.4600</td><td align="right">0.4590</td><td align="right">0.4625</td><td align="right">0.4600</td><td align="right">0.4600</td><td class="numericspvar" align="right">0.2200</td>
+			</tr><tr>
+				<td align="left">6/6/2022</td><td align="left">REGS</td><td align="right">564</td><td align="right">2,341,372</td><td align="right">1,072,851.91</td><td align="right">0.4600</td><td align="right">0.4540</td><td align="right">0.4600</td><td align="right">0.4580</td><td align="right">0.4590</td><td class="numericspvar" align="right">1.1000</td>
+			</tr><tr>
+				<td align="left">6/3/2022</td><td align="left">REGS</td><td align="right">411</td><td align="right">5,692,200</td><td align="right">2,597,874.82</td><td align="right">0.4635</td><td align="right">0.4520</td><td align="right">0.4640</td><td align="right">0.4565</td><td align="right">0.4540</td><td class="numericspvar" align="right">-2.1600</td>
+			</tr><tr>
+				<td align="left">6/2/2022</td><td align="left">REGS</td><td align="right">445</td><td align="right">9,894,097</td><td align="right">4,534,726.83</td><td align="right">0.4645</td><td align="right">0.4540</td><td align="right">0.4645</td><td align="right">0.4585</td><td align="right">0.4640</td><td class="numericspvar" align="right">0.0000</td>
+			</tr><tr>
+				<td align="left">5/31/2022</td><td align="left">REGS</td><td align="right">382</td><td align="right">18,746,739</td><td align="right">8,682,325.94</td><td align="right">0.4540</td><td align="right">0.4530</td><td align="right">0.4640</td><td align="right">0.4630</td><td align="right">0.4640</td><td class="numericspvar" align="right">2.4300</td>
+			</tr><tr>
+				<td align="left">5/30/2022</td><td align="left">REGS</td><td align="right">219</td><td align="right">1,710,526</td><td align="right">774,183.92</td><td align="right">0.4530</td><td align="right">0.4515</td><td align="right">0.4530</td><td align="right">0.4525</td><td align="right">0.4530</td><td class="numericspvar" align="right">0.1100</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+    </div>
+    <div id="ctl00_body_ctl02_TradingSummariesControl_divSixMonths" class="caption p-0">Trading history in the last 6 month</div>
+
+    </div>
+
+
+</div>
+
+                |44140|hiddenField|__VIEWSTATE|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|8|hiddenField|__VIEWSTATEGENERATOR|A396FC17|236|hiddenField|__EVENTVALIDATION|ck550b9d/s9oVRy4hNRWFmzJsxeY9ZbnK67KiQ1ohgIiXs9Aukb5E/XWRCW9b9uJbur1MKOXbcoO8Qx0UIercjx1o0wTK0DXJ/Cu9a3ZHJJEXCFL3/+Jj53JS+yU4awkbwyWhM2/PBTcPVdkgcVRGatd9d/WDB+YuAGI/3w8Vxyt8RSbYWe8vBfxgAbTXnHYMUWsUVflDTjLlu1bDFjvCSMM2GyTDx6unzr6vFdQ0iA=|0|asyncPostBackControlIDs|||0|postBackControlIDs|||53|updatePanelIDs||tctl00$body$updIfttc,,tctl00$body$updMaster,updMaster|0|childUpdatePanelIDs|||51|panelsToRefreshIDs||ctl00$body$updIfttc,,ctl00$body$updMaster,updMaster|2|asyncPostBackTimeout||90|38|formAction||FinancialInstrumentsDetails.aspx?s=SNP|13|pageTitle||Issue Details|48|scriptStartupBlock|ScriptContentNoTags| $('#statusMarket').addClass('text-defaultRed');|130|scriptStartupBlock|ScriptContentNoTags| bPageLength = 5; bColumnDefs = [{orderable:false, targets: [0, 5]}];
+               createDTableSpecific('#gvMMOrderBook',null);|359|scriptStartupBlock|ScriptContentNoTags|$('.truncated').hide()                       
+    	            .after('<i class="fa-lg pLeft10 fa fa-plus-square" style="color: #428bca;cursor: pointer;"></i>') 
+    	            .next().on('click', function(){          
+                        $(this).toggleClass('fa-minus-square fa-plus-square').prev().toggle();                    
+                });|235|scriptStartupBlock|ScriptContentNoTags|  bSort = false; 
+                   bPageLength = 6; 
+                   bLengthChange = false; bInfo = false; bPaginate = false;
+                   createDTableSpecific('#gvPerfT',null);                          
+                |169|scriptStartupBlock|ScriptContentNoTags| 
+                    bPageLength = 5; bSort = false; bInfo = false; bPaginate = false;
+                    createDTableSpecific('#gvLast',null);
+                    |217|scriptStartupBlock|ScriptContentNoTags|  bWithButtons = true;
+                bFileName = 'Trading history SNP';
+                bFileTitle= 'Trading history SNP';
+                createDTableSpecific('#gvSummar',null);                    
+            |
