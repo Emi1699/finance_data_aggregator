@@ -2,6 +2,7 @@ from datetime import date
 import helpers
 from news import News
 import file_system
+from dir_path import DirPath as dp
 
 class NewsRetrievalModule():
 
@@ -30,7 +31,7 @@ class NewsRetrievalModule():
                     except:
                         print(f"> couldn't read news from link {newsLink}")
 
-            file_system.write_news_dict_to_file("ziarul_financiar", news, "nbs")
+            file_system.write_news_dict_to_file("ziarul_financiar.txt", news, dp.NEWS_BY_SOURCE)
         except:
             print("!> something went wrong! please check your internet connection (most probable cause of problem)")
             exit()
@@ -67,7 +68,7 @@ class NewsRetrievalModule():
                 except:
                     print("> couldnt read article, moving on...\n")
 
-            file_system.write_news_dict_to_file("wall_street", news, "nbs")
+            file_system.write_news_dict_to_file("wall_street.txt", news, dp.NEWS_BY_SOURCE)
         except:
             print("!> something went wrong! please check your internet connection (most probable cause of problem)")
             exit()
@@ -111,7 +112,7 @@ class NewsRetrievalModule():
                         except:
                             print(f"> couldnt read news from profit_ro, trying next link...")
 
-            file_system.write_news_dict_to_file("profit_ro", news, "nbs")
+            file_system.write_news_dict_to_file("profit_ro.txt", news, dp.NEWS_BY_SOURCE)
         except:
             print("!> something went wrong! please check your internet connection (most probable cause of problem)")
             exit()
