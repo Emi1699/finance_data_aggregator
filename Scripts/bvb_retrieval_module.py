@@ -3,6 +3,7 @@ import requests
 import file_system
 from companies import Company
 import bvb_curl_headers_financials
+import bvb_curl_headers_trading
 import helpers
 
 class BVBRetrievalModule:
@@ -15,7 +16,8 @@ class BVBRetrievalModule:
 
         # get 'financials' data for one single company
         def get_financials_data_of_company(self, company):
-            self.process_financials_data(company, *bvb_curl_headers_financials.get_curl_params(company))
+            curl_params = bvb_curl_headers_financials.get_curl_params(company)
+            self.process_financials_data(company, *curl_params)
         
         # process 'financials' data (clean and write to file) for one single company, using the params passed as arguments
         def process_financials_data(self, company, cookies, headers, params, data):
@@ -107,14 +109,22 @@ class BVBRetrievalModule:
 
         class Performance():
             
-            def get_performace_data(self):
-                data_table = helpers.get_source("https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=TLV")
+            def get_trading_performace_data(self, company):
+                curl_params = bvb_curl_headers_trading.get_curl_params(company)
+                self.process_trading_performance_data(company, *curl_params)
 
-                file_system.write_to_file("performance_table.html", str(data_table), "test")
+            def process_trading_performance_data(self, company, cookies, headers, params, data):
+                print(f"> processing financial data from {company.name} ...")
+
+                # clear file before writing to it
+                file_system.clear_file(company.value[0] + "_" + company.name, "trading_performace")
+
+                financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
+
+                response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
+                file_system.write_to_file("_trading_performance_temp.html", response.text, "trading_performance")
+
                 
-
-
-
         
         class History():
             pass
@@ -122,5 +132,5 @@ class BVBRetrievalModule:
 
 
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
-bvb_trading_performance.get_performace_data()
+bvb_trading_performance.get_trading_performace_data(Company.OMV_PETROM)
 
