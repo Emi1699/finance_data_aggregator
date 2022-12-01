@@ -1,8 +1,8 @@
 from datetime import date
 import helpers
 from news import News
-import file_system
-from dir_path import DirPath as dp
+import File_System.file_system as file_system
+from File_System.dir_path import DirPath as dp
 
 class NewsRetrievalModule():
 
@@ -10,31 +10,31 @@ class NewsRetrievalModule():
     def get_latest_news_ziarul_financiar(self, sourceLink = "https://www.zf.ro/"):
         print(f"\n\nRetrieving news from ziarul-financiar.ro ...")
 
-        try:
-            source = helpers.get_source(sourceLink)
-            news = {}
-            id = 1
+    # try:
+        source = helpers.get_source(sourceLink)
+        news = {}
+        id = 1
 
-            latestNews_wrapper = source.select(".clear.latest-wrapper")
+        latestNews_wrapper = source.select(".clear.latest-wrapper")
 
-            for wrapper in latestNews_wrapper:
-                for list_el in wrapper.find_all("li"):
-                    try:
-                        newsDate = str(date.today()) + " @ " + list_el.find("small").text
-                        newsLink = sourceLink+ list_el.find("a")['href']
-                        newsText = list_el.find("a").text
+        for wrapper in latestNews_wrapper:
+            for list_el in wrapper.find_all("li"):
+                try:
+                    newsDate = str(date.today()) + " @ " + list_el.find("small").text
+                    newsLink = sourceLink+ list_el.find("a")['href']
+                    newsText = list_el.find("a").text
 
-                        newsPiece = News(newsDate, newsText, newsLink, id)
-                        news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
+                    newsPiece = News(newsDate, newsText, newsLink, id)
+                    news[newsPiece.id] = (newsPiece.date, newsPiece.text, newsPiece.link)
 
-                        id += 1
-                    except:
-                        print(f"> couldn't read news from link {newsLink}")
+                    id += 1
+                except:
+                    print(f"> couldn't read news from link {newsLink}")
 
-            file_system.write_news_dict_to_file("ziarul_financiar.txt", news, dp.NEWS_BY_SOURCE)
-        except:
-            print("!> something went wrong! please check your internet connection (most probable cause of problem)")
-            exit()
+        file_system.write_news_dict_to_file("ziarul_financiar.txt", news, dp.NEWS_BY_SOURCE)
+    # except:
+        # print("!> something went wrong! please check your internet connection (most probable cause of problem)")
+        # exit()
 
 
     # get latest new from wall-street.ro

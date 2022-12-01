@@ -1,8 +1,8 @@
 import helpers
 import requests
 import re
-import file_system
-from dir_path import DirPath as dp
+from File_System import file_system
+from File_System.dir_path import DirPath as dp
 
 running = True
 testing = not running
@@ -19,16 +19,16 @@ def test():
     print(ticker_in_news('fondul proprietatea', source_txt))
 
 def sort_all_news_by_tickers():
-    sort_news_by_tickers_from("ziarul_financiar")
-    sort_news_by_tickers_from("wall_street")
-    sort_news_by_tickers_from("profit_ro")
+    sort_news_by_tickers_from("ziarul_financiar.txt")
+    sort_news_by_tickers_from("wall_street.txt")
+    sort_news_by_tickers_from("profit_ro.txt")
 
 def sort_news_by_tickers_from(source):
     print(f"\nSorting news from {source} by ticker...\n")
 
-    with open(file_system.get_path_to_file(source, __file__, dp.NEWS_BY_SOURCE"), 'r', encoding="utf-8") as file:
+    with open(file_system.get_path_to_file(source, __file__, dp.NEWS_BY_SOURCE), 'r', encoding="utf-8") as file:
 
-        if source == "ziarul_financiar":
+        if source == "ziarul_financiar.txt":
             link = 1
             slash_bottom_percent = 0.95 # only check in the first (1 - slash_bottom_percent)% of the file 
 
@@ -46,7 +46,7 @@ def sort_news_by_tickers_from(source):
 
                 link += 1
         
-        elif source == "wall_street":
+        elif source == "wall_street.txt":
             link = 1
 
             for line in file:

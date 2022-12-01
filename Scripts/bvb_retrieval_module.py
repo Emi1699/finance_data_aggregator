@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
-import file_system
+from File_System import file_system
 from companies import Company
-import bvb_curl_headers_financials
-import bvb_curl_headers_trading
+import Curl_Headers.bvb_curl_headers_financials as bvb_curl_headers_financials
+import Curl_Headers.bvb_curl_headers_trading as bvb_curl_headers_trading
 import helpers
 
 class BVBRetrievalModule:
