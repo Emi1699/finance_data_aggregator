@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
-from File_System import file_system
-from File_System.dir_path import DirPath as dir_path
+import file_system
+from dir_path import DirPath as dir_path
 from companies import Company
-import Curl_Headers.bvb_curl_headers_financials as bvb_curl_headers_financials
-import Curl_Headers.bvb_curl_headers_trading as bvb_curl_headers_trading
+import bvb_curl_headers_financials
+import bvb_curl_headers_trading
 import helpers
 
 class BVBRetrievalModule:
@@ -118,6 +118,7 @@ class BVBRetrievalModule:
                 print(f"> processing financial data from {company.name} ...")
 
                 # clear file before writing to it
+                print("CLEAR")
                 file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_TRADING_PERFORMANCE)
 
                 financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
@@ -125,11 +126,15 @@ class BVBRetrievalModule:
                 response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
                 file_system.write_to_file("_trading_performance_temp.html", response.text, dir_path.BVB_TRADING_PERFORMANCE)
 
+                with open(file_system.get_path_to_file("_trading_performance_temp.html", __file__, dir_path.BVB_TRADING_PERFORMANCE)) as financials_file:
+                    financials_data = BeautifulSoup(financials_file, 'html.parser')
                 
+                table_data = financials_data.select("table#gvPerfT")
+
+                print(table_data)
         
         class History():
             pass
-
 
 
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()

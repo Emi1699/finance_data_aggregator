@@ -1,8 +1,8 @@
 import helpers
 import requests
 import re
-from File_System import file_system
-from File_System.dir_path import DirPath as dir_path
+import file_system
+from dir_path import DirPath as dir_path
 
 running = True
 testing = not running

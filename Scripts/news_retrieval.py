@@ -1,8 +1,8 @@
 from datetime import date
 import helpers
 from news import News
-import File_System.file_system as file_system
-from File_System.dir_path import DirPath as dp
+import file_system
+from dir_path import DirPath as dp
 
 class NewsRetrievalModule():
 
