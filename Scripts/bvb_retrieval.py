@@ -128,9 +128,16 @@ class BVBRetrievalModule:
                 with open(file_system.get_path_to_file("_trading_performance_temp.html", __file__, dir_path.BVB_TRADING_PERFORMANCE)) as financials_file:
                     financials_data = BeautifulSoup(financials_file, 'html.parser')
                 
-                table_data = financials_data.select("table#gvPerfT")
+                table_column_names = financials_data.select("table#gvPerfT th.text-right")
+                table_data = financials_data.select("table#gvPerfT tbody td")
 
-                print(table_data)
+                for el in table_column_names:
+                    print(el)
+
+                for el in table_data:
+                    print(el)
+
+                file_system.write_to_file("table.html", str(table_data[0]), dir_path.TEST_FILES)
         
         class History():
             pass
