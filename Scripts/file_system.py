@@ -57,14 +57,10 @@ def write_news_dict_to_file(name, news, dir_path):
 
 def get_path_to_file(name, file, dir_path):
     absolute_path = os.path.dirname(file)
-    print(absolute_path)
     relative_path = dir_path.value + name
         
     output_file = os.path.join(absolute_path, relative_path)
 
-    # print(name)
-    # print(output_file)
-    # print("!!!!!!!!!!!!!!!!")
     return output_file
 
 # overwrite

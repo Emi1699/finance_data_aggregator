@@ -118,7 +118,6 @@ class BVBRetrievalModule:
                 print(f"> processing financial data from {company.name} ...")
 
                 # clear file before writing to it
-                print("CLEAR")
                 file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_TRADING_PERFORMANCE)
 
                 financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
