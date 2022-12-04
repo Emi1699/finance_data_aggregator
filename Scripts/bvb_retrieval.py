@@ -110,11 +110,11 @@ class BVBRetrievalModule:
 
         class Performance():
             
-            def get_trading_performace_data(self, company):
+            def get_trading_performace_data(self, company, readable = False):
                 curl_params = bvb_curl_headers_trading.get_curl_params(company)
-                self.process_trading_performance_data(company, *curl_params)
+                self.process_trading_performance_data(company, *curl_params, readable)
 
-            def process_trading_performance_data(self, company, cookies, headers, params, data):
+            def process_trading_performance_data(self, company, cookies, headers, params, data, readable):
                 print(f"> processing financial data from {company.name} ...")
 
                 # clear file before writing to it
@@ -132,8 +132,6 @@ class BVBRetrievalModule:
                 table_column_names = financials_data.select("table#gvPerfT th.text-right") # column names
                 table_data = financials_data.select("table#gvPerfT tbody td") # table data 
 
-                data_row = None # this will be written to the output file
-
                 # transform elements in table to strings
                 for k in range(0, len(table_data)):
                     table_data[k] = table_data[k].text
@@ -142,21 +140,56 @@ class BVBRetrievalModule:
                 for k in range(0, len(table_column_names)):
                     table_column_names[k] = table_column_names[k].text
 
-                formatting_longest = len(max(table_data, key = len)) + 25 # used to format the data in the output file
-                
+                formatting_longest = 33 # used to format the data in the output file (if the readable argument is set to true)
 
-                # for el in table_column_names:
-                #     print(el)
+                if len(table_data) > 0: # for some comapanies, there is no data
+                    i = 0 # used to iterate over the values in the table
+                    
+                    # loop through each row of the table and write content to fil
+                    while i < len(table_data):
+                        data_row = "" # will contain each row in the output file
 
-                # for el in table_data:
-                #     print(el)
+                        right_padding = formatting_longest - len(table_data[i])
+                        
+                        # format data in file so that it looks readable to humans ...
+                        if readable:
+                            data_row = "{:>1} {:>{right_padding}} {:>30} {:>30} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], table_data[i + 3], table_data[i + 4], right_padding = right_padding)
+                        else: # ... or not
 
-                # file_system.write_to_file("table.html", str(table_data[0]), dir_path.TEST_FILES)
+                            # convert strings to floats and ints
+                            table_data[i + 2] = float(table_data[i + 2].replace(',', ''))
+                            table_data[i + 3] = float(table_data[i + 3].replace(',', ''))
+                            table_data[i + 4] = float(table_data[i + 4].replace(',', ''))
+
+                            # if the digits on decimal places are 0, transform the number back to an int
+                            if int(table_data[i+2]) == table_data[i+2]:
+                                table_data[i+2] = int(table_data[i+2])
+
+                            if int(table_data[i+3]) == table_data[i+3]:
+                                table_data[i+3] = int(table_data[i+3])
+
+                            if int(table_data[i+4]) == table_data[i+4]:
+                                table_data[i+4] = int(table_data[i+4])
+
+
+                            data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]},{table_data[i + 3]},{table_data[i + 4]}"
+
+                        # append to file (only if not already in file)
+                        file_system.append_to_file(company.value[0] + "_" + company.name, data_row, dir_path.BVB_TRADING_PERFORMANCE)
+
+                        # each row in the file contains information about a specific time frame and its values
+                        # thus, for every iteration through this while loop, we bundle information 5 columns at the time
+                        i += 5
+
+                    print(f"\t|\n\t|__SUCCESS!\n")
+                else:
+                    file_system.append_to_file(company.value[0] + "_" + company.name, "!!! NO DATA FOUND !!!", dir_path.BVB_TRADING_PERFORMANCE)
+                    print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
         
         class History():
             pass
 
 
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
-bvb_trading_performance.get_trading_performace_data(Company.OMV_PETROM)
+bvb_trading_performance.get_trading_performace_data(Company.OMV_PETROM, readable=False)
 
