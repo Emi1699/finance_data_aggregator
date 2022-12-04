@@ -191,5 +191,5 @@ class BVBRetrievalModule:
 
 
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
-bvb_trading_performance.get_trading_performace_data(Company.OMV_PETROM, readable=False)
+bvb_trading_performance.get_trading_performace_data(Company.OMV_PETROM, readable=True)
 
