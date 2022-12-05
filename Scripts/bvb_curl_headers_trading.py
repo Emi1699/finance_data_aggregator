@@ -1,3 +1,9 @@
+'''
+
+cURL headers and params for retrieving trading data for tracked companies via BVB's API
+
+'''
+
 from companies import Company
 
 def get_curl_params(company):
