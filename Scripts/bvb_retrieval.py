@@ -259,8 +259,6 @@ class BVBRetrievalModule:
                 file_system.write_to_file(output_file, trading_history_data, dir_path.BVB_TRADING_HISTORY)
 
 
-
-
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
 bvb_financials = BVBRetrievalModule().Financials()
 
