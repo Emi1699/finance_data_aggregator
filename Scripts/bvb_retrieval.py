@@ -109,13 +109,17 @@ class BVBRetrievalModule:
     class Trading():
 
         class Performance():
+
+            def get_financials_for_all_companies(self, readable = False):
+                for company in Company:
+                    self.get_trading_performace_data_of_company(company, readable)
             
-            def get_trading_performace_data(self, company, readable = False):
+            def get_trading_performace_data_of_company(self, company, readable = False):
                 curl_params = bvb_curl_headers_trading.get_curl_params(company)
                 self.process_trading_performance_data(company, *curl_params, readable)
 
             def process_trading_performance_data(self, company, cookies, headers, params, data, readable):
-                print(f"> processing financial data from {company.name} ...")
+                print(f"> processing trading performance data from {company.name} ...")
 
                 # clear file before writing to it
                 file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_TRADING_PERFORMANCE)
@@ -191,5 +195,5 @@ class BVBRetrievalModule:
 
 
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
-bvb_trading_performance.get_trading_performace_data(Company.OMV_PETROM, readable=True)
+bvb_trading_performance.get_financials_for_all_companies(readable = True)
 
