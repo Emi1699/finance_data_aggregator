@@ -26,12 +26,12 @@ class BVBRetrievalModule:
             output_file = "_financials_temp.html"
 
             # clear file before writing to it
-            file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_FINANCIALS)
+            file_system.clear_file(str(company.value) + "_" + str(company.name), dir_path.BVB_FINANCIALS)
 
             financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
 
             response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
-            file_system.write_to_file(output_file, response.text, "financials_temp")
+            file_system.write_to_file(output_file, response.text, dir_path.BVB_FINANCIALS)
 
             with open(file_system.get_path_to_file(output_file, __file__, dir_path.BVB_FINANCIALS)) as financials_file:
                 financials_data = BeautifulSoup(financials_file, 'html.parser')
@@ -68,9 +68,14 @@ class BVBRetrievalModule:
                     elif years_back == 1:
                         data_row = "{:>0} {:>{right_padding}}".format("Indicator", years[0] + "\n", right_padding = right_padding)
                 else:
-                    data_row = f"Indicator,{years[0]},{years[1]},{years[2]}"
+                    if years_back == 3:
+                        data_row = f"Indicator,{years[0]},{years[1]},{years[2]}"
+                    elif years_back == 2:
+                        data_row = f"Indicator,{years[0]},{years[1]}"
+                    elif years_back == 1:
+                        data_row = f"Indicator,{years[0]}"
 
-                file_system.append_to_file(company.value[0] + "_" + company.name, data_row, dir_path.BVB_FINANCIALS) # write first row to file (the name of the columns below)
+                file_system.append_to_file(str(company.value) + "_" + str(company.name), data_row, dir_path.BVB_FINANCIALS) # write first row to file (the name of the columns below)
 
             if len(table_data) > 0: # for some comapanies, there is no data
                 i = 0 # used to iterate over the values in the table
@@ -79,14 +84,14 @@ class BVBRetrievalModule:
                 while i < len(table_data):
                     data_row = "" # will contain each row in the output file
 
-                    # populate table with 'None' for rows with no values
-                    if len(table_data[i + 1]) == 1: table_data[i + 1] = "None"
+                    # populate table with 'NaN' for rows with no values
+                    if len(table_data[i + 1]) == 1: table_data[i + 1] = "NaN"
 
                     if years_back > 1:
-                        if len(table_data[i + 2]) == 1: table_data[i + 2] = "None"
+                        if len(table_data[i + 2]) == 1: table_data[i + 2] = "NaN"
 
                     if years_back > 2:
-                        if len(table_data[i + 3]) == 1: table_data[i + 3] = "None"
+                        if len(table_data[i + 3]) == 1: table_data[i + 3] = "NaN"
                     
                     # format data in file to look readable
                     right_padding = formatting_longest - len(table_data[i])
@@ -100,22 +105,39 @@ class BVBRetrievalModule:
                             data_row = "{:>0} {:>{right_padding}}".format(table_data[i], table_data[i + 1], right_padding = right_padding)
                     else: # ... or not
                         # convert strings to floats and ints
-                            table_data[i + 2] = float(table_data[i + 2].replace(',', ''))
-                            table_data[i + 3] = float(table_data[i + 3].replace(',', ''))
-                            table_data[i + 4] = float(table_data[i + 4].replace(',', ''))
 
-                            # if the digits on decimal places are 0, transform the number back to an int
-                            if int(table_data[i+2]) == table_data[i+2]:
-                                table_data[i+2] = int(table_data[i+2])
+                        if years_back >= 1:
+                            if table_data[i + 1] != "NaN":
+                                table_data[i + 1] = float(table_data[i + 1].replace(',', ''))
 
-                            if int(table_data[i+3]) == table_data[i+3]:
-                                table_data[i+3] = int(table_data[i+3])
+                                # if the digits on decimal places are 0, transform the number back to an int
+                                if int(table_data[i+1]) == table_data[i+1]:
+                                    table_data[i+1] = int(table_data[i+1])
 
-                            if int(table_data[i+4]) == table_data[i+4]:
-                                table_data[i+4] = int(table_data[i+4])
+                            data_row = f"{table_data[i]},{table_data[i + 1]}"
+
+                        if years_back >= 2:
+                            if table_data[i + 2] != "NaN":
+                                table_data[i + 2] = float(table_data[i + 2].replace(',', ''))
+
+                                # if the digits on decimal places are 0, transform the number back to an int
+                                if int(table_data[i+2]) == table_data[i+2]:
+                                    table_data[i+2] = int(table_data[i+2])
+
+                            data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]}"
+
+                        if years_back >= 3:
+                            if table_data[i + 3] != "NaN":
+                                table_data[i + 3] = float(table_data[i + 3].replace(',', ''))
+
+                                # if the digits on decimal places are 0, transform the number back to an int
+                                if int(table_data[i+3]) == table_data[i+3]:
+                                    table_data[i+3] = int(table_data[i+3])
+
+                            data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]},{table_data[i + 3]}"
 
                     # append to file (only if not already in file)
-                    file_system.append_to_file(company.value[0] + "_" + company.name, data_row, dir_path.BVB_FINANCIALS)
+                    file_system.append_to_file(str(company.value) + "_" + str(company.name), data_row, dir_path.BVB_FINANCIALS)
 
                     # each row in the file contains information about a specific financial indicator and its value for the last <years_back> years
                     # thus, for every iteration through this while loop, we bundle information (<years_back> + 1) rows at the time
@@ -123,7 +145,7 @@ class BVBRetrievalModule:
 
                 print(f"\t|\n\t|__SUCCESS!\n")
             else:
-                file_system.append_to_file(company.value[0] + "_" + company.name, "!!! NO DATA FOUND !!!", dir_path.BVB_FINANCIALS)
+                file_system.append_to_file(str(company.value) + "_" + str(company.name), "!!! NO DATA FOUND !!!", dir_path.BVB_FINANCIALS)
                 print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
 
     class Trading():
@@ -143,7 +165,7 @@ class BVBRetrievalModule:
                 output_file = "_trading_performance_temp.html"
 
                 # clear file before writing to it
-                file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_TRADING_PERFORMANCE)
+                file_system.clear_file(str(company.value) + "_" + str(company.name), dir_path.BVB_TRADING_PERFORMANCE)
 
                 trading_performance_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
 
@@ -199,7 +221,7 @@ class BVBRetrievalModule:
                             data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]},{table_data[i + 3]},{table_data[i + 4]}"
 
                         # append to file (only if not already in file)
-                        file_system.append_to_file(company.value[0] + "_" + company.name, data_row, dir_path.BVB_TRADING_PERFORMANCE)
+                        file_system.append_to_file(str(company.value) + "_" + str(company.name), data_row, dir_path.BVB_TRADING_PERFORMANCE)
 
                         # each row in the file contains information about a specific time frame and its values
                         # thus, for every iteration through this while loop, we bundle information 5 columns at the time
@@ -207,7 +229,7 @@ class BVBRetrievalModule:
 
                     print(f"\t|\n\t|__SUCCESS!\n")
                 else:
-                    file_system.append_to_file(company.value[0] + "_" + company.name, "!!! NO DATA FOUND !!!", dir_path.BVB_TRADING_PERFORMANCE)
+                    file_system.append_to_file(str(company.value) + "_" + str(company.name), "!!! NO DATA FOUND !!!", dir_path.BVB_TRADING_PERFORMANCE)
                     print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
         
         class History():
@@ -224,7 +246,7 @@ class BVBRetrievalModule:
                 output_file = "_trading_history_temp.html"
 
                 # clear file before writing to it
-                file_system.clear_file(company.value[0] + "_" + company.name, dir_path.BVB_TRADING_HISTORY)
+                file_system.clear_file(str(company.value) + "_" + str(company.name), dir_path.BVB_TRADING_HISTORY)
 
                 trading_history_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
 
@@ -234,6 +256,8 @@ class BVBRetrievalModule:
                 with open(file_system.get_path_to_file(output_file, __file__, dir_path.BVB_TRADING_HISTORY)) as financials_file:
                     trading_history_data = BeautifulSoup(financials_file, 'html.parser')
 
+                file_system.write_to_file(output_file, trading_history_data, dir_path.BVB_TRADING_HISTORY)
+
 
 
 
@@ -241,7 +265,7 @@ bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
 bvb_financials = BVBRetrievalModule().Financials()
 
 # get trading perfomance data for all comanies
-bvb_trading_performance.get_trading_performance_for_all_companies(readable = True)
+# bvb_trading_performance.get_trading_performance_for_all_companies(readable=False)
 
 # get financials data for all companies
-bvb_financials.get_financials_for_all_companies(readable = True)
+bvb_financials.get_financials_for_all_companies(readable=False)
