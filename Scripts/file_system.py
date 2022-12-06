@@ -73,12 +73,15 @@ def write_to_file(fl, txt, dir_path, finish_text = "Content has been written to 
     # print(f"{finish_text}")
 
 # append if not already in file
-def append_to_file(fl, txt, dir_path, finish_text = "Content has been written to file."):
+def append_to_file(fl, txt, dir_path, ignoreDuplicate = False, finish_text = "Content has been written to file."):
     output_file = get_path_to_file(fl, __file__, dir_path)
 
     with open(output_file, 'a', encoding="utf-8") as f:
-        if not line_already_in_file(output_file, txt):
+        if ignoreDuplicate:
             f.write(txt + "\n")
+        else:
+            if not line_already_in_file(output_file, txt):
+                f.write(txt + "\n")
 
     # print(f"{finish_text}")
 
