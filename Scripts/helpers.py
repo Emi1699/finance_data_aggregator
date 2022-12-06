@@ -41,5 +41,9 @@ def transform_date_to_ddmmyyyy(date_str):
 def word_in_substr(word, sub_str):
     return True if re.search(word, sub_str, re.IGNORECASE) else False
 
+# given a company from the Company enum, create a file name based on that company's value and name
+def createCompanyFile(company):
+    return str(company.value) + "_" + str(company.name)
+
 # print(transform_date_to_ddmmyyyy('astă zi, 14:00'))
 
