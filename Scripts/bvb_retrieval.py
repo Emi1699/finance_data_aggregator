@@ -109,7 +109,6 @@ class BVBRetrievalModule:
                             data_row = "{:>0} {:>{right_padding}}".format(table_data[i], table_data[i + 1], right_padding = right_padding)
                     else: # ... or not
                         # convert strings to floats and ints
-
                         if years_back >= 1:
                             if table_data[i + 1] != "NaN":
                                 table_data[i + 1] = float(table_data[i + 1].replace(',', ''))
@@ -274,35 +273,37 @@ class BVBRetrievalModule:
             output_file = helpers.createCompanyFile(company) # create the name of the output file
             data_row = None # this will be appended to the output file, line by line
             dirpath = dir_path.BVB_OVERVIEW_PRICES
-            formatting_longest = 20 # used for formatting in case we want to view the data in a more beautiful way (rather than viewing it in CSV format)
+            formatting_longest = 40 # used for formatting in case we want to view the data in a more beautiful way (rather than viewing it in CSV format)
+            company_source = "https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=" + str(company.value)
             i = 0 # used to loop through values in the table
 
-            # clear output file before writing to it (we are using the append method to write new data)
+            # clear output file before writing to it (this is because we are using the append method to write new data and we don't want to append updated data over old data)
             file_system.clear_file(output_file, dirpath)
 
             # get table from source page
-            overview_table = helpers.get_source("https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=" + str(company.value)).select("table#ctl00_body_ctl02_PricesControl_dvCPrices tr td")
-            
-            for i in range(len(overview_table)):
-                if len(overview_table[i].text.strip()) > 0:
-                    file_system.append_to_file(output_file, overview_table[i].text.strip(), dirpath, True)
+            overview_table = helpers.get_source(company_source).select("table#ctl00_body_ctl02_PricesControl_dvCPrices tr td")
+
+            # transform data in table to strings and remove empty strings (which are the empty rows that separate data on the website)
+            overview_table = [x.text.strip() for x in overview_table if x.text.strip()]
 
             # append first line of the file (i.e. the name of the columns)
             if readable:
                 right_padding = formatting_longest - len("Name")
-                data_row = "{:>{right_padding}} {:>15}".format("Name", "Value", right_padding = right_padding)
+                data_row = "{:>0} {:>{right_padding}}".format("Name", "Value", right_padding = right_padding)
+
+                file_system.append_to_file(output_file, data_row, dirpath, True)
+                file_system.append_to_file(output_file, "", dirpath, True)
             else:
                 data_row = "Name,Value"
+                file_system.append_to_file(output_file, data_row, dirpath, True)
 
-            file_system.append_to_file(output_file, data_row, dirpath, True)
-            
             # iterate over the table and append its values into the output file
             while i < len(overview_table):
                 if readable:
-                    right_padding = formatting_longest - len(overview_table[i].text.strip())
-                    data_row = "{:>{right_padding}} {:>15}".format(overview_table[i].text.strip(), overview_table[i + 1].text.strip(), right_padding = right_padding )
+                    right_padding = formatting_longest - len(overview_table[i])
+                    data_row = "{:>0} {:>{right_padding}}".format(overview_table[i], overview_table[i + 1], right_padding = right_padding )
                 else:
-                    data_row = f"{overview_table[i].text.strip()},{overview_table[i + 1].text.strip()}"
+                    data_row = f"{overview_table[i]},{overview_table[i + 1]}"
 
                 file_system.append_to_file(output_file, data_row, dirpath, True)
 
@@ -310,9 +311,6 @@ class BVBRetrievalModule:
                 i += 2
 
             
-
-            file_system.write_to_file("rsp.html", str(overview_table), dir_path.TEST_FILES)
-
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
 bvb_financials = BVBRetrievalModule().Financials()
 bvb_trading_history = BVBRetrievalModule().Trading().History()
@@ -328,5 +326,5 @@ bvb_overview = BVBRetrievalModule().Overview()
 # bvb_trading_history.get_trading_history_data_of_company(Company.OMV_PETROM)
 
 
-bvb_overview.get_overview_of_company(Company.OMV_PETROM)
+bvb_overview.get_overview_of_company(Company.OMV_PETROM, readable=False)
 
