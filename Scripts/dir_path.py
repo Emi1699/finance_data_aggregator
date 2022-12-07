@@ -6,7 +6,7 @@ class DirPath(Enum):
     BVB_FINANCIALS = f"../Market Data and News/Market Data/Financials/"
     BVB_TRADING_PERFORMANCE = f"../Market Data and News/Market Data/Trading/Performance/"
     BVB_TRADING_HISTORY = f"../Market Data and News/Market Data/Trading/History/"
-    BVB_OVERVIEW_PRICES = f"../Market Data and News/Market Data/Overview/Prices"
-    BVB_OVERVIEW_INDICATORS = f"../Market Data and News/Market Data/Overview/Indicators"
+    BVB_OVERVIEW_PRICES = f"../Market Data and News/Market Data/Overview/Prices/"
+    BVB_OVERVIEW_INDICATORS = f"../Market Data and News/Market Data/Overview/Indicators/"
     TEST_FILES = f"../Test Files/"
     
