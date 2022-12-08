@@ -8,5 +8,7 @@ class DirPath(Enum):
     BVB_TRADING_HISTORY = f"../Market Data and News/Market Data/Trading/History/"
     BVB_OVERVIEW_PRICES = f"../Market Data and News/Market Data/Overview/Prices/"
     BVB_OVERVIEW_INDICATORS = f"../Market Data and News/Market Data/Overview/Indicators/"
+    BVB_OVERVIEW_ISSUE_INFO = f"../Market Data and News/Market Data/Overview/Issue Info/"
+    BVB_OVERVIEW = f"../Market Data and News/Market Data/Overview/"
     TEST_FILES = f"../Test Files/"
     
