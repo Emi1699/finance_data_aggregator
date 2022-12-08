@@ -303,7 +303,7 @@ class BVBRetrievalModule:
                     right_padding = formatting_longest - len(overview_table[i])
                     data_row = "{:>0} {:>{right_padding}}".format(overview_table[i], overview_table[i + 1], right_padding = right_padding )
                 else:
-                    data_row = f"{overview_table[i]},{overview_table[i + 1]}"
+                    data_row = f"{overview_table[i]},{overview_table[i + 1].replace(',', '')}"
 
                 file_system.append_to_file(output_file, data_row, dirpath, True)
 
@@ -322,9 +322,7 @@ bvb_overview = BVBRetrievalModule().Overview()
 # get financials data for all companies
 # bvb_financials.get_financials_for_all_companies(readable=False)
 
-
 # bvb_trading_history.get_trading_history_data_of_company(Company.OMV_PETROM)
-
 
 bvb_overview.get_overview_of_company(Company.OMV_PETROM, readable=False)
 
