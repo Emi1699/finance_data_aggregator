@@ -6,7 +6,6 @@ from companies import Company
 import bvb_curl_headers_financials
 import bvb_curl_headers_trading
 import helpers
-import re
 
 class BVBRetrievalModule:
 
@@ -266,50 +265,153 @@ class BVBRetrievalModule:
                     trading_history_data = BeautifulSoup(financials_file, 'html.parser')
 
     class Overview():
-        def get_overview_of_company(self, company, readable = False):
-            print(f"> getting overview of {company}")
 
+        def get_overview_of_all_comapnies(self, readable = False):
+            for company in Company:
+                print(company)
+                self.get_overview_of_company(company, readable)
+
+        def get_overview_of_company(self, company, readable = False):
+            # this is where we get prices, indicators and issue info details for a company
+            company_overview_source_link = "https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=" + str(company.value)
+            company_overview_source = helpers.get_source(company_overview_source_link) # get data from source
+
+            # write above source to a local file, so that we don't make multiple requests for the same information
+            file_system.write_to_file("_overview_source.html", str(company_overview_source), dir_path.BVB_OVERVIEW)
+
+            # load overview page source
+            with open(file_system.get_path_to_file("_overview_source.html", __file__, dir_path.BVB_OVERVIEW)) as fp:
+                soup = BeautifulSoup(fp, 'html.parser')
+
+            self.get_prices_of_company(company, soup, readable)
+            self.get_indicators_of_company(company, soup, readable)
+            self.get_issue_info_of_company(company, soup, readable)
+
+        def get_prices_of_company(self, company, soup, readable = False):
             # initialize variables that will be used throughout the method
             output_file = helpers.createCompanyFile(company) # create the name of the output file
             data_row = None # this will be appended to the output file, line by line
-            dirpath = dir_path.BVB_OVERVIEW_PRICES
+            dirpath = dir_path.BVB_OVERVIEW_PRICES # used to find output file in our system
             formatting_longest = 40 # used for formatting in case we want to view the data in a more beautiful way (rather than viewing it in CSV format)
-            company_source = "https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=" + str(company.value)
             i = 0 # used to loop through values in the table
 
             # clear output file before writing to it (this is because we are using the append method to write new data and we don't want to append updated data over old data)
             file_system.clear_file(output_file, dirpath)
 
-            # get table from source page
-            overview_table = helpers.get_source(company_source).select("table#ctl00_body_ctl02_PricesControl_dvCPrices tr td")
+            # load prices table
+            overview_prices_table = soup.select("table#ctl00_body_ctl02_PricesControl_dvCPrices tr td")
 
             # transform data in table to strings and remove empty strings (which are the empty rows that separate data on the website)
-            overview_table = [x.text.strip() for x in overview_table if x.text.strip()]
+            overview_prices_table = [x.text.strip() for x in overview_prices_table if x.text.strip()]
 
             # append first line of the file (i.e. the name of the columns)
             if readable:
                 right_padding = formatting_longest - len("Name")
                 data_row = "{:>0} {:>{right_padding}}".format("Name", "Value", right_padding = right_padding)
 
-                file_system.append_to_file(output_file, data_row, dirpath, True)
-                file_system.append_to_file(output_file, "", dirpath, True)
+                file_system.append_to_file(output_file, data_row, dirpath, True) # append name of columns
+                file_system.append_to_file(output_file, "", dirpath, True) # append empty line
             else:
                 data_row = "Name,Value"
                 file_system.append_to_file(output_file, data_row, dirpath, True)
 
             # iterate over the table and append its values into the output file
-            while i < len(overview_table):
+            while i < len(overview_prices_table):
                 if readable:
-                    right_padding = formatting_longest - len(overview_table[i])
-                    data_row = "{:>0} {:>{right_padding}}".format(overview_table[i], overview_table[i + 1], right_padding = right_padding )
+                    right_padding = formatting_longest - len(overview_prices_table[i])
+                    data_row = "{:>0} {:>{right_padding}}".format(overview_prices_table[i], overview_prices_table[i + 1], right_padding = right_padding )
                 else:
-                    data_row = f"{overview_table[i]},{overview_table[i + 1].replace(',', '')}"
+                    data_row = f"{overview_prices_table[i]},{overview_prices_table[i + 1].replace(',', '')}"
 
                 file_system.append_to_file(output_file, data_row, dirpath, True)
 
                 # we bundle information 2 elements at a time: name of price indicator and its value
                 i += 2
 
+        def get_indicators_of_company(self, company, soup, readable = False):
+            # initialize variables that will be used throughout the method
+            output_file = helpers.createCompanyFile(company) # create the name of the output file
+            data_row = None # this will be appended to the output file, line by line
+            dirpath = dir_path.BVB_OVERVIEW_INDICATORS # used to find output file in our system
+            formatting_longest = 40 # used for formatting in case we want to view the data in a more beautiful way (rather than viewing it in CSV format)
+            i = 0 # used to loop through values in the table
+
+            # clear output file before writing to it (this is because we are using the append method to write new data and we don't want to append updated data over old data)
+            file_system.clear_file(output_file, dirpath)
+
+            # load prices table
+            overview_indicators_table = soup.select("table#ctl00_body_ctl02_IndicatorsControl_dvIndicators td")
+
+            # transform data in table to strings and remove empty strings (which are the empty rows that separate data on the website)
+            overview_indicators_table = [x.text.strip() for x in overview_indicators_table if x.text.strip()]
+
+            # append first line of the file (i.e. the name of the columns)
+            if readable:
+                right_padding = formatting_longest - len("Name")
+                data_row = "{:>0} {:>{right_padding}}".format("Name", "Value", right_padding = right_padding)
+
+                file_system.append_to_file(output_file, data_row, dirpath, True) # append name of columns
+                file_system.append_to_file(output_file, "", dirpath, True) # append empty line
+            else:
+                data_row = "Name,Value"
+                file_system.append_to_file(output_file, data_row, dirpath, True)
+
+            # iterate over the table and append its values into the output file
+            while i < len(overview_indicators_table):
+                if readable:
+                    right_padding = formatting_longest - len(overview_indicators_table[i])
+                    data_row = "{:>0} {:>{right_padding}}".format(overview_indicators_table[i], overview_indicators_table[i + 1], right_padding = right_padding )
+                else:
+                    data_row = f"{overview_indicators_table[i]},{overview_indicators_table[i + 1].replace(',', '')}"
+
+                file_system.append_to_file(output_file, data_row, dirpath, True)
+
+                # we bundle information 2 elements at a time: name of price indicator and its value
+                i += 2        
+            
+        def get_issue_info_of_company(self, company, soup, readable = False):
+            # initialize variables that will be used throughout the method
+            output_file = helpers.createCompanyFile(company) # create the name of the output file
+            data_row = None # this will be appended to the output file, line by line
+            dirpath = dir_path.BVB_OVERVIEW_ISSUE_INFO # used to find output file in our system
+            formatting_longest = 40 # used for formatting in case we want to view the data in a more beautiful way (rather than viewing it in CSV format)
+            i = 0 # used to loop through values in the table
+
+            # clear output file before writing to it (this is because we are using the append method to write new data and we don't want to append updated data over old data)
+            file_system.clear_file(output_file, dirpath)
+
+            # load prices table
+            overview_issue_info_table = soup.select("table#dvInfo td")
+
+            # transform data in table to strings and remove empty strings (which are the empty rows that separate data on the website)
+            overview_issue_info_table = [x.text.strip() for x in overview_issue_info_table if x.text.strip()]
+
+            # some companies have a memorandum at the bottom - we don't need that
+            overview_issue_info_table = overview_issue_info_table[0:2]
+
+            # append first line of the file (i.e. the name of the columns)
+            if readable:
+                right_padding = formatting_longest - len("Name")
+                data_row = "{:>0} {:>{right_padding}}".format("Name", "Value", right_padding = right_padding)
+
+                file_system.append_to_file(output_file, data_row, dirpath, True) # append name of columns
+                file_system.append_to_file(output_file, "", dirpath, True) # append empty line
+            else:
+                data_row = "Name,Value"
+                file_system.append_to_file(output_file, data_row, dirpath, True)
+
+            # iterate over the table and append its values into the output file
+            while i < len(overview_issue_info_table):
+                if readable:
+                    right_padding = formatting_longest - len(overview_issue_info_table[i])
+                    data_row = "{:>0} {:>{right_padding}}".format(overview_issue_info_table[i], overview_issue_info_table[i + 1], right_padding = right_padding )
+                else:
+                    data_row = f"{overview_issue_info_table[i]},{overview_issue_info_table[i + 1].replace(',', '')}"
+
+                file_system.append_to_file(output_file, data_row, dirpath, True)
+
+                # we bundle information 2 elements at a time: name of price indicator and its value
+                i += 2        
             
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
 bvb_financials = BVBRetrievalModule().Financials()
@@ -324,5 +426,4 @@ bvb_overview = BVBRetrievalModule().Overview()
 
 # bvb_trading_history.get_trading_history_data_of_company(Company.OMV_PETROM)
 
-bvb_overview.get_overview_of_company(Company.OMV_PETROM, readable=False)
-
+bvb_overview.get_overview_of_all_comapnies(readable=False)
