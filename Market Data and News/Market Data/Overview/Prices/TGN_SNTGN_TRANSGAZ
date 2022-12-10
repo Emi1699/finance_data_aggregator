@@ -1,16 +1,15 @@
-Name                                Value
-
-Bid / Ask             285.0000 / 287.0000
-Bid / Ask Vol.                   49 / 287
-Reference price                  279.5000
-Date/time            12/9/2022 6:00:00 PM
-Last price                       287.0000
-Var                                7.5000
-Var (%)                              2.68
-Open price                       280.0000
-High price                       288.0000
-Low price                        278.5000
-Avg. price                       285.0000
-Date/time            12/9/2022 5:55:30 PM
-52 weeks high                    288.0000
-52 weeks low                     180.0000
+Name,Value
+Bid / Ask,285.0000 / 287.0000
+Bid / Ask Vol.,49 / 287
+Reference price,279.5000
+Date/time,12/9/2022 6:00:00 PM
+Last price,287.0000
+Var,7.5000
+Var (%),2.68
+Open price,280.0000
+High price,288.0000
+Low price,278.5000
+Avg. price,285.0000
+Date/time,12/9/2022 5:55:30 PM
+52 weeks high,288.0000
+52 weeks low,180.0000
