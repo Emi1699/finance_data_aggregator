@@ -68,7 +68,7 @@ def write_to_file(fl, txt, dir_path, finish_text = "Content has been written to 
     output_file = get_path_to_file(fl, __file__, dir_path)
     
     with open(output_file, 'w', encoding="utf-8") as f:
-        f.write(txt + "\n")
+        f.write(str(txt) + "\n")
 
     # print(f"{finish_text}")
 
