@@ -11,144 +11,208 @@ class BVBRetrievalModule:
 
     class Financials:
 
-        def get_financials_for_all_companies(self, readable = False):
-            for company in Company:
-                self.get_financials_data_of_company(company, readable)
+        class AnnualFinancialInformation():
 
-        # get 'financials' data for one single company
-        def get_financials_data_of_company(self, company, readable = False):
-            curl_params = bvb_curl_headers_financials.get_curl_params(company)
-            self.process_financials_data(company, *curl_params, readable)
-        
-        # process 'financials' data (clean and write to file) for one single company, using the params passed as arguments
-        def process_financials_data(self, company, cookies, headers, params, data, readable):
-            print(f"> processing financial data from {company.name} ...")
+            def get_annual_financial_information_for_all_companies(self, readable = False):
+                for company in Company:
+                    self.get_annual_financial_information_of_company(company, readable)
 
-            # initialize some variables that will be used in the method below
-            output_file = helpers.createCompanyFile(company)
-            dirpath = dir_path.BVB_FINANCIALS
+            # get 'financials' data for one single company
+            def get_annual_financial_information_of_company(self, company, readable = False):
+                curl_params = bvb_curl_headers_financials.get_curl_params(company)
+                self.process_annual_financial_information(company, *curl_params, readable)
+            
+            # process 'financials' data (clean and write to file) for one single company, using the params passed as arguments
+            def process_annual_financial_information(self, company, cookies, headers, params, data, readable):
+                print(f"> processing annual financial information from {company.name} ...")
 
-            # clear file before writing to it
-            file_system.clear_file(output_file, dirpath)
+                # initialize some variables that will be used in the method below
+                output_file = helpers.createCompanyFile(company)
+                dirpath = dir_path.BVB_FINANCIALS_ANNUAL_FINANCIAL_INFORMATION
 
-            financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
+                # clear file before writing to it
+                file_system.clear_file(output_file, dirpath)
 
-            response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
-            file_system.write_to_file("_financials_temp.html", response.text, dirpath)
+                financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
 
-            with open(file_system.get_path_to_file("_financials_temp.html", __file__, dirpath)) as financials_file:
-                financials_data = BeautifulSoup(financials_file, 'html.parser')
+                response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
+                file_system.write_to_file("_financials_temp.html", response.text, dirpath)
 
-            # contains the table with information about 
-            table_data = financials_data.select("table.table.table-hover.dataTable.no-footer.generic-table.compact.w100 tbody tr td")
+                with open(file_system.get_path_to_file("_financials_temp.html", __file__, dirpath)) as financials_file:
+                    financials_data = BeautifulSoup(financials_file, 'html.parser')
 
-            # transform elements in table to strings
-            for k in range(0, len(table_data)):
-                table_data[k] = table_data[k].text
+                # contains the table with information about 
+                table_data = financials_data.select("table.table.table-hover.dataTable.no-footer.generic-table.compact.w100 tbody tr td")
 
-            # get last years for which data is available
-            years = []
-            yearsSection = financials_data.select("table#gvRapFinAnuale > thead > tr > th.text-right")
-            for year in yearsSection:
-                years.append(year.text)
+                # transform elements in table to strings
+                for k in range(0, len(table_data)):
+                    table_data[k] = table_data[k].text
 
-            # check for how many years back there is data available
-            years_back = len(yearsSection)
+                # get last years for which data is available
+                years = []
+                yearsSection = financials_data.select("table#gvRapFinAnuale > thead > tr > th.text-right")
+                for year in yearsSection:
+                    years.append(year.text)
 
-            # find length of the longest element in table (will be used for formatting the output file)
-            if len(table_data) > 0: # table not empty (i.e. data exists)
-                formatting_longest = len(max(table_data, key = len)) + 25
+                # check for how many years back there is data available
+                years_back = len(yearsSection)
 
-                # padding for first line ( name of the columns )
-                right_padding = formatting_longest - len("Indicator")
-                
-                if readable:
-                    # write the first row in the file (the name of the columns)
-                    if years_back == 3:
-                        data_row = "{:>0} {:>{right_padding}} {:>30} {:>30}".format("Indicator", years[0], years[1], years[2] + "\n", right_padding = right_padding)
-                    elif years_back == 2:
-                        data_row = "{:>0} {:>{right_padding}} {:>30}".format("Indicator",  years[0], years[1] + "\n", right_padding = right_padding)
-                    elif years_back == 1:
-                        data_row = "{:>0} {:>{right_padding}}".format("Indicator", years[0] + "\n", right_padding = right_padding)
-                else:
-                    if years_back == 3:
-                        data_row = f"Indicator,{years[0]},{years[1]},{years[2]}"
-                    elif years_back == 2:
-                        data_row = f"Indicator,{years[0]},{years[1]}"
-                    elif years_back == 1:
-                        data_row = f"Indicator,{years[0]}"
+                # find length of the longest element in table (will be used for formatting the output file)
+                if len(table_data) > 0: # table not empty (i.e. data exists)
+                    formatting_longest = len(max(table_data, key = len)) + 25
 
-                file_system.append_to_file(output_file, data_row, dirpath, True) # write first row to file (the name of the columns below)
-
-            if len(table_data) > 0: # for some comapanies, there is no data
-                i = 0 # used to iterate over the values in the table
-                
-                # loop through each row of the table and write content to fil
-                while i < len(table_data):
-                    data_row = "" # will contain each row in the output file
-
-                    # populate table with 'NaN' for rows with no values
-                    if len(table_data[i + 1]) == 1: table_data[i + 1] = "NaN"
-
-                    if years_back > 1:
-                        if len(table_data[i + 2]) == 1: table_data[i + 2] = "NaN"
-
-                    if years_back > 2:
-                        if len(table_data[i + 3]) == 1: table_data[i + 3] = "NaN"
+                    # padding for first line ( name of the columns )
+                    right_padding = formatting_longest - len("Indicator")
                     
-                    # format data in file to look readable
-                    right_padding = formatting_longest - len(table_data[i])
-
-                    if readable: # format data in file so that it looks readable to humans ...
+                    if readable:
+                        # write the first row in the file (the name of the columns)
                         if years_back == 3:
-                            data_row = "{:>0} {:>{right_padding}} {:>30} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], table_data[i + 3], right_padding = right_padding)
+                            data_row = "{:>0} {:>{right_padding}} {:>30} {:>30}".format("Indicator", years[0], years[1], years[2] + "\n", right_padding = right_padding)
                         elif years_back == 2:
-                            data_row = "{:>0} {:>{right_padding}} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], right_padding = right_padding)
+                            data_row = "{:>0} {:>{right_padding}} {:>30}".format("Indicator",  years[0], years[1] + "\n", right_padding = right_padding)
                         elif years_back == 1:
-                            data_row = "{:>0} {:>{right_padding}}".format(table_data[i], table_data[i + 1], right_padding = right_padding)
-                    else: # ... or not
-                        # convert strings to floats and ints
-                        if years_back >= 1:
-                            if table_data[i + 1] != "NaN":
-                                table_data[i + 1] = float(table_data[i + 1].replace(',', ''))
+                            data_row = "{:>0} {:>{right_padding}}".format("Indicator", years[0] + "\n", right_padding = right_padding)
+                    else:
+                        if years_back == 3:
+                            data_row = f"Indicator,{years[0]},{years[1]},{years[2]}"
+                        elif years_back == 2:
+                            data_row = f"Indicator,{years[0]},{years[1]}"
+                        elif years_back == 1:
+                            data_row = f"Indicator,{years[0]}"
 
-                                # if the digits on decimal places are 0, transform the number back to an int
-                                if int(table_data[i+1]) == table_data[i+1]:
-                                    table_data[i+1] = int(table_data[i+1])
+                    file_system.append_to_file(output_file, data_row, dirpath, True) # write first row to file (the name of the columns below)
 
-                            data_row = f"{table_data[i]},{table_data[i + 1]}"
+                if len(table_data) > 0: # for some comapanies, there is no data
+                    i = 0 # used to iterate over the values in the table
+                    
+                    # loop through each row of the table and write content to fil
+                    while i < len(table_data):
+                        data_row = "" # will contain each row in the output file
 
-                        if years_back >= 2:
-                            if table_data[i + 2] != "NaN":
-                                table_data[i + 2] = float(table_data[i + 2].replace(',', ''))
+                        # populate table with 'NaN' for rows with no values
+                        if len(table_data[i + 1]) == 1: table_data[i + 1] = "NaN"
 
-                                # if the digits on decimal places are 0, transform the number back to an int
-                                if int(table_data[i+2]) == table_data[i+2]:
-                                    table_data[i+2] = int(table_data[i+2])
+                        if years_back > 1:
+                            if len(table_data[i + 2]) == 1: table_data[i + 2] = "NaN"
 
-                            data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]}"
+                        if years_back > 2:
+                            if len(table_data[i + 3]) == 1: table_data[i + 3] = "NaN"
+                        
+                        # format data in file to look readable
+                        right_padding = formatting_longest - len(table_data[i])
 
-                        if years_back >= 3:
-                            if table_data[i + 3] != "NaN":
-                                table_data[i + 3] = float(table_data[i + 3].replace(',', ''))
+                        if readable: # format data in file so that it looks readable to humans ...
+                            if years_back == 3:
+                                data_row = "{:>0} {:>{right_padding}} {:>30} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], table_data[i + 3], right_padding = right_padding)
+                            elif years_back == 2:
+                                data_row = "{:>0} {:>{right_padding}} {:>30}".format(table_data[i], table_data[i + 1], table_data[i + 2], right_padding = right_padding)
+                            elif years_back == 1:
+                                data_row = "{:>0} {:>{right_padding}}".format(table_data[i], table_data[i + 1], right_padding = right_padding)
+                        else: # ... or not
+                            # convert strings to floats and ints
+                            if years_back >= 1:
+                                if table_data[i + 1] != "NaN":
+                                    table_data[i + 1] = float(table_data[i + 1].replace(',', ''))
 
-                                # if the digits on decimal places are 0, transform the number back to an int
-                                if int(table_data[i+3]) == table_data[i+3]:
-                                    table_data[i+3] = int(table_data[i+3])
+                                    # if the digits on decimal places are 0, transform the number back to an int
+                                    if int(table_data[i+1]) == table_data[i+1]:
+                                        table_data[i+1] = int(table_data[i+1])
 
-                            data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]},{table_data[i + 3]}"
+                                data_row = f"{table_data[i]},{table_data[i + 1]}"
 
-                    # append to file (only if not already in file)
-                    file_system.append_to_file(output_file, data_row, dirpath)
+                            if years_back >= 2:
+                                if table_data[i + 2] != "NaN":
+                                    table_data[i + 2] = float(table_data[i + 2].replace(',', ''))
 
-                    # each row in the file contains information about a specific financial indicator and its value for the last <years_back> years
-                    # thus, for every iteration through this while loop, we bundle information (<years_back> + 1) rows at the time
-                    i += (years_back + 1)
+                                    # if the digits on decimal places are 0, transform the number back to an int
+                                    if int(table_data[i+2]) == table_data[i+2]:
+                                        table_data[i+2] = int(table_data[i+2])
 
-                print(f"\t|\n\t|__SUCCESS!\n")
-            else:
-                file_system.append_to_file(output_file, "!!! NO DATA FOUND !!!", dirpath)
-                print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
+                                data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]}"
+
+                            if years_back >= 3:
+                                if table_data[i + 3] != "NaN":
+                                    table_data[i + 3] = float(table_data[i + 3].replace(',', ''))
+
+                                    # if the digits on decimal places are 0, transform the number back to an int
+                                    if int(table_data[i+3]) == table_data[i+3]:
+                                        table_data[i+3] = int(table_data[i+3])
+
+                                data_row = f"{table_data[i]},{table_data[i + 1]},{table_data[i + 2]},{table_data[i + 3]}"
+
+                        # append to file (only if not already in file)
+                        file_system.append_to_file(output_file, data_row, dirpath)
+
+                        # each row in the file contains information about a specific financial indicator and its value for the last <years_back> years
+                        # thus, for every iteration through this while loop, we bundle information (<years_back> + 1) rows at the time
+                        i += (years_back + 1)
+
+                    print(f"\t|\n\t|__SUCCESS!\n")
+                else:
+                    file_system.append_to_file(output_file, "!!! NO DATA FOUND !!!", dirpath)
+                    print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
+
+        class FinancialCalendar():
+            def get_financial_calendar_for_all_companies(self, readable = False):
+                for company in Company:
+                    self.get_financial_calendar_of_company(company, readable)
+
+            # get 'financials' data for one single company
+            def get_financial_calendar_of_company(self, company, readable = False):
+                curl_params = bvb_curl_headers_financials.get_curl_params(company)
+                self.process_financial_calendar(company, *curl_params, readable)
+            
+            # process 'financials' data (clean and write to file) for one single company, using the params passed as arguments
+            def process_financial_calendar(self, company, cookies, headers, params, data, readable):
+                print(f"> processing financial calendar from {company.name} ...")
+
+                # initialize some variables that will be used in the method below
+                output_file = helpers.createCompanyFile(company)
+                dirpath = dir_path.BVB_FINANCIALS_FINANCIAL_CALENDAR
+                data_row = None
+                i = 0
+                formatting_longest = 100
+
+                # clear file before writing to it
+                file_system.clear_file(output_file, dirpath)
+
+                financials_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
+
+                response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
+                file_system.write_to_file("_financial_calendar_temp.html", response.text, dirpath)
+
+                with open(file_system.get_path_to_file("_financial_calendar_temp.html", __file__, dirpath)) as financials_file:
+                    financials_data = BeautifulSoup(financials_file, 'html.parser')
+
+                # contains the table with information about 
+                table_data = financials_data.select("div.wrapped-table.smaller-table.mBot20 tbody tr td div")
+
+                # transform elements in table into strings
+                table_data = [el.text.strip() for el in table_data]
+
+                # append first line of the file (i.e. the name of the columns)
+                if readable:
+                    right_padding = formatting_longest - len("Name")
+                    data_row = "{:>0} {:>{right_padding}}".format("Name", "Value", right_padding = right_padding)
+
+                    file_system.append_to_file(output_file, data_row, dirpath, True) # append name of columns
+                    file_system.append_to_file(output_file, "", dirpath, True) # append empty line
+                else:
+                    data_row = "Name,Value"
+                    file_system.append_to_file(output_file, data_row, dirpath, True)
+
+                # iterate over the table and append its values into the output file
+                while i < len(table_data):
+                    if readable:
+                        right_padding = formatting_longest - len(table_data[i])
+                        data_row = "{:>0} {:>{right_padding}}".format(table_data[i].replace(',', ' -'), table_data[i + 1], right_padding = right_padding )
+                    else:
+                        data_row = f"{table_data[i].replace(',', ' -')},{table_data[i + 1].replace(',', '')}"
+
+                    file_system.append_to_file(output_file, data_row, dirpath, True)
+
+                    # we bundle information 2 elements at a time: name of price indicator and its value
+                    i += 2        
 
     class Trading():
 
@@ -236,33 +300,6 @@ class BVBRetrievalModule:
                 else:
                     file_system.append_to_file(output_file, "!!! NO DATA FOUND !!!", dir_path.BVB_TRADING_PERFORMANCE)
                     print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
-        
-        class History():
-            def get_trading_history_for_all_companies(self, readable = False):
-                for company in Company:
-                    self.get_trading_history_data_of_company(company, readable)
-            
-            def get_trading_history_data_of_company(self, company, readable = False):
-                curl_params = bvb_curl_headers_trading.get_curl_params(company)
-                self.process_trading_history_data(company, *curl_params, readable)
-
-            def process_trading_history_data(self, company, cookies, headers, params, data, readable):
-                print(f"> processing financial data from {company.name} ...")
-
-                #initialize variable that will be used later in the method
-                output_file = "_trading_history_temp.html"
-                dirpath = dir_path.BVB_TRADING_HISTORY
-
-                # clear file before writing to it
-                file_system.clear_file(output_file, dirpath)
-
-                trading_history_data = None # this variable will hold the response from calling the API (i.e. the table with the desired values)
-
-                response = requests.post('https://www.bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx', params=params, cookies=cookies, headers=headers, data=data)
-                file_system.write_to_file("_trading_history_temp.html", response.text, dirpath)
-
-                with open(file_system.get_path_to_file("_trading_history_temp.html", __file__, dirpath)) as financials_file:
-                    trading_history_data = BeautifulSoup(financials_file, 'html.parser')
 
     class Overview():
 
@@ -414,8 +451,12 @@ class BVBRetrievalModule:
                 i += 2        
             
 bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
-bvb_financials = BVBRetrievalModule().Financials()
-bvb_trading_history = BVBRetrievalModule().Trading().History()
+bvb_trading_history = BVBRetrievalModule().Trading()
+
+
+bvb_financials_annual_financial_information = BVBRetrievalModule().Financials().AnnualFinancialInformation()
+bvb_financials_financial_calendar = BVBRetrievalModule().Financials().FinancialCalendar()
+
 bvb_overview = BVBRetrievalModule().Overview()
 
 # get trading perfomance data for all comanies
@@ -426,4 +467,6 @@ bvb_overview = BVBRetrievalModule().Overview()
 
 # bvb_trading_history.get_trading_history_data_of_company(Company.OMV_PETROM)
 
-bvb_overview.get_overview_of_all_comapnies(readable=False)
+# bvb_overview.get_overview_of_all_comapnies(readable=False)
+
+bvb_financials_financial_calendar.get_financial_calendar_for_all_companies(readable=False)
