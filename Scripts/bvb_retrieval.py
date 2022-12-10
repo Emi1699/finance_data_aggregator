@@ -508,8 +508,8 @@ current_trading_day = overview.CurrentTradingDay()
 
 # trading_performance.get_trading_performance_for_all_companies(readable=True)
 
-overview.get_overview_of_all_comapnies(readable=False)
+# overview.get_overview_of_all_comapnies(readable=False)
 
-# current_trading_day.get_current_trading_day()
+current_trading_day.get_current_trading_day()
 
 
