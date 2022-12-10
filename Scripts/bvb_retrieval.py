@@ -325,7 +325,9 @@ class BVBRetrievalModule:
             self.get_issue_info_of_company(company, soup, readable)
 
         def get_prices_of_company(self, company, soup, readable = False):
-            # initialize variables that will be used throughout the method
+            print(f"> processing overview -> prices data from {company.name} ...")
+
+            # initialize variables that will be used throughout the method            
             output_file = helpers.createCompanyFile(company) # create the name of the output file
             data_row = None # this will be appended to the output file, line by line
             dirpath = dir_path.BVB_OVERVIEW_PRICES # used to find output file in our system
@@ -366,6 +368,8 @@ class BVBRetrievalModule:
                 i += 2
 
         def get_indicators_of_company(self, company, soup, readable = False):
+            print(f"> processing overview -> indicators data from {company.name} ...")
+
             # initialize variables that will be used throughout the method
             output_file = helpers.createCompanyFile(company) # create the name of the output file
             data_row = None # this will be appended to the output file, line by line
@@ -407,6 +411,8 @@ class BVBRetrievalModule:
                 i += 2        
             
         def get_issue_info_of_company(self, company, soup, readable = False):
+            print(f"> processing overview -> isuue info data from {company.name} ...")
+
             # initialize variables that will be used throughout the method
             output_file = helpers.createCompanyFile(company) # create the name of the output file
             data_row = None # this will be appended to the output file, line by line
@@ -450,23 +456,5 @@ class BVBRetrievalModule:
                 # we bundle information 2 elements at a time: name of price indicator and its value
                 i += 2        
             
-bvb_trading_performance = BVBRetrievalModule().Trading().Performance()
-bvb_trading_history = BVBRetrievalModule().Trading()
 
 
-bvb_financials_annual_financial_information = BVBRetrievalModule().Financials().AnnualFinancialInformation()
-bvb_financials_financial_calendar = BVBRetrievalModule().Financials().FinancialCalendar()
-
-bvb_overview = BVBRetrievalModule().Overview()
-
-# get trading perfomance data for all comanies
-# bvb_trading_performance.get_trading_performance_for_all_companies(readable=False)
-
-# get financials data for all companies
-# bvb_financials.get_financials_for_all_companies(readable=False)
-
-# bvb_trading_history.get_trading_history_data_of_company(Company.OMV_PETROM)
-
-# bvb_overview.get_overview_of_all_comapnies(readable=False)
-
-bvb_financials_financial_calendar.get_financial_calendar_for_all_companies(readable=False)
