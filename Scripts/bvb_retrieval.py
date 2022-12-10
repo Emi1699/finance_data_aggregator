@@ -7,6 +7,7 @@ import bvb_curl_headers_financials
 import bvb_curl_headers_trading
 import helpers
 
+
 class BVBRetrievalModule:
 
     class Financials:
@@ -151,6 +152,9 @@ class BVBRetrievalModule:
                 else:
                     file_system.append_to_file(output_file, "!!! NO DATA FOUND !!!", dirpath)
                     print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
+                
+                # remove temp file when we're done reading from it
+                file_system.remove_file("_financials_temp.html", dir_path.BVB_FINANCIALS_ANNUAL_FINANCIAL_INFORMATION)
 
         class FinancialCalendar():
             def get_financial_calendar_for_all_companies(self, readable = False):
@@ -212,7 +216,10 @@ class BVBRetrievalModule:
                     file_system.append_to_file(output_file, data_row, dirpath, True)
 
                     # we bundle information 2 elements at a time: name of price indicator and its value
-                    i += 2        
+                    i += 2
+
+                # remove temp file after reading from it
+                file_system.remove_file("_financial_calendar_temp.html", dir_path.BVB_FINANCIALS_FINANCIAL_CALENDAR)    
 
     class Trading():
 
@@ -301,8 +308,13 @@ class BVBRetrievalModule:
                     file_system.append_to_file(output_file, "!!! NO DATA FOUND !!!", dir_path.BVB_TRADING_PERFORMANCE)
                     print(f"\t|\n\t|__ NO DATA FOR THIS COMPANY! MOVING ON ...\n")
 
-    class Overview():
+                # remove temp file after reading from it
+                file_system.remove_file("_trading_performance_temp.html", dir_path.BVB_TRADING_PERFORMANCE)
 
+    class Overview():
+        """
+        Methods to get overview from each company's page on BVB.
+        """
         def get_overview_of_all_comapnies(self, readable = False):
             for company in Company:
                 self.get_overview_of_company(company, readable)
@@ -322,6 +334,9 @@ class BVBRetrievalModule:
             self.get_prices_of_company(company, soup, readable)
             self.get_indicators_of_company(company, soup, readable)
             self.get_issue_info_of_company(company, soup, readable)
+
+            # remove temp file after reading from it
+            file_system.remove_file("_overview_source.html", dir_path.BVB_OVERVIEW)
 
         def get_prices_of_company(self, company, soup, readable = False):
             print(f"> processing overview -> prices data from {company.name} ...")
@@ -455,6 +470,29 @@ class BVBRetrievalModule:
                 # we bundle information 2 elements at a time: name of price indicator and its value
                 i += 2        
             
+        
+        class CurrentTradingDay():
+            """
+            Methods to get overview of the whole market (from 'Trading and Statistics/Current Trading Day')
+            """
+
+            def get_current_trading_day(self):
+                print(f"> processing current trading day data for ALL companies...")
+
+                output_file = "CURRENT_TRADING_DAY" # create the name of the output file
+                data_row = None # this will be appended to the output file, line by line
+                dirpath = dir_path.BVB_OVERVIEW # used to find output file in our system
+                formatting_longest = 40 # used for formatting in case we want to view the data in a more beautiful way (rather than viewing it in CSV format)
+                i = 0 # used to loop through values in the table
+
+                # clear output file before writing to it (this is because we are using the append method to write new data and we don't want to append updated data over old data)
+                file_system.clear_file(output_file, dirpath)
+
+
+
+
+
+
 annual_financial_information = BVBRetrievalModule.Financials.AnnualFinancialInformation()
 financial_calendar = BVBRetrievalModule.Financials.FinancialCalendar()
 
@@ -462,12 +500,16 @@ trading_performance = BVBRetrievalModule.Trading.Performance()
 
 overview = BVBRetrievalModule.Overview()
 
+current_trading_day = overview.CurrentTradingDay()
 
-annual_financial_information.get_annual_financial_information_for_all_companies(readable=True)
-financial_calendar.get_financial_calendar_for_all_companies(readable=True)
 
-trading_performance.get_trading_performance_for_all_companies(readable=True)
+# annual_financial_information.get_annual_financial_information_for_all_companies(readable=True)
+# financial_calendar.get_financial_calendar_for_all_companies(readable=True)
 
-overview.get_overview_of_all_comapnies(readable=True)
+# trading_performance.get_trading_performance_for_all_companies(readable=True)
+
+overview.get_overview_of_all_comapnies(readable=False)
+
+# current_trading_day.get_current_trading_day()
 
 
