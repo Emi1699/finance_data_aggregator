@@ -305,7 +305,6 @@ class BVBRetrievalModule:
 
         def get_overview_of_all_comapnies(self, readable = False):
             for company in Company:
-                print(company)
                 self.get_overview_of_company(company, readable)
 
         def get_overview_of_company(self, company, readable = False):
@@ -456,5 +455,19 @@ class BVBRetrievalModule:
                 # we bundle information 2 elements at a time: name of price indicator and its value
                 i += 2        
             
+annual_financial_information = BVBRetrievalModule.Financials.AnnualFinancialInformation()
+financial_calendar = BVBRetrievalModule.Financials.FinancialCalendar()
+
+trading_performance = BVBRetrievalModule.Trading.Performance()
+
+overview = BVBRetrievalModule.Overview()
+
+
+annual_financial_information.get_annual_financial_information_for_all_companies(readable=True)
+financial_calendar.get_financial_calendar_for_all_companies(readable=True)
+
+trading_performance.get_trading_performance_for_all_companies(readable=True)
+
+overview.get_overview_of_all_comapnies(readable=True)
 
 
