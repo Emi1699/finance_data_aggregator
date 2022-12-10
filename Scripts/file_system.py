@@ -100,3 +100,8 @@ def clear_file(fl, dir_path):
     output_file = get_path_to_file(fl, __file__, dir_path)
 
     open(output_file, 'w').close()
+
+def remove_file(fl, dir_path):
+    file_to_remove = get_path_to_file(fl, __file__, dir_path)
+
+    os.remove(file_to_remove)
